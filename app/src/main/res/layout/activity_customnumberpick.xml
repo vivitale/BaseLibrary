@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="默认的控件"/>
+
+    <talex.zsw.baselibrary.widget.CustomNumberPick
+        android:id="@+id/mCustomNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </talex.zsw.baselibrary.widget.CustomNumberPick>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自定义的控件"/>
+
+    <talex.zsw.baselibrary.widget.CustomNumberPick
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:CNP_AddDrawable="@mipmap/ic_launcher"
+        app:CNP_EditWidth="100dp"
+        app:CNP_Height="50dp"
+        app:CNP_ReduceDrawable="@mipmap/ic_launcher"
+        app:CNP_Width="50dp">
+
+    </talex.zsw.baselibrary.widget.CustomNumberPick>
+
+</LinearLayout>

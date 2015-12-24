@@ -1,0 +1,49 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circle_progress="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    tools:context=".MainActivity">
+
+    <talex.zsw.baselibrary.custom.progress.AccelerationProgress
+        android:id="@+id/acc_progress_loading_complete"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        circle_progress:AP_ball_background="@color/crimson"
+        circle_progress:AP_ball_radius="4dp"
+        circle_progress:AP_big_circle_background="@color/salmon"
+        circle_progress:AP_big_circle_stroke="1dp"
+        circle_progress:AP_duration="1000"/>
+
+    <talex.zsw.baselibrary.custom.progress.AccelerationProgress
+        android:id="@+id/acc_progress_loading"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/acc_progress_loading_complete"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        circle_progress:AP_ball_background="@color/crimson"
+        circle_progress:AP_ball_radius="4dp"
+        circle_progress:AP_big_circle_background="@color/salmon"
+        circle_progress:AP_big_circle_stroke="1dp"
+        circle_progress:AP_duration="1000"/>
+
+    <talex.zsw.baselibrary.custom.progress.AccelerationProgress
+        android:id="@+id/acc_progress_loading_time"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/acc_progress_loading"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        circle_progress:AP_ball_background="@color/crimson"
+        circle_progress:AP_ball_radius="4dp"
+        circle_progress:AP_big_circle_background="@color/salmon"
+        circle_progress:AP_big_circle_stroke="1dp"
+        circle_progress:AP_duration="10000"
+        circle_progress:AP_text_color="@color/white"
+        circle_progress:AP_text_size="10sp"/>
+
+</RelativeLayout>

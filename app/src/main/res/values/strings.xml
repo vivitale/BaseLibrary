@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">BaseProject</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="urls">
+        <item>http://www.jianshu.com/p/8d8ac27f41eb</item>
+        <item>http://www.jianshu.com/p/3fe2acac0ddb</item>
+        <item>http://www.jianshu.com/p/fa1b34f7c570</item>
+        <item>http://www.jianshu.com/p/cb5b012d1d85</item>
+        <item>http://www.jianshu.com/p/54ab0e833273</item>
+        <item>http://www.jianshu.com/p/4d76b2bc8784</item>
+        <item>http://www.jianshu.com/p/ac27d4f41608</item>
+        <item>http://www.jianshu.com/p/b83ea5e32ee1</item>
+        <item>http://www.jianshu.com/p/cef7b2808335</item>
+    </string-array>
+
+
+    <string name="Done">Done</string>
+    <string name="Customized">Customized</string>
+    <string name="Decorator">Decorator</string>
+    <string name="RTL">RTL</string>
+    <string name="Dialog">Dialog</string>
+    <string name="DisplayOnly">DisplayOnly</string>
+    <string name="Range">Range</string>
+    <string name="Multi">Multi</string>
+    <string name="Single">Single</string>
+</resources>

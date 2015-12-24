@@ -1,0 +1,18 @@
+<talex.zsw.baselibrary.view.TimesSquare.CalendarPickerView
+    android:id="@+id/calendar_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background"
+    android:clipToPadding="false"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:scrollbarStyle="outsideOverlay"
+    app:TS_dayBackground="@drawable/ts_calendar_bg_selector"
+    app:TS_dayTextColor="@color/ts_calendar_text_selector"
+    app:TS_dividerColor="@color/transparent"
+    app:TS_headerTextColor="@color/custom_header_text"
+    app:TS_titleTextColor="@color/ts_calendar_text_selector"
+    />

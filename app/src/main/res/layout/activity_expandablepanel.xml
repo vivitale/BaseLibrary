@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:example="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <talex.zsw.baselibrary.widget.ExpandablePanel
+        android:id="@+id/expandablePanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        example:EP_collapsedHeight="0dip"
+        example:EP_content="@+id/value"
+        example:EP_handle="@+id/expand"
+        example:EP_isviewgroup="true"
+        example:EP_viewgroup="@+id/expandL">
+        <!--控制缩放的按钮所在的Viewgroup-->
+
+        <LinearLayout
+            android:id="@+id/expandL"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:weightSum="100">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center_vertical|left"
+                android:layout_weight="30"
+                android:background="@android:color/darker_gray"/>
+            <!--控制缩放的按钮-->
+
+            <Button
+                android:id="@+id/expand"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_weight="70"
+                android:text="More"/>
+        </LinearLayout>
+        <!--会自动缩放的部分-->
+
+        <TextView
+            android:id="@+id/value"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="100dip"
+            android:text="被控制打开和关闭的内容区域"/>
+    </talex.zsw.baselibrary.widget.ExpandablePanel>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#000000"/>
+
+</LinearLayout>

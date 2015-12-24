@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/mTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <talex.zsw.baselibrary.widget.ScrollerNumberPicker
+            android:id="@+id/mPicker1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            app:SNP_itemNumber="5"
+            app:SNP_lineColor="@color/red"
+            app:SNP_noEmpty="true"
+            app:SNP_normalTextColor="@color/gray"
+            app:SNP_normalTextSize="16sp"
+            app:SNP_selectedTextColor="@color/black"
+            app:SNP_selectedTextSize="18sp"
+            app:SNP_unitHigh="30dp"/>
+
+        <talex.zsw.baselibrary.widget.ScrollerNumberPicker
+            android:id="@+id/mPicker2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            app:SNP_itemNumber="5"
+            app:SNP_lineColor="@color/red"
+            app:SNP_noEmpty="true"
+            app:SNP_normalTextColor="@color/gray"
+            app:SNP_normalTextSize="16sp"
+            app:SNP_selectedTextColor="@color/black"
+            app:SNP_selectedTextSize="18sp"
+            app:SNP_unitHigh="30dp"/>
+
+        <talex.zsw.baselibrary.widget.ScrollerNumberPicker
+            android:id="@+id/mPicker3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            app:SNP_itemNumber="5"
+            app:SNP_lineColor="@color/red"
+            app:SNP_noEmpty="true"
+            app:SNP_normalTextColor="@color/gray"
+            app:SNP_normalTextSize="16sp"
+            app:SNP_selectedTextColor="@color/black"
+            app:SNP_selectedTextSize="18sp"
+            app:SNP_unitHigh="30dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

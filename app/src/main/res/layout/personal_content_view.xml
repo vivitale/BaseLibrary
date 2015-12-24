@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/window_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/mTvOrderHotel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_white"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="酒店订单"
+        android:textSize="18sp"/>
+
+    <include layout="@layout/include_gray_line"/>
+
+    <TextView
+        android:id="@+id/mTvOrderFood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_white"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="美食订单"
+        android:textSize="18sp"/>
+
+    <include layout="@layout/include_gray_line"/>
+
+    <TextView
+        android:id="@+id/mTvOrderTicket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_white"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="门票订单"
+        android:textSize="18sp"/>
+
+    <include layout="@layout/include_gray_line"/>
+
+    <TextView
+        android:id="@+id/mTvOrderGoods"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_white"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="禅品订单"
+        android:textSize="18sp"/>
+
+    <include layout="@layout/include_gray_line"/>
+
+    <TextView
+        android:id="@+id/mTvWallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_white"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="我的钱包"
+        android:textSize="18sp"/>
+
+    <include layout="@layout/include_gray_line"/>
+
+    <TextView
+        android:id="@+id/mTvCoupons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_white"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="我的优惠券"
+        android:textSize="18sp"/>
+
+    <include layout="@layout/include_gray_line"/>
+
+    <TextView
+        android:id="@+id/mTvCollect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_white"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="我的收藏"
+        android:textSize="18sp"/>
+
+    <include layout="@layout/include_gray_line"/>
+
+
+    <TextView
+        android:id="@+id/mTvIntegral"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_white"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="我的积分"
+        android:textSize="18sp"/>
+
+    <include layout="@layout/include_gray_line"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+</LinearLayout>

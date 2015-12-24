@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <talex.zsw.baselibrary.custom.progress.RefreshProgress
+        android:id="@+id/refresh"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="#259b24">
+    </talex.zsw.baselibrary.custom.progress.RefreshProgress>
+
+    <talex.zsw.baselibrary.custom.progress.RefreshProgress
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/refresh"
+        android:layout_centerHorizontal="true"
+        app:RP_seekAble="true">
+    </talex.zsw.baselibrary.custom.progress.RefreshProgress>
+</RelativeLayout>

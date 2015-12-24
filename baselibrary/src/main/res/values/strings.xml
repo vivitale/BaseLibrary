@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">BaseLibrary</string>
+
+    <!-- SelectDate日期选择器 -->
+    <string-array name="date">
+        <item>年</item>
+        <item>月</item>
+        <item>日</item>
+    </string-array>
+
+    <!--SweetAlertDialog-->
+    <string name="dialog_default_title">标题</string>
+    <string name="dialog_ok">确认</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="LOADING">加载中…</string>
+
+    <!-- TimeSquare日历-->
+    <string name="day_name_format">EEE</string>
+    <string name="invalid_date"> 选择的日期必须在 %1$s 和 %2$s 之间.</string>
+    <string name="month_name_format">MMMM yyyy</string>
+
+    <!-- PullToNext显示的提示信息 -->
+    <string-array name="pullToNextViewStates">
+        <item>没有更多信息</item>
+        <item>放手查看下一个</item>
+        <item>上拉查看下一个</item>
+        <item>已经是第一个了</item>
+        <item>放手查看前一个</item>
+        <item>下拉查看前一个</item>
+    </string-array>
+</resources>

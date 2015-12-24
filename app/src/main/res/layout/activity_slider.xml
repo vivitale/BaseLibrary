@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <talex.zsw.baselibrary.view.SliderLayout.SliderLayout
+            android:id="@+id/mSlider"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:auto_cycle="true"
+            app:indicator_visibility="visible"
+            app:pager_animation="Accordion"
+            app:pager_animation_span="1500"/>
+
+
+        <talex.zsw.baselibrary.view.SliderLayout.Indicators.PagerIndicator
+            android:id="@+id/mPagerIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/mSlider"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="10dp"
+            android:paddingRight="10dp"
+            app:selected_color="#FFFFFF"
+            app:selected_height="6dp"
+            app:selected_padding_left="5dp"
+            app:selected_padding_right="5dp"
+            app:selected_width="6dp"
+            app:shape="oval"
+            app:unselected_drawable="@drawable/bg_unselected"
+            app:unselected_height="6dp"
+            app:unselected_padding_left="5dp"
+            app:unselected_padding_right="5dp"
+            app:unselected_width="6dp"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

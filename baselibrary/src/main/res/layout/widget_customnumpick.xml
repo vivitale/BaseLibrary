@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvreduce"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerVertical="true"
+        android:background="@drawable/custom_number_pick_reduce"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/et_num"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/tvreduce"
+        android:layout_alignTop="@+id/tvreduce"
+        android:layout_toRightOf="@+id/tvreduce"
+        android:ems="3"
+        android:gravity="center"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tvadd"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/et_num"
+        android:background="@drawable/custom_number_pick_add"
+        android:gravity="center"/>
+
+</RelativeLayout>

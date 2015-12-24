@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RefreshProgress">
+        <attr name="RP_seekAble" format="boolean"/>
+    </declare-styleable>
+
+    <!--AccelerationProgress-->
+    <declare-styleable name="AccelerationProgress">
+        <!--小球直径-->
+        <attr name="AP_ball_radius" format="dimension"/>
+        <!--大球宽度-->
+        <attr name="AP_big_circle_stroke" format="dimension"/>
+        <!--小球颜色-->
+        <attr name="AP_ball_background" format="color"/>
+        <!--大球颜色-->
+        <attr name="AP_big_circle_background" format="color"/>
+        <!--小球跑一圈所需时间-->
+        <attr name="AP_duration" format="integer"/>
+        <!--小球中文字的大小-->
+        <attr name="AP_text_size" format="dimension"/>
+        <!--小球中文字的颜色-->
+        <attr name="AP_text_color" format="color"/>
+    </declare-styleable>
+
+    <!-- 带数字的NumberProgressBar -->
+    <declare-styleable name="NumberProgressBar">
+        <!-- 数值 -->
+        <attr name="NPB_current" format="integer"/>
+        <attr name="NPB_max" format="integer"/>
+        <!-- bar的颜色 -->
+        <attr name="NPB_unreached_color" format="color"/>
+        <attr name="NPB_reached_color" format="color"/>
+        <!-- bar的高度 -->
+        <attr name="NPB_reached_bar_height" format="dimension"/>
+        <attr name="NPB_unreached_bar_height" format="dimension"/>
+        <!-- 文本相关 -->
+        <attr name="NPB_text_size" format="dimension"/>
+        <attr name="NPB_text_color" format="color"/>
+        <attr name="NPB_text_offset" format="dimension"/>
+        <attr name="NPB_text_visibility" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="NumberProgressBarThemes">
+        <attr name="numberProgressBarStyle" format="reference"/>
+    </declare-styleable>
+
+    <!-- 上下左右滑动展示更多 -->
+    <declare-styleable name="SwipeLayout">
+        <attr name="SL_drag_edge">
+            <flag name="left" value="1"/>
+            <flag name="right" value="2"/>
+            <flag name="top" value="4"/>
+            <flag name="bottom" value="8"/>
+        </attr>
+        <attr name="SL_leftEdgeSwipeOffset" format="dimension"/>
+        <attr name="SL_rightEdgeSwipeOffset" format="dimension"/>
+        <attr name="SL_topEdgeSwipeOffset" format="dimension"/>
+        <attr name="SL_bottomEdgeSwipeOffset" format="dimension"/>
+        <attr name="SL_show_mode" format="enum">
+            <enum name="lay_down" value="0"/>
+            <enum name="pull_out" value="1"/>
+        </attr>
+        <attr name="SL_clickToClose" format="boolean"/>
+    </declare-styleable>
+
+    <!-- 滑动选择器 -->
+    <declare-styleable name="ScrollerNumberPicker">
+        <attr name="SNP_normalTextColor" format="color"/>
+        <attr name="SNP_normalTextSize" format="dimension"/>
+        <attr name="SNP_selectedTextColor" format="color"/>
+        <attr name="SNP_selectedTextSize" format="dimension"/>
+        <attr name="SNP_unitHigh" format="dimension"/>
+        <attr name="SNP_itemNumber" format="integer"/>
+        <attr name="SNP_lineColor" format="color"/>
+        <attr name="SNP_maskHigh" format="dimension"/>
+        <attr name="SNP_noEmpty" format="boolean"/>
+        <attr name="SNP_isEnable" format="boolean"/>
+    </declare-styleable>
+
+    <!-- 带动画效果的CheckBox -->
+    <declare-styleable name="AnimateCheckBox">
+        <!-- 未选择时候小点的颜色 -->
+        <attr name="ACB_unCheckColor" format="color"/>
+        <!-- 选中之后的背景色 -->
+        <attr name="ACB_checkedColor" format="color"/>
+        <!-- 选中之后钩的颜色 -->
+        <attr name="ACB_lineColor" format="color"/>
+        <!-- 钩的宽度 -->
+        <attr name="ACB_lineWidth" format="dimension"/>
+        <!-- 动画持续时间 -->
+        <attr name="ACB_animDuration" format="integer"/>
+    </declare-styleable>
+
+    <!-- CircularProgress旋转多色彩 -->
+    <declare-styleable name="CircularProgress">
+        <attr name="CP_BorderWidth" format="dimension"/>
+        <!-- Progress的宽度 -->
+    </declare-styleable>
+
+    <!-- CustomNumerPick数字加减选择器 -->
+    <declare-styleable name="CustomNumberPick">
+        <!-- CustomNumberPick加减按钮的宽度 -->
+        <attr name="CNP_Width" format="dimension"/>
+        <attr name="CNP_Height" format="dimension"/>
+        <attr name="CNP_EditWidth" format="dimension"/>
+        <attr name="CNP_AddDrawable" format="reference"/>
+        <attr name="CNP_ReduceDrawable" format="reference"/>
+    </declare-styleable>
+
+    <!-- ExpandablePanel可扩展的布局 -->
+    <declare-styleable name="ExpandablePanel">
+        <attr name="EP_handle" format="reference"/>
+        <attr name="EP_content" format="reference"/>
+        <attr name="EP_viewgroup" format="reference"/>
+        <attr name="EP_isviewgroup" format="boolean"/>
+        <attr name="EP_collapsedHeight" format="dimension"/>
+        <attr name="EP_animationDuration" format="integer"/>
+    </declare-styleable>
+
+    <!-- RichText富文本显示 -->
+    <declare-styleable name="RichText">
+        <attr name="RT_placeHolder" format="reference"/>
+        <attr name="RT_errorImage" format="reference"/>
+        <attr name="RT_default_width" format="dimension"/>
+        <attr name="RT_default_height" format="dimension"/>
+    </declare-styleable>
+
+    <!-- RippleView点击波纹效果 -->
+    <declare-styleable name="RippleView">
+        <attr name="RV_alpha" format="integer"/>
+        <!-- 0~255之间 -->
+        <attr name="RV_framerate" format="integer"/>
+        <!-- 传播速度帧率 -->
+        <attr name="RV_rippleDuration" format="integer"/>
+        <!-- 波纹持续时间 -->
+        <attr name="RV_zoomDuration" format="integer"/>
+        <attr name="RV_color" format="color"/>
+        <!-- 波纹颜色 -->
+        <attr name="RV_centered" format="boolean"/>
+        <!-- 是否在控件中间显示 -->
+        <attr name="RV_type" format="enum"> <!-- 动画效果 0简单波纹,1双重波纹,2适用于长方体 -->
+            <enum name="simpleRipple" value="0"/>
+            <enum name="doubleRipple" value="1"/>
+            <enum name="rectangle" value="2"/>
+        </attr>
+        <attr name="RV_ripplePadding" format="dimension"/>
+        <attr name="RV_zoom" format="boolean"/>
+        <attr name="RV_zoomScale" format="float"/>
+    </declare-styleable>
+
+    <!-- ExpandableLayout点击展开效果 -->
+    <declare-styleable name="ExpandableLayout">
+        <attr name="EL_headerLayout" format="reference"/>
+        <attr name="EL_contentLayout" format="reference"/>
+        <attr name="EL_duration" format="integer"/>
+    </declare-styleable>
+
+    <!-- FlowLayout单选多选标签 -->
+    <declare-styleable name="FlowLayout">
+        <attr name="FL_auto_select_effect" format="boolean"/>
+        <attr name="FL_max_select" format="integer"/>
+    </declare-styleable>
+
+    <!-- NiceSpinner简单的下拉框 -->
+    <declare-styleable name="NiceSpinner">
+        <attr name="NS_arrowTint" format="color"/>
+        <attr name="NS_hideArrow" format="boolean"/>
+    </declare-styleable>
+
+    <!-- PullToZoomView下拉头部放大的View -->
+    <declare-styleable name="PullToZoomView">
+        <attr name="PTZV_headerView" format="reference"/>
+        <attr name="PTZV_contentView" format="reference"/>
+        <attr name="PTZV_zoomView" format="reference"/>
+        <attr name="PTZV_isHeaderParallax" format="boolean"/>
+    </declare-styleable>
+
+    <!-- SwipyRefreshLayout下拉刷新,上拉加载 -->
+    <declare-styleable name="SwipyRefreshLayout">
+        <attr name="SRL_direction">
+            <enum name="top" value="0"/>
+            <enum name="bottom" value="1"/>
+            <enum name="both" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <!-- RoundedImageView圆角图片 -->
+    <declare-styleable name="RoundedImageView">
+        <attr name="RIV_corner_radius" format="dimension"/>
+        <!-- 圆角半径 -->
+        <attr name="RIV_border_width" format="dimension"/>
+        <!-- 边框宽度 -->
+        <attr name="RIV_border_color" format="color"/>
+        <!-- 边框颜色 -->
+        <attr name="RIV_mutate_background" format="boolean"/>
+        <!-- 背景突变 -->
+        <attr name="RIV_oval" format="boolean"/>
+        <!-- 椭圆的 -->
+        <attr name="android:scaleType"/>
+    </declare-styleable>
+
+
+    <!-- SweetAlertDialog -->
+    <declare-styleable name="Rotate3dAnimation">
+        <attr name="SAD_rollType" format="enum">
+            <enum name="x" value="0"/>
+            <enum name="y" value="1"/>
+            <enum name="z" value="2"/>
+        </attr>
+        <attr name="SAD_fromDeg" format="float"/>
+        <attr name="SAD_toDeg" format="float"/>
+        <attr name="SAD_pivotX" format="fraction"/>
+        <attr name="SAD_pivotY" format="fraction"/>
+    </declare-styleable>
+    <declare-styleable name="ProgressWheel">
+        <attr name="SAD_matProg_progressIndeterminate" format="boolean"/>
+        <attr name="SAD_matProg_barColor" format="color"/>
+        <attr name="SAD_matProg_rimColor" format="color"/>
+        <attr name="SAD_matProg_rimWidth" format="dimension"/>
+        <attr name="SAD_matProg_spinSpeed" format="float"/>
+        <attr name="SAD_matProg_barSpinCycleTime" format="integer"/>
+        <attr name="SAD_matProg_circleRadius" format="dimension"/>
+        <attr name="SAD_matProg_fillRadius" format="boolean"/>
+        <attr name="SAD_matProg_barWidth" format="dimension"/>
+        <attr name="SAD_matProg_linearProgress" format="boolean"/>
+    </declare-styleable>
+
+    <!-- TimesSquare日历 -->
+    <declare-styleable name="CalendarPickerView">
+        <attr name="android:background"/>
+        <attr name="TS_dividerColor" format="color"/>
+        <attr name="TS_dayBackground" format="reference"/>
+        <attr name="TS_dayTextColor" format="color"/>
+        <attr name="TS_titleTextColor" format="color"/>
+        <attr name="TS_displayHeader" format="boolean"/>
+        <attr name="TS_headerTextColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="calendar_cell">
+        <attr name="TS_state_selectable" format="boolean"/>
+        <attr name="TS_state_current_month" format="boolean"/>
+        <attr name="TS_state_today" format="boolean"/>
+        <attr name="TS_state_range_first" format="boolean"/>
+        <attr name="TS_state_range_middle" format="boolean"/>
+        <attr name="TS_state_range_last" format="boolean"/>
+        <attr name="TS_state_highlighted" format="boolean"/>
+    </declare-styleable>
+
+    <!-- SliderLayout轮播图 -->
+    <declare-styleable name="SliderLayout">
+        <!-- indicator visibility -->
+        <attr name="indicator_visibility" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr>
+        <attr name="auto_cycle" format="boolean"/>
+        <!-- page animation -->
+        <attr name="pager_animation" format="enum">
+            <enum name="Default" value="0">Default</enum>
+            <enum name="Accordion" value="1">Accordion</enum>
+            <enum name="Background2Foreground" value="2">Background2Foreground</enum>
+            <enum name="CubeIn" value="3">CubeIn</enum>
+            <enum name="DepthPage" value="4">DepthPage</enum>
+            <enum name="Fade" value="5">Fade</enum>
+            <enum name="FlipHorizontal" value="6">FlipHorizontal</enum>
+            <enum name="FlipPage" value="7">FlipPage</enum>
+            <enum name="Foreground2Background" value="8">Foreground2Background</enum>
+            <enum name="RotateDown" value="9">RotateDown</enum>
+            <enum name="RotateUp" value="10">RotateUp</enum>
+            <enum name="Stack" value="11">Stack</enum>
+            <enum name="Tablet" value="12">Tablet</enum>
+            <enum name="ZoomIn" value="13">ZoomIn</enum>
+            <enum name="ZoomOutSlide" value="14">ZoomOutSlide</enum>
+            <enum name="ZoomOut" value="15">ZoomOut</enum>
+        </attr>
+        <!-- page animation time span -->
+        <attr name="pager_animation_span" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="PagerIndicator">
+        <!-- indicator visibility -->
+        <attr name="visibility" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr>
+        <attr name="shape" format="enum">
+            <enum name="oval" value="0"/>
+            <enum name="rect" value="1"/>
+        </attr>
+        <attr name="selected_color" format="color"/>
+        <attr name="unselected_color" format="color"/>
+        <!-- indicator style -->
+        <attr name="selected_drawable" format="reference"/>
+        <attr name="unselected_drawable" format="reference"/>
+        <attr name="selected_width" format="dimension"/>
+        <attr name="selected_height" format="dimension"/>
+        <attr name="unselected_width" format="dimension"/>
+        <attr name="unselected_height" format="dimension"/>
+        <attr name="padding_left" format="dimension"/>
+        <attr name="padding_right" format="dimension"/>
+        <attr name="padding_top" format="dimension"/>
+        <attr name="padding_bottom" format="dimension"/>
+        <attr name="selected_padding_left" format="dimension"/>
+        <attr name="selected_padding_right" format="dimension"/>
+        <attr name="selected_padding_top" format="dimension"/>
+        <attr name="selected_padding_bottom" format="dimension"/>
+        <attr name="unselected_padding_left" format="dimension"/>
+        <attr name="unselected_padding_right" format="dimension"/>
+        <attr name="unselected_padding_top" format="dimension"/>
+        <attr name="unselected_padding_bottom" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="Themes">
+        <attr name="SliderStyle" format="reference"/>
+        <attr name="PagerIndicatorStyle" format="reference"/>
+    </declare-styleable>
+
+</resources>
