@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import talex.zsw.baselibrary.BaseAppCompatActivity;
 import talex.zsw.baseproject.activity.AndroidAnimationsActivity;
 import talex.zsw.baseproject.activity.AnimateCheckBoxActivity;
+import talex.zsw.baseproject.activity.AnimationActivity;
 import talex.zsw.baseproject.activity.CircleImageViewActivity;
 import talex.zsw.baseproject.activity.CircularProgressActivity;
 import talex.zsw.baseproject.activity.ComplexActivity;
@@ -81,6 +82,7 @@ public class MainActivity extends BaseAppCompatActivity implements OnItemClickLi
 		datas.add(new Vo("简单动画", "", SimpleActivity.class));
 		datas.add(new Vo("复杂动画", "", ComplexActivity.class));
 		datas.add(new Vo("AndroidAnimations", "Android的一些简单动画效果", AndroidAnimationsActivity.class));
+		datas.add(new Vo("Animation", "属性动画的封装", AnimationActivity.class));
 		datas.add(new Vo("AnimateCheckBox", "带动画效果的CheckBox", AnimateCheckBoxActivity.class));
 		datas.add(new Vo("CircleImageView", "将图片自动修正为圆形", CircleImageViewActivity.class));
 		datas.add(new Vo("CircularProgress", "一直转圈的CircularProgress和CircularProgressDrawable",
