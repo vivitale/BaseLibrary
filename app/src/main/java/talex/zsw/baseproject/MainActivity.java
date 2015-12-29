@@ -53,6 +53,7 @@ import talex.zsw.baseproject.activity.SwitchAnimationActivity;
 import talex.zsw.baseproject.activity.TimesSquareActivity;
 import talex.zsw.baseproject.activity.WTextViewActivity;
 import talex.zsw.baseproject.activity.WheelViewActivity;
+import talex.zsw.baseproject.activity.XBusActivity;
 
 @SuppressWarnings("ALL")
 public class MainActivity extends BaseAppCompatActivity implements OnItemClickListener
@@ -128,6 +129,7 @@ public class MainActivity extends BaseAppCompatActivity implements OnItemClickLi
 		datas.add(new Vo("TimesSquare", "简单易用的日历程序", TimesSquareActivity.class));
 		datas.add(new Vo("WheelView", "时间选择器", WheelViewActivity.class));
 		datas.add(new Vo("WTextView", "无限循环跑马灯", WTextViewActivity.class));
+		datas.add(new Vo("XBus", "事件处理", XBusActivity.class));
 
 		adapter.setContentArray(datas, false);
 	}
