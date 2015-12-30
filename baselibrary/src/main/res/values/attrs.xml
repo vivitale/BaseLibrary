@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <declare-styleable name="MaterialFavoriteButton">
+        <!--喜欢的时候是否带有动画-->
+        <attr name="mfb_animate_favorite" format="boolean"/>
+        <!--不喜欢的时候是否带有动画-->
+        <attr name="mfb_animate_unfavorite" format="boolean"/>
+        <!--图片的pading值-->
+        <attr name="mfb_padding" format="integer"/>
+        <!--喜欢的图片-->
+        <attr name="mfb_favorite_image" format="integer"/>
+        <!--不喜欢的图片-->
+        <attr name="mfb_not_favorite_image" format="integer"/>
+        <!--旋转动画持续时间-->
+        <attr name="mfb_rotation_duration" format="integer"/>
+        <!--旋转动画旋转角度-->
+        <attr name="mfb_rotation_angle" format="integer"/>
+        <!--弹跳动画持续时间-->
+        <attr name="mfb_bounce_duration" format="integer"/>
+        <!--选择默认颜色-->
+        <attr name="mfb_color" format="enum">
+            <enum name="black" value="0"/>
+            <enum name="white" value="1"/>
+        </attr>
+        <!--选择爱心还是星星-->
+        <attr name="mfb_type" format="enum">
+            <enum name="star" value="0"/>
+            <enum name="heart" value="1"/>
+        </attr>
+    </declare-styleable>
+
     <declare-styleable name="RefreshProgress">
         <attr name="RP_seekAble" format="boolean"/>
     </declare-styleable>

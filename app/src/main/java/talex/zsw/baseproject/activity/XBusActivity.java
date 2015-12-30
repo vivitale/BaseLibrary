@@ -12,7 +12,6 @@ import talex.zsw.baseproject.fragment.xBusTopFragment;
 
 /**
  * 项目名称: BaseProject
- * 作用: TODO (用一句话描述该文件做什么) 
  * 作者: 赵小白 email:vvtale@gmail.com  
  * 日期: 2015 15/12/29 15:14 
  * 修改人：

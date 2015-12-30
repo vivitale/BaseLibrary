@@ -13,6 +13,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import talex.zsw.baselibrary.BaseAppCompatActivity;
+import talex.zsw.baselibrary.util.klog.KLog;
 import talex.zsw.baseproject.activity.AndroidAnimationsActivity;
 import talex.zsw.baseproject.activity.AnimateCheckBoxActivity;
 import talex.zsw.baseproject.activity.AnimationActivity;
@@ -27,6 +28,7 @@ import talex.zsw.baseproject.activity.ExpandableActivity;
 import talex.zsw.baseproject.activity.ExpandablePanelActivity;
 import talex.zsw.baseproject.activity.FlowLayoutActivity;
 import talex.zsw.baseproject.activity.LoadingDialogActivity;
+import talex.zsw.baseproject.activity.MaterialFavoriteButtonActivity;
 import talex.zsw.baseproject.activity.MyWebViewActivity;
 import talex.zsw.baseproject.activity.NiceSpinnerActivity;
 import talex.zsw.baseproject.activity.NumberPBActivity;
@@ -72,7 +74,8 @@ public class MainActivity extends BaseAppCompatActivity implements OnItemClickLi
 	{
 		setContentView(R.layout.activity_main);
 		ButterKnife.bind(this);
-
+		KLog.pe("11111111");
+		KLog.pd("22222222");
 		adapter = new MainAdapter(this);
 		mListView.setAdapter(adapter);
 		mListView.setOnItemClickListener(this);
@@ -98,6 +101,8 @@ public class MainActivity extends BaseAppCompatActivity implements OnItemClickLi
 		datas.add(new Vo("ExpandablePanel", "可以扩展开的布局", ExpandablePanelActivity.class));
 		datas.add(new Vo("FlowLayout", "单选多选标签", FlowLayoutActivity.class));
 		datas.add(new Vo("LoadingDialog", "加载等待转圈圈", LoadingDialogActivity.class));
+		datas.add(new Vo("MaterialFavoriteButton", "动画效果的星星和爱心，适合用在收藏赞等操作上",
+			MaterialFavoriteButtonActivity.class));
 		datas.add(new Vo("MyWebView", "加载网页或者富文本，并且自动适应高度", MyWebViewActivity.class));
 		datas.add(new Vo("NiceSpinner", "简易的下拉Spinner工具", NiceSpinnerActivity.class));
 		datas.add(new Vo("NumberProgressBar", "带数字的ProgressBar", NumberPBActivity.class));

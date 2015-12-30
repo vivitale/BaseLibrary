@@ -34,6 +34,7 @@
         <activity android:name=".activity.ExpandablePanelActivity"/>
         <activity android:name=".activity.FlowLayoutActivity"/>
         <activity android:name=".activity.LoadingDialogActivity"/>
+        <activity android:name=".activity.MaterialFavoriteButtonActivity"/>
         <activity android:name=".activity.MyWebViewActivity"/>
         <activity android:name=".activity.NiceSpinnerActivity"/>
         <activity android:name=".activity.NumberPBActivity"/>

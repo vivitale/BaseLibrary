@@ -6,4 +6,10 @@
 
     <dimen name="dimen_margin_circle">4dp</dimen>
     <dimen name="dimen_margin_circle.negative">-4dp</dimen>
+    <!--MaterialFavoriteButton-->
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="text_padding">8dp</dimen>
+    <dimen name="cardview_margin_top">8dp</dimen>
+    <dimen name="starred_margin">16dp</dimen>
+    <dimen name="counter_value_margin">6dp</dimen>
 </resources>
