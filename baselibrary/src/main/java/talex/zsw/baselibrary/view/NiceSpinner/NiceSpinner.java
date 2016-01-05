@@ -1,6 +1,5 @@
 package talex.zsw.baselibrary.view.NiceSpinner;
 
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -24,6 +23,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import com.nineoldandroids.animation.ObjectAnimator;
 
 import java.util.ArrayList;
 

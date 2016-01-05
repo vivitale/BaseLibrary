@@ -3,6 +3,7 @@ package talex.zsw.baselibrary.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,29 +66,29 @@ public class CustomNumberPick extends RelativeLayout
 	public void setCount(int count)
 	{
 		this.mCount = count;
-		mEt_num.setText(String.valueOf(mCount));
+		mEt_num.setText( String.valueOf( mCount ) );
 		setButtonAble();
 	}
 
 	public void setAddClickListener(OnClickListener ock)
 	{
-		mTvadd.setOnClickListener(ock);
+		mTvadd.setOnClickListener( ock );
 	}
 
 	public void setEtOck(OnClickListener ock)
 	{
-		mEt_num.setOnClickListener(ock);
+		mEt_num.setOnClickListener( ock );
 	}
 
 	public void setOnClickListener(OnClickListener ock)
 	{
-		mTvadd.setOnClickListener(ock);
-		mTvreduce.setOnClickListener(ock);
+		mTvadd.setOnClickListener( ock );
+		mTvreduce.setOnClickListener( ock );
 	}
 
 	public void setrduceClickListener(OnClickListener ock)
 	{
-		mTvreduce.setOnClickListener(ock);
+		mTvreduce.setOnClickListener( ock );
 	}
 
 	/**
@@ -98,55 +99,65 @@ public class CustomNumberPick extends RelativeLayout
 	 */
 	public CustomNumberPick(Context context, AttributeSet attrs)
 	{
-		super(context, attrs);
+		super( context, attrs );
 		mContext = context;
-		initView(R.layout.widget_customnumpick, attrs);
+		initView( R.layout.widget_customnumpick, attrs );
 	}
 
 	private void initView(int menuViewID, AttributeSet attrs)
 	{
 		float density = mContext.getResources().getDisplayMetrics().density;// 获取屏幕密度
 		TypedArray typedArray =
-			mContext.obtainStyledAttributes(attrs, R.styleable.CustomNumberPick);
-		mEditWidth = typedArray
-			.getDimension(R.styleable.CustomNumberPick_CNP_EditWidth, density * 50);
-		mWidth = typedArray
-			.getDimension(R.styleable.CustomNumberPick_CNP_Width, density * 35);
-		mHeight = typedArray
-			.getDimension(R.styleable.CustomNumberPick_CNP_Height, density * 35);
-		addDrawable =
-			typedArray.getDrawable(R.styleable.CustomNumberPick_CNP_AddDrawable);
-		reduceDrawable =
-			typedArray.getDrawable(R.styleable.CustomNumberPick_CNP_ReduceDrawable);
+			mContext.obtainStyledAttributes( attrs, R.styleable.CustomNumberPick );
+		mEditWidth =
+			typedArray.getDimension( R.styleable.CustomNumberPick_CNP_EditWidth, density * 50 );
+		mWidth = typedArray.getDimension( R.styleable.CustomNumberPick_CNP_Width, density * 35 );
+		mHeight = typedArray.getDimension( R.styleable.CustomNumberPick_CNP_Height, density * 35 );
+		addDrawable = typedArray.getDrawable( R.styleable.CustomNumberPick_CNP_AddDrawable );
+		reduceDrawable = typedArray.getDrawable( R.styleable.CustomNumberPick_CNP_ReduceDrawable );
 
-		mLayoutInflater = LayoutInflater.from(mContext);
-		final View sub_view = mLayoutInflater.inflate(menuViewID, this);
-		mTvreduce = (TextView) sub_view.findViewById(R.id.tvreduce);
-		mTvadd = (TextView) sub_view.findViewById(R.id.tvadd);
-		mEt_num = (TextView) sub_view.findViewById(R.id.et_num);
-		mEt_num.setText(String.valueOf(mCount));
-		mTvadd.setOnClickListener(mOclickListener);
-		mTvreduce.setOnClickListener(mOclickListener);
+		mLayoutInflater = LayoutInflater.from( mContext );
+		final View sub_view = mLayoutInflater.inflate( menuViewID, this );
+		mTvreduce = (TextView) sub_view.findViewById( R.id.tvreduce );
+		mTvadd = (TextView) sub_view.findViewById( R.id.tvadd );
+		mEt_num = (TextView) sub_view.findViewById( R.id.et_num );
+		mEt_num.setText( String.valueOf( mCount ) );
+		mTvadd.setOnClickListener( mOclickListener );
+		mTvreduce.setOnClickListener( mOclickListener );
 		ViewGroup.LayoutParams params = mTvadd.getLayoutParams();
 		params.height = (int) mHeight;
 		params.width = (int) mWidth;
-		mTvadd.setLayoutParams(params);
-		if (addDrawable != null)
+		mTvadd.setLayoutParams( params );
+		if(addDrawable != null)
 		{
-			mTvadd.setBackground(addDrawable);
+			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+			{
+				mTvadd.setBackground( addDrawable );
+			}
+			else
+			{
+				mTvadd.setBackgroundDrawable( addDrawable );
+			}
 		}
 		params = mTvreduce.getLayoutParams();
 		params.height = (int) mHeight;
 		params.width = (int) mWidth;
-		mTvreduce.setLayoutParams(params);
-		if (reduceDrawable != null)
+		mTvreduce.setLayoutParams( params );
+		if(reduceDrawable != null)
 		{
-			mTvreduce.setBackground(reduceDrawable);
+			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+			{
+				mTvreduce.setBackground( reduceDrawable );
+			}
+			else
+			{
+				mTvreduce.setBackgroundDrawable( reduceDrawable );
+			}
 		}
 		params = mEt_num.getLayoutParams();
 		params.height = (int) mHeight;
 		params.width = (int) mEditWidth;
-		mEt_num.setLayoutParams(params);
+		mEt_num.setLayoutParams( params );
 
 		setButtonAble();
 	}
@@ -156,9 +167,9 @@ public class CustomNumberPick extends RelativeLayout
 	 */
 	public void addCount()
 	{
-		if (mTvadd.isEnabled())
+		if(mTvadd.isEnabled())
 		{
-			changeEtnum(stepNum);
+			changeEtnum( stepNum );
 		}
 	}
 
@@ -167,16 +178,16 @@ public class CustomNumberPick extends RelativeLayout
 	 */
 	public void reduceCount()
 	{
-		if (mTvreduce.isEnabled())
+		if(mTvreduce.isEnabled())
 		{
-			changeEtnum(-stepNum);
+			changeEtnum( -stepNum );
 		}
 	}
 
 	public void setEnabled(boolean flag)
 	{
-		mTvreduce.setEnabled(flag);
-		mTvadd.setEnabled(flag);
+		mTvreduce.setEnabled( flag );
+		mTvadd.setEnabled( flag );
 	}
 
 	/**
@@ -186,7 +197,7 @@ public class CustomNumberPick extends RelativeLayout
 	 */
 	private void changeEtnum(int changValue)
 	{
-		setCount(mCount + changValue);
+		setCount( mCount + changValue );
 	}
 
 	/**
@@ -194,35 +205,34 @@ public class CustomNumberPick extends RelativeLayout
 	 */
 	private void setButtonAble()
 	{
-		if (mCount <= minNum)
+		if(mCount <= minNum)
 		{
-			mTvreduce.setEnabled(false);
-			mTvadd.setEnabled(true);
+			mTvreduce.setEnabled( false );
+			mTvadd.setEnabled( true );
 		}
-		else if (mCount >= maxNum)
+		else if(mCount >= maxNum)
 		{
-			mTvadd.setEnabled(false);
-			mTvreduce.setEnabled(true);
+			mTvadd.setEnabled( false );
+			mTvreduce.setEnabled( true );
 		}
 		else
 		{
-			mTvreduce.setEnabled(true);
-			mTvadd.setEnabled(true);
+			mTvreduce.setEnabled( true );
+			mTvadd.setEnabled( true );
 		}
 	}
 
 	private OnClickListener mOclickListener = new OnClickListener()
 	{
 
-		@Override
-		public void onClick(View v)
+		@Override public void onClick(View v)
 		{
 			int i = v.getId();
-			if (i == R.id.tvreduce)
+			if(i == R.id.tvreduce)
 			{
 				reduceCount();
 			}
-			else if (i == R.id.tvadd)
+			else if(i == R.id.tvadd)
 			{
 				addCount();
 			}

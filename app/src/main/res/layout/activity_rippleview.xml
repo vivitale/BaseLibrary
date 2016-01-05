@@ -8,8 +8,9 @@
     <RelativeLayout
         android:id="@+id/actionbar"
         android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
-        android:background="@android:color/holo_blue_dark">
+        android:layout_height="60dp"
+        android:background="@android:color/holo_blue_dark"
+        tools:targetApi="ice_cream_sandwich">
 
         <TextView
             android:layout_width="wrap_content"

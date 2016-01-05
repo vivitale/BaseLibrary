@@ -54,6 +54,7 @@
         <activity android:name=".activity.ScrollerNumberPickerActivity"/>
         <activity android:name=".activity.SlideDateTimePickerActivity"/>
         <activity android:name=".activity.SliderLayoutActivity"/>
+        <activity android:name=".activity.SmallBangActivity"/>
         <activity
             android:name=".activity.SoftKeyboardActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>

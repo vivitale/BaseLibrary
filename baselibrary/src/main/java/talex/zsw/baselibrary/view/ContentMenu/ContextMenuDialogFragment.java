@@ -1,6 +1,5 @@
 package talex.zsw.baselibrary.view.ContentMenu;
 
-import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
@@ -131,13 +130,15 @@ public class ContextMenuDialogFragment extends DialogFragment
 		}
 	}
 
-	@SuppressLint("NewApi")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState)
 	{
 		View rootView = inflater.inflate(R.layout.contextmenu_fragment_menu, container, false);
-		rootView.setFitsSystemWindows(mMenuParams.isFitsSystemWindow());
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+		{
+			rootView.setFitsSystemWindows(mMenuParams.isFitsSystemWindow());
+		}
 		((ViewGroup) rootView).setClipToPadding(mMenuParams.isClipToPadding());
 
 		initViews(rootView);

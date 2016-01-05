@@ -46,6 +46,7 @@ import talex.zsw.baseproject.activity.ScrollerNumberPickerActivity;
 import talex.zsw.baseproject.activity.SimpleActivity;
 import talex.zsw.baseproject.activity.SlideDateTimePickerActivity;
 import talex.zsw.baseproject.activity.SliderLayoutActivity;
+import talex.zsw.baseproject.activity.SmallBangActivity;
 import talex.zsw.baseproject.activity.SoftKeyboardActivity;
 import talex.zsw.baseproject.activity.SweetAlertDialogActivity;
 import talex.zsw.baseproject.activity.SweetSheetActivity;
@@ -100,7 +101,11 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add( new Vo( "ExpandablePanel", "可以扩展开的布局", ExpandablePanelActivity.class ) );
 		datas.add( new Vo( "FlowLayout", "单选多选标签", FlowLayoutActivity.class ) );
 		datas
+<<<<<<< Updated upstream
 			.add( new Vo( "LikeButton", "Android>=14 显示一个带有动画效果的喜欢按钮", LikeButtonActivity.class ) );
+=======
+			.add( new Vo( "LikeButton", "显示一个带有动画效果的喜欢按钮", LikeButtonActivity.class ) );
+>>>>>>> Stashed changes
 		datas.add( new Vo( "LoadingDialog", "加载等待转圈圈", LoadingDialogActivity.class ) );
 		datas.add( new Vo( "MaterialFavoriteButton", "动画效果的星星和爱心，适合用在收藏赞等操作上",
 			MaterialFavoriteButtonActivity.class ) );
@@ -109,7 +114,11 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add( new Vo( "NumberProgressBar", "带数字的ProgressBar", NumberPBActivity.class ) );
 		datas.add( new Vo( "OverScrollView", "阻尼效果的上下拉ScrollView,且支持上拉刷新下来加载",
 			OverScrollViewActivity.class ) );
+<<<<<<< Updated upstream
 		datas.add( new Vo( "OverScroll-Decor", "可以给任意View加上阻尼效果", OverScrollActivity.class ) );
+=======
+		datas.add( new Vo( "OverScroll-Decor", "Android>=14 可以给任意View加上阻尼效果", OverScrollActivity.class ) );
+>>>>>>> Stashed changes
 		datas.add( new Vo( "Progress", "几个自定义的Progress的使用", ProgressActivity.class ) );
 		datas.add( new Vo( "PullToNextLayout", "下拉到下一个界面的View", PullToNextLayoutActivity.class ) );
 		datas.add( new Vo( "PullZoomView", "下拉放大，适用于个人中心", PullZoomViewActivity.class ) );
@@ -124,6 +133,10 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add( new Vo( "ScrollerNumberPicker", "滑动选择器", ScrollerNumberPickerActivity.class ) );
 		datas.add( new Vo( "SlideDateTimePicker", "日期时间选择框", SlideDateTimePickerActivity.class ) );
 		datas.add( new Vo( "SliderLayout", "轮播", SliderLayoutActivity.class ) );
+<<<<<<< Updated upstream
+=======
+		datas.add( new Vo( "SmallBang", "点击效果", SmallBangActivity.class ) );
+>>>>>>> Stashed changes
 		datas.add( new Vo( "SoftKeyboardListenerLayout", "根布局为FrameLayout,监听键盘弹出事件",
 			SoftKeyboardActivity.class ) );
 		datas.add( new Vo( "SweetAlertDialog", "简易dialog的使用", SweetAlertDialogActivity.class ) );
