@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <talex.zsw.baselibrary.view.LikeButton.LikeButton
+        android:id="@+id/star_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:LB_icon_size="25dp"
+        app:LB_icon_type="star"
+        app:LB_liked="true"/>
+
+    <talex.zsw.baselibrary.view.LikeButton.LikeButton
+        android:id="@+id/heart_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:LB_icon_size="25dp"
+        app:LB_icon_type="heart"/>
+
+    <talex.zsw.baselibrary.view.LikeButton.LikeButton
+        android:id="@+id/thumb_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:LB_circle_end_color="@color/red"
+        app:LB_circle_start_color="@color/orange"
+        app:LB_dots_primary_color="@color/salmon"
+        app:LB_dots_secondary_color="@color/lavender"
+        app:LB_icon_size="25dp"
+        app:LB_like_drawable="@drawable/thumb_on"
+        app:LB_unlike_drawable="@drawable/thumb_off"/>
+
+    <talex.zsw.baselibrary.view.LikeButton.LikeButton
+        android:id="@+id/smile_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:LB_circle_end_color="@color/blue"
+        app:LB_circle_start_color="@color/darkorchid"
+        app:LB_dots_primary_color="@color/blueviolet"
+        app:LB_dots_secondary_color="@color/black"
+        app:LB_icon_size="25dp"/>
+
+</LinearLayout>

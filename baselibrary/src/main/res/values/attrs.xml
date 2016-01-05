@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
 <resources>
+
+    <declare-styleable name="LikeButton">
+        <!-- heart,thumb,star -->
+        <attr name="LB_icon_type" format="string"/>
+        <attr name="LB_icon_size" format="dimension|reference"/>
+        <attr name="LB_like_drawable" format="reference"/>
+        <attr name="LB_unlike_drawable" format="reference"/>
+        <!-- 扩散开的点开始时颜色 -->
+        <attr name="LB_dots_primary_color" format="color|reference"/>
+        <!-- 扩散开的点结束时候的颜色 -->
+        <attr name="LB_dots_secondary_color" format="color|reference"/>
+        <!-- 圆形开始时的颜色 -->
+        <attr name="LB_circle_start_color" format="color|reference"/>
+        <!-- 圆形结束时候的颜色 -->
+        <attr name="LB_circle_end_color" format="color|reference"/>
+        <attr name="LB_liked" format="boolean"/>
+    </declare-styleable>
 
     <declare-styleable name="MaterialFavoriteButton">
         <!--喜欢的时候是否带有动画-->
