@@ -10,21 +10,14 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.nineoldandroids.animation.ArgbEvaluator;
-<<<<<<< Updated upstream
-=======
 import com.nineoldandroids.util.Property;
->>>>>>> Stashed changes
 
 /**
  * Created by Miroslaw Stanek on 21.12.2015.
  * Modified by Joel Dean
  */
 
-<<<<<<< Updated upstream
-public class CircleView extends View
-=======
  public class CircleView extends View
->>>>>>> Stashed changes
 {
 	private int START_COLOR = 0xFFFF5722;
 	private int END_COLOR = 0xFFFFC107;
@@ -142,8 +135,6 @@ public class CircleView extends View
 		return outerCircleRadiusProgress;
 	}
 
-<<<<<<< Updated upstream
-=======
 	public static final Property<CircleView, Float> INNER_CIRCLE_RADIUS_PROGRESS =
 		new Property<CircleView, Float> ( Float.class, "innerCircleRadiusProgress" )
 		{
@@ -176,7 +167,6 @@ public class CircleView extends View
 			}
 		};
 
->>>>>>> Stashed changes
 	public void setStartColor(int color)
 	{
 		START_COLOR = color;

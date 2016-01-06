@@ -23,7 +23,6 @@ public class ScaleInTopAnimator extends BaseItemAnimator {
 
     @Override
     protected void preAnimateRemoveImpl(RecyclerView.ViewHolder holder) {
-        // @TODO https://code.google.com/p/android/issues/detail?id=80863
         ViewCompat.setPivotY(holder.itemView, 0);
 //        holder.itemView.setPivotY(0);
     }
@@ -39,7 +38,6 @@ public class ScaleInTopAnimator extends BaseItemAnimator {
 
     @Override
     protected void preAnimateAddImpl(RecyclerView.ViewHolder holder) {
-        // @TODO https://code.google.com/p/android/issues/detail?id=80863
         ViewCompat.setPivotY(holder.itemView, 0);
 //        holder.itemView.setPivotY(0);
         ViewCompat.setScaleX(holder.itemView, 0);

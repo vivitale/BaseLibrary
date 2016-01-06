@@ -1599,7 +1599,6 @@ public class CustomScrollView extends FrameLayout
 
 		// convert from forward / backward notation to up / down / left / right
 		// (ugh).
-		// TODO: FUCK
 //        if (direction == View.FOCUS_FORWARD) {
 //            direction = View.FOCUS_RIGHT;
 //        } else if (direction == View.FOCUS_BACKWARD) {

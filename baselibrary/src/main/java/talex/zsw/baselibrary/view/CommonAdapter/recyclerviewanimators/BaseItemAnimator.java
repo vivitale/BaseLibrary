@@ -286,7 +286,6 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
         if (deltaY != 0) {
             ViewCompat.animate(view).translationY(0);
         }
-        // TODO: make EndActions end listeners instead, since end actions aren't called when
         // vpas are canceled (and can't end them. why?)
         // need listener functionality in VPACompat for this. Ick.
         mMoveAnimations.add(holder);
@@ -436,7 +435,6 @@ public abstract class BaseItemAnimator extends RecyclerView.ItemAnimator {
         final View view = item.itemView;
         // this will trigger end callback which should set properties to their target values.
         ViewCompat.animate(view).cancel();
-        // TODO if some other animations are chained to end, how do we cancel them as well?
         for (int i = mPendingMoves.size() - 1; i >= 0; i--) {
             MoveInfo moveInfo = mPendingMoves.get(i);
             if (moveInfo.holder == item) {

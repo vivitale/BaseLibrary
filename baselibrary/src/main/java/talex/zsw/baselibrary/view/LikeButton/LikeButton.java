@@ -3,10 +3,7 @@ package talex.zsw.baselibrary.view.LikeButton;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-<<<<<<< Updated upstream
-=======
 import android.os.Build;
->>>>>>> Stashed changes
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -18,21 +15,15 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-<<<<<<< Updated upstream
-=======
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
->>>>>>> Stashed changes
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 
 import java.util.List;
 
 import talex.zsw.baselibrary.R;
-<<<<<<< Updated upstream
-=======
 import talex.zsw.baselibrary.view.Animation.ViewAnimator;
->>>>>>> Stashed changes
 
 
 public class LikeButton extends FrameLayout implements View.OnClickListener
@@ -205,11 +196,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 
 		if(isChecked)
 		{
-<<<<<<< Updated upstream
-			icon.animate().cancel();
-			icon.setScaleX( 0 );
-			icon.setScaleY( 0 );
-=======
 			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1)
 			{
 				if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
@@ -223,7 +209,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 			{
 				ViewAnimator.animate( icon ).scaleX( 0f ).scaleY( 0f ).start();
 			}
->>>>>>> Stashed changes
 			circleView.setInnerCircleRadiusProgress( 0 );
 			circleView.setOuterCircleRadiusProgress( 0 );
 			dotsView.setCurrentProgress( 0 );
@@ -241,10 +226,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 			innerCircleAnimator.setStartDelay( 200 );
 			innerCircleAnimator.setInterpolator( DECCELERATE_INTERPOLATOR );
 
-<<<<<<< Updated upstream
-			ObjectAnimator starScaleYAnimator =
-				ObjectAnimator.ofFloat( icon, "scaleY", 0.2f, 1f );
-=======
 			ObjectAnimator dotsAnimator =
 				ObjectAnimator.ofFloat( dotsView, DotsView.DOTS_PROGRESS, 0, 1f );
 			dotsAnimator.setDuration( 900 );
@@ -252,30 +233,15 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 			dotsAnimator.setInterpolator( ACCELERATE_DECELERATE_INTERPOLATOR );
 
 			ObjectAnimator starScaleYAnimator = ObjectAnimator.ofFloat( icon, "scaleY", 0.2f, 1f );
->>>>>>> Stashed changes
 			starScaleYAnimator.setDuration( 350 );
 			starScaleYAnimator.setStartDelay( 250 );
 			starScaleYAnimator.setInterpolator( OVERSHOOT_INTERPOLATOR );
 
-<<<<<<< Updated upstream
-			ObjectAnimator starScaleXAnimator =
-				ObjectAnimator.ofFloat( icon, "scaleX", 0.2f, 1f );
-=======
 			ObjectAnimator starScaleXAnimator = ObjectAnimator.ofFloat( icon, "scaleX", 0.2f, 1f );
->>>>>>> Stashed changes
 			starScaleXAnimator.setDuration( 350 );
 			starScaleXAnimator.setStartDelay( 250 );
 			starScaleXAnimator.setInterpolator( OVERSHOOT_INTERPOLATOR );
 
-<<<<<<< Updated upstream
-			ObjectAnimator dotsAnimator =
-				ObjectAnimator.ofFloat( dotsView, DotsView.DOTS_PROGRESS, 0, 1f );
-			dotsAnimator.setDuration( 900 );
-			dotsAnimator.setStartDelay( 50 );
-			dotsAnimator.setInterpolator( ACCELERATE_DECELERATE_INTERPOLATOR );
-
-=======
->>>>>>> Stashed changes
 			animatorSet.playTogether( outerCircleAnimator, innerCircleAnimator, starScaleYAnimator,
 				starScaleXAnimator, dotsAnimator );
 
@@ -286,10 +252,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 					circleView.setInnerCircleRadiusProgress( 0 );
 					circleView.setOuterCircleRadiusProgress( 0 );
 					dotsView.setCurrentProgress( 0 );
-<<<<<<< Updated upstream
-					icon.setScaleX( 1 );
-					icon.setScaleY( 1 );
-=======
 					if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1)
 					{
 						icon.setScaleX( 1 );
@@ -299,7 +261,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 					{
 						ViewAnimator.animate( icon ).scaleX( 1f ).scaleY( 1f ).start();
 					}
->>>>>>> Stashed changes
 				}
 			} );
 
@@ -314,20 +275,11 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 	 * @param event
 	 * @return
 	 */
-<<<<<<< Updated upstream
-	@Override public boolean onTouchEvent(
-		MotionEvent event)
-=======
 	@Override public boolean onTouchEvent(MotionEvent event)
->>>>>>> Stashed changes
 	{
 		switch(event.getAction())
 		{
 			case MotionEvent.ACTION_DOWN:
-<<<<<<< Updated upstream
-				icon.animate().scaleX( 0.7f ).scaleY( 0.7f ).setDuration( 150 )
-					.setInterpolator( DECCELERATE_INTERPOLATOR );
-=======
 				if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1)
 				{
 					icon.animate().scaleX( 0.7f ).scaleY( 0.7f ).setDuration( 150 )
@@ -338,7 +290,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 					ViewAnimator.animate( icon ).scaleX( 0.7f ).scaleY( 0.7f ).descelerate()
 						.duration( 150 ).start();
 				}
->>>>>>> Stashed changes
 				setPressed( true );
 				break;
 
@@ -353,9 +304,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 				break;
 
 			case MotionEvent.ACTION_UP:
-<<<<<<< Updated upstream
-				icon.animate().scaleX( 1 ).scaleY( 1 ).setInterpolator( DECCELERATE_INTERPOLATOR );
-=======
 				if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1)
 				{
 					icon.animate().scaleX( 1 ).scaleY( 1 )
@@ -365,7 +313,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 				{
 					ViewAnimator.animate( icon ).scaleX( 1f ).scaleY( 1f ).start();
 				}
->>>>>>> Stashed changes
 				if(isPressed())
 				{
 					performClick();
@@ -379,11 +326,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 
 	/**
 	 * This drawable is shown when the button is a liked state.
-<<<<<<< Updated upstream
-	 *
-	 * @param resId
-=======
->>>>>>> Stashed changes
 	 */
 	public void setLikeDrawableRes(int resId)
 	{
@@ -414,11 +356,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 
 	/**
 	 * This drawable will be shown when the button is in on unLiked state.
-<<<<<<< Updated upstream
-	 *
-	 * @param resId
-=======
->>>>>>> Stashed changes
 	 */
 	public void setUnlikeDrawableRes(int resId)
 	{
@@ -434,11 +371,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 
 	/**
 	 * This drawable will be shown when the button is in on unLiked state.
-<<<<<<< Updated upstream
-	 *
-	 * @param unLikeDrawable
-=======
->>>>>>> Stashed changes
 	 */
 	public void setUnlikeDrawable(Drawable unLikeDrawable)
 	{
@@ -455,11 +387,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 
 	/**
 	 * Sets one of the three icons that are bundled with the library.
-<<<<<<< Updated upstream
-	 *
-	 * @param currentIconType
-=======
->>>>>>> Stashed changes
 	 */
 	public void setIcon(IconType currentIconType)
 	{
@@ -471,11 +398,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 	/**
 	 * Sets the size of the drawable/icon that's being used. The views that generate
 	 * the like effect are also updated to reflect the size of the icon.
-<<<<<<< Updated upstream
-	 *
-	 * @param iconSize
-=======
->>>>>>> Stashed changes
 	 */
 
 	public void setIconSizeDp(int iconSize)
@@ -486,11 +408,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 	/**
 	 * Sets the size of the drawable/icon that's being used. The views that generate
 	 * the like effect are also updated to reflect the size of the icon.
-<<<<<<< Updated upstream
-	 *
-	 * @param iconSize
-=======
->>>>>>> Stashed changes
 	 */
 	public void setIconSizePx(int iconSize)
 	{
@@ -508,10 +425,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 	 * are accessed via objects that contain their
 	 * resource ids and an enum with their name.
 	 *
-<<<<<<< Updated upstream
-	 * @param iconType
-=======
->>>>>>> Stashed changes
 	 * @return Icon
 	 */
 	private Icon parseIconType(String iconType)
@@ -534,12 +447,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 	 * These icons are bundled with the library and
 	 * are accessed via objects that contain their
 	 * resource ids and an enum with their name.
-<<<<<<< Updated upstream
-	 *
-	 * @param iconType
-	 * @return
-=======
->>>>>>> Stashed changes
 	 */
 	private Icon parseIconType(IconType iconType)
 	{
@@ -559,11 +466,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 	/**
 	 * Listener that is triggered once the
 	 * button is in a liked or unLiked state
-<<<<<<< Updated upstream
-	 *
-	 * @param likeListener
-=======
->>>>>>> Stashed changes
 	 */
 	public void setOnLikeListener(OnLikeListener likeListener)
 	{
@@ -574,12 +476,6 @@ public class LikeButton extends FrameLayout implements View.OnClickListener
 	/**
 	 * This set sets the colours that are used for the little dots
 	 * that will be exploding once the like button is clicked.
-<<<<<<< Updated upstream
-	 *
-	 * @param primaryColor
-	 * @param secondaryColor
-=======
->>>>>>> Stashed changes
 	 */
 	public void setExplodingDotColorsRes(int primaryColor, int secondaryColor)
 	{

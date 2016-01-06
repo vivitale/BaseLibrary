@@ -207,7 +207,6 @@ import talex.zsw.baselibrary.R;
         if (mLoadListener != null) {
             mLoadListener.onStart(me);
         }
-        // TODO 修改URL的处理方式为UImageLoad
         Picasso p = (mPicasso != null) ? mPicasso : Picasso.with(mContext);
         RequestCreator rq = null;
         if(mUrl!=null){

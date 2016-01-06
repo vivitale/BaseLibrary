@@ -16,7 +16,6 @@ package talex.zsw.baselibrary.widget;
  * limitations under the License.
  */
 
-import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -27,6 +26,8 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+
+import com.nineoldandroids.animation.ValueAnimator;
 
 import talex.zsw.baselibrary.R;
 
@@ -62,40 +63,40 @@ public class AnimateCheckBox extends View
 
 	public AnimateCheckBox(Context context)
 	{
-		this(context, null);
+		this( context, null );
 	}
 
 	public AnimateCheckBox(Context context, AttributeSet attrs)
 	{
-		this(context, attrs, 0);
+		this( context, attrs, 0 );
 	}
 
 	public AnimateCheckBox(Context context, AttributeSet attrs, int defStyleAttr)
 	{
-		super(context, attrs, defStyleAttr);
+		super( context, attrs, defStyleAttr );
 
 		TypedArray a =
-			context.obtainStyledAttributes(attrs, R.styleable.AnimateCheckBox, defStyleAttr, 0);
+			context.obtainStyledAttributes( attrs, R.styleable.AnimateCheckBox, defStyleAttr, 0 );
 
-		circleColor = a.getColor(R.styleable.AnimateCheckBox_ACB_checkedColor, DEFAULT_CHECKED_COLOR);
-		unCheckColor = a.getColor(R.styleable.AnimateCheckBox_ACB_unCheckColor, DEFAULT_UNCHECK_COLOR);
-		correctColor = a.getColor(R.styleable.AnimateCheckBox_ACB_lineColor, DEFAULT_LINE_COLOR);
-		correctWidth =
-			a.getDimensionPixelSize(R.styleable.AnimateCheckBox_ACB_lineWidth, DEFAULT_LINE_WIDTH);
+		circleColor =
+			a.getColor( R.styleable.AnimateCheckBox_ACB_checkedColor, DEFAULT_CHECKED_COLOR );
+		unCheckColor =
+			a.getColor( R.styleable.AnimateCheckBox_ACB_unCheckColor, DEFAULT_UNCHECK_COLOR );
+		correctColor = a.getColor( R.styleable.AnimateCheckBox_ACB_lineColor, DEFAULT_LINE_COLOR );
+		correctWidth = a.getDimensionPixelSize( R.styleable.AnimateCheckBox_ACB_lineWidth,
+			DEFAULT_LINE_WIDTH );
 		animDuration =
-			a.getInteger(R.styleable.AnimateCheckBox_ACB_animDuration, DEFAULT_ANIM_DURATION);
+			a.getInteger( R.styleable.AnimateCheckBox_ACB_animDuration, DEFAULT_ANIM_DURATION );
 
 		a.recycle();
 
-		init(context);
+		init( context );
 	}
 
-	@TargetApi(Build.VERSION_CODES.LOLLIPOP) public AnimateCheckBox(Context context,
-																	AttributeSet attrs,
-																	int defStyleAttr,
-																	int defStyleRes)
+	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+	public AnimateCheckBox(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes)
 	{
-		super(context, attrs, defStyleAttr, defStyleRes);
+		super( context, attrs, defStyleAttr, defStyleRes );
 	}
 
 	/**
@@ -115,20 +116,20 @@ public class AnimateCheckBox extends View
 	private void init(Context context)
 	{
 
-		mCirclePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		mCirclePaint.setStyle(Paint.Style.FILL);
-		mCirclePaint.setColor(circleColor);
+		mCirclePaint = new Paint( Paint.ANTI_ALIAS_FLAG );
+		mCirclePaint.setStyle( Paint.Style.FILL );
+		mCirclePaint.setColor( circleColor );
 
-		mLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		mLinePaint.setStyle(Paint.Style.FILL);
-		mLinePaint.setColor(correctColor);
-		mLinePaint.setStrokeWidth(correctWidth);
+		mLinePaint = new Paint( Paint.ANTI_ALIAS_FLAG );
+		mLinePaint.setStyle( Paint.Style.FILL );
+		mLinePaint.setColor( correctColor );
+		mLinePaint.setStrokeWidth( correctWidth );
 
-		setOnClickListener(new OnClickListener()
+		setOnClickListener( new OnClickListener()
 		{
 			@Override public void onClick(View v)
 			{
-				if (isChecked)
+				if(isChecked)
 				{
 					hideCorrect();
 				}
@@ -137,7 +138,7 @@ public class AnimateCheckBox extends View
 					showCheck();
 				}
 			}
-		});
+		} );
 	}
 
 	/**
@@ -157,11 +158,11 @@ public class AnimateCheckBox extends View
 	 */
 	public void setChecked(boolean checked)
 	{
-		if (isChecked && !checked)
+		if(isChecked && !checked)
 		{
 			hideCorrect();
 		}
-		else if (!isChecked && checked)
+		else if(!isChecked && checked)
 		{
 			showCheck();
 		}
@@ -185,9 +186,9 @@ public class AnimateCheckBox extends View
 	 */
 	@Override protected void onSizeChanged(int w, int h, int oldw, int oldh)
 	{
-		super.onSizeChanged(w, h, oldw, oldh);
-		height = width = Math.min(w - getPaddingLeft() - getPaddingRight(),
-			h - getPaddingBottom() - getPaddingTop());
+		super.onSizeChanged( w, h, oldw, oldh );
+		height = width = Math.min( w - getPaddingLeft() - getPaddingRight(),
+			h - getPaddingBottom() - getPaddingTop() );
 		cx = w / 2;
 		cy = h / 2;
 
@@ -207,24 +208,24 @@ public class AnimateCheckBox extends View
 	{
 
 		float f = (radius - height * 0.125f) / (height * 0.5f); //当前进度
-		mCirclePaint.setColor(evaluate(f, unCheckColor, circleColor));
-		canvas.drawCircle(cx, cy, radius, mCirclePaint); //画圆
+		mCirclePaint.setColor( evaluate( f, unCheckColor, circleColor ) );
+		canvas.drawCircle( cx, cy, radius, mCirclePaint ); //画圆
 
 		//画对号
-		if (correctProgress > 0)
+		if(correctProgress > 0)
 		{
-			if (correctProgress < 1 / 3f)
+			if(correctProgress < 1 / 3f)
 			{
 				float x = points[0] + (points[2] - points[0]) * correctProgress;
 				float y = points[1] + (points[3] - points[1]) * correctProgress;
-				canvas.drawLine(points[0], points[1], x, y, mLinePaint);
+				canvas.drawLine( points[0], points[1], x, y, mLinePaint );
 			}
 			else
 			{
 				float x = points[2] + (points[4] - points[2]) * correctProgress;
 				float y = points[3] + (points[5] - points[3]) * correctProgress;
-				canvas.drawLine(points[0], points[1], points[2], points[3], mLinePaint);
-				canvas.drawLine(points[2], points[3], x, y, mLinePaint);
+				canvas.drawLine( points[0], points[1], points[2], points[3], mLinePaint );
+				canvas.drawLine( points[2], points[3], x, y, mLinePaint );
 			}
 		}
 	}
@@ -246,7 +247,7 @@ public class AnimateCheckBox extends View
 	 */
 	public void setLineColor(int color)
 	{
-		mLinePaint.setColor(color);
+		mLinePaint.setColor( color );
 	}
 
 	/**
@@ -261,11 +262,11 @@ public class AnimateCheckBox extends View
 
 	private int evaluate(float fraction, int startValue, int endValue)
 	{
-		if (fraction <= 0)
+		if(fraction <= 0)
 		{
 			return startValue;
 		}
-		if (fraction >= 1)
+		if(fraction >= 1)
 		{
 			return endValue;
 		}
@@ -291,7 +292,7 @@ public class AnimateCheckBox extends View
 	 * 处理触摸事件触发动画
 	 */
 	/*private class OnChangeStatusListener implements OnTouchListener {
-        @Override
+	    @Override
         public boolean onTouch(View v, MotionEvent event) {
             Log.i("Touch","Touch");
             switch (event.getAction()) {
@@ -322,115 +323,115 @@ public class AnimateCheckBox extends View
     }*/
 	private void showUnChecked()
 	{
-		if (isAnim)
+		if(isAnim)
 		{
 			return;
 		}
 
 		isAnim = true;
-		ValueAnimator va = ValueAnimator.ofFloat(0, 1).setDuration(animDuration);
-		va.setInterpolator(new LinearInterpolator());
+		ValueAnimator va = ValueAnimator.ofFloat( 0, 1 ).setDuration( animDuration );
+		va.setInterpolator( new LinearInterpolator() );
 		va.start();
-		va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+		va.addUpdateListener( new ValueAnimator.AnimatorUpdateListener()
 		{
 			@Override public void onAnimationUpdate(ValueAnimator animation)
 			{
 				float value = (float) animation.getAnimatedValue(); // 0f ~ 1f
 				radius = (int) ((1 - value) * height * 0.375f + height * 0.125f);
-				if (value >= 1)
+				if(value >= 1)
 				{
 					isChecked = false;
 					isAnim = false;
-					if (listener != null)
+					if(listener != null)
 					{
-						listener.onCheckedChanged(AnimateCheckBox.this, false);
+						listener.onCheckedChanged( AnimateCheckBox.this, false );
 					}
 				}
 				invalidate();
 			}
-		});
+		} );
 	}
 
 	private void showCheck()
 	{
-		if (isAnim)
+		if(isAnim)
 		{
 			return;
 		}
 		isAnim = true;
-		ValueAnimator va = ValueAnimator.ofFloat(0, 1).setDuration(animDuration);
-		va.setInterpolator(new LinearInterpolator());
+		ValueAnimator va = ValueAnimator.ofFloat( 0, 1 ).setDuration( animDuration );
+		va.setInterpolator( new LinearInterpolator() );
 		va.start();
-		va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+		va.addUpdateListener( new ValueAnimator.AnimatorUpdateListener()
 		{
 			@Override public void onAnimationUpdate(ValueAnimator animation)
 			{
 				float value = (float) animation.getAnimatedValue(); // 0f ~ 1f
 				radius = (int) (value * height * 0.37f + height * 0.125f);
-				if (value >= 1)
+				if(value >= 1)
 				{
 					isChecked = true;
 					isAnim = false;
-					if (listener != null)
+					if(listener != null)
 					{
-						listener.onCheckedChanged(AnimateCheckBox.this, true);
+						listener.onCheckedChanged( AnimateCheckBox.this, true );
 					}
 					showCorrect();
 				}
 				invalidate();
 			}
-		});
+		} );
 	}
 
 	private void showCorrect()
 	{
-		if (isAnim)
+		if(isAnim)
 		{
 			return;
 		}
 		isAnim = true;
-		ValueAnimator va = ValueAnimator.ofFloat(0, 1).setDuration(animDuration);
-		va.setInterpolator(new LinearInterpolator());
+		ValueAnimator va = ValueAnimator.ofFloat( 0, 1 ).setDuration( animDuration );
+		va.setInterpolator( new LinearInterpolator() );
 		va.start();
-		va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+		va.addUpdateListener( new ValueAnimator.AnimatorUpdateListener()
 		{
 			@Override public void onAnimationUpdate(ValueAnimator animation)
 			{
 				float value = (float) animation.getAnimatedValue(); // 0f ~ 1f
 				correctProgress = value;
 				invalidate();
-				if (value >= 1)
+				if(value >= 1)
 				{
 					isAnim = false;
 				}
 			}
-		});
+		} );
 	}
 
 	private void hideCorrect()
 	{
-		if (isAnim)
+		if(isAnim)
 		{
 			return;
 		}
 		isAnim = true;
-		ValueAnimator va = ValueAnimator.ofFloat(0, 1).setDuration(animDuration);
-		va.setInterpolator(new LinearInterpolator());
+		ValueAnimator va = ValueAnimator.ofFloat( 0, 1 ).setDuration( animDuration );
+		va.setInterpolator( new LinearInterpolator() );
 		va.start();
-		va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+		va.addUpdateListener( new ValueAnimator.AnimatorUpdateListener()
 		{
 			@Override public void onAnimationUpdate(ValueAnimator animation)
 			{
 				float value = (float) animation.getAnimatedValue(); // 0f ~ 1f
 				correctProgress = 1 - value;
 				invalidate();
-				if (value >= 1)
+				if(value >= 1)
 				{
 					isAnim = false;
 					showUnChecked();
 				}
 			}
-		});
+		} );
 	}
 
 	public void setOnCheckedChangeListener(OnCheckedChangeListener listener)

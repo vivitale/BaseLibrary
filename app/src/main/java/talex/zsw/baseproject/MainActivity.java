@@ -18,6 +18,7 @@ import talex.zsw.baseproject.activity.AnimateCheckBoxActivity;
 import talex.zsw.baseproject.activity.AnimationActivity;
 import talex.zsw.baseproject.activity.CircleImageViewActivity;
 import talex.zsw.baseproject.activity.CircularProgressActivity;
+import talex.zsw.baseproject.activity.CollSwitchActivity;
 import talex.zsw.baseproject.activity.ComplexActivity;
 import talex.zsw.baseproject.activity.ContentMenuActivity;
 import talex.zsw.baseproject.activity.CustomNumberPickActivity;
@@ -91,6 +92,8 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add( new Vo( "CircleImageView", "将图片自动修正为圆形", CircleImageViewActivity.class ) );
 		datas.add( new Vo( "CircularProgress", "一直转圈的CircularProgress和CircularProgressDrawable",
 			CircularProgressActivity.class ) );
+//		datas.add( new Vo( "CircularReveal", "圆形展示，替换底部View", CircularRevealActivity.class ) );
+		datas.add( new Vo( "CollSwitch", "酷炫的开关按钮，选中与否可以改变布局", CollSwitchActivity.class ) );
 		datas.add( new Vo( "ContentMenu", "右上角向下展示的Menu", ContentMenuActivity.class ) );
 		datas.add( new Vo( "CustomNumberPick", "数字加减选择器", CustomNumberPickActivity.class ) );
 		datas.add( new Vo( "CustomScrollView", "可以上下左右滑动的View，且项目支持手势放大缩小",
@@ -100,12 +103,7 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add( new Vo( "ExpandableLayout", "可以扩展开的布局,包含ListView", ExpandableActivity.class ) );
 		datas.add( new Vo( "ExpandablePanel", "可以扩展开的布局", ExpandablePanelActivity.class ) );
 		datas.add( new Vo( "FlowLayout", "单选多选标签", FlowLayoutActivity.class ) );
-		datas
-<<<<<<< Updated upstream
-			.add( new Vo( "LikeButton", "Android>=14 显示一个带有动画效果的喜欢按钮", LikeButtonActivity.class ) );
-=======
-			.add( new Vo( "LikeButton", "显示一个带有动画效果的喜欢按钮", LikeButtonActivity.class ) );
->>>>>>> Stashed changes
+		datas.add( new Vo( "LikeButton", "显示一个带有动画效果的喜欢按钮", LikeButtonActivity.class ) );
 		datas.add( new Vo( "LoadingDialog", "加载等待转圈圈", LoadingDialogActivity.class ) );
 		datas.add( new Vo( "MaterialFavoriteButton", "动画效果的星星和爱心，适合用在收藏赞等操作上",
 			MaterialFavoriteButtonActivity.class ) );
@@ -114,11 +112,8 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add( new Vo( "NumberProgressBar", "带数字的ProgressBar", NumberPBActivity.class ) );
 		datas.add( new Vo( "OverScrollView", "阻尼效果的上下拉ScrollView,且支持上拉刷新下来加载",
 			OverScrollViewActivity.class ) );
-<<<<<<< Updated upstream
-		datas.add( new Vo( "OverScroll-Decor", "可以给任意View加上阻尼效果", OverScrollActivity.class ) );
-=======
-		datas.add( new Vo( "OverScroll-Decor", "Android>=14 可以给任意View加上阻尼效果", OverScrollActivity.class ) );
->>>>>>> Stashed changes
+		datas.add(
+			new Vo( "OverScroll-Decor", "Android>=14 可以给任意View加上阻尼效果", OverScrollActivity.class ) );
 		datas.add( new Vo( "Progress", "几个自定义的Progress的使用", ProgressActivity.class ) );
 		datas.add( new Vo( "PullToNextLayout", "下拉到下一个界面的View", PullToNextLayoutActivity.class ) );
 		datas.add( new Vo( "PullZoomView", "下拉放大，适用于个人中心", PullZoomViewActivity.class ) );
@@ -133,10 +128,7 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add( new Vo( "ScrollerNumberPicker", "滑动选择器", ScrollerNumberPickerActivity.class ) );
 		datas.add( new Vo( "SlideDateTimePicker", "日期时间选择框", SlideDateTimePickerActivity.class ) );
 		datas.add( new Vo( "SliderLayout", "轮播", SliderLayoutActivity.class ) );
-<<<<<<< Updated upstream
-=======
 		datas.add( new Vo( "SmallBang", "点击效果", SmallBangActivity.class ) );
->>>>>>> Stashed changes
 		datas.add( new Vo( "SoftKeyboardListenerLayout", "根布局为FrameLayout,监听键盘弹出事件",
 			SoftKeyboardActivity.class ) );
 		datas.add( new Vo( "SweetAlertDialog", "简易dialog的使用", SweetAlertDialogActivity.class ) );

@@ -26,6 +26,10 @@
         <activity android:name=".activity.ProgressActivity"/>
         <activity android:name=".activity.CircleImageViewActivity"/>
         <activity android:name=".activity.CircularProgressActivity"/>
+        <activity android:name=".activity.CircularRevealActivity"/>
+        <activity android:name=".activity.CircularReveal1Activity"/>
+        <activity android:name=".activity.CircularReveal2Activity"/>
+        <activity android:name=".activity.CollSwitchActivity"/>
         <activity android:name=".activity.ContentMenuActivity"/>
         <activity android:name=".activity.CustomNumberPickActivity"/>
         <activity android:name=".activity.CustomScrollViewActivity"/>
