@@ -4,6 +4,11 @@
     <color name="light_gray">#B0B0B0</color>
     <color name="dialogTxtColor">#0048fc</color>
 
+    <!-- LoadToast -->
+    <color name="color_accent">#7c4dff</color>
+    <color name="color_success">#3CCD88</color>
+    <color name="color_error">#f44336</color>
+
     <!-- AppMsg -->
     <color name="appmsg_alert">#CC0000</color>
     <color name="appmsg_confirm">#FF8800</color>

@@ -39,6 +39,7 @@
         <activity android:name=".activity.FlowLayoutActivity"/>
         <activity android:name=".activity.LikeButtonActivity"/>
         <activity android:name=".activity.LoadingDialogActivity"/>
+        <activity android:name=".activity.LoadToastActivity"/>
         <activity android:name=".activity.MaterialFavoriteButtonActivity"/>
         <activity android:name=".activity.MyWebViewActivity"/>
         <activity android:name=".activity.NiceSpinnerActivity"/>

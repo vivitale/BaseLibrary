@@ -372,14 +372,14 @@
     </declare-styleable>
 
     <!-- ###################无用###################### -->
-    <declare-styleable name="FrameLayoutCompat">
+    <declare-styleable name="FrameLayoutCompat2">
         <!-- Defines the drawable to draw over the content. This can be used as an overlay.
              The foreground drawable participates in the padding of the content if the gravity
              is set to fill. -->
-        <attr name="foreground" format="reference|color" />
+        <attr name="FC_foreground" format="reference|color" />
         <!-- Defines the gravity to apply to the foreground drawable. The gravity defaults
              to fill. -->
-        <attr name="foregroundGravity">
+        <attr name="FC_foregroundGravity">
             <!-- Push object to the top of its container, not changing its size. -->
             <flag name="top" value="0x30" />
             <!-- Push object to the bottom of its container, not changing its size. -->
@@ -413,14 +413,14 @@
         </attr>
         <!-- Defines whether the foreground drawable should be drawn inside the padding.
              This property is turned on by default. -->
-        <attr name="foregroundInsidePadding" format="boolean" />
+        <attr name="FC_foregroundInsidePadding" format="boolean" />
         <!-- Determines whether to measure all children or just those in
              the VISIBLE or INVISIBLE state when measuring. Defaults to false. -->
-        <attr name="measureAllChildren" format="boolean" />
+        <attr name="FC_measureAllChildren" format="boolean" />
         <!-- Tint to apply to the foreground. -->
-        <attr name="foregroundTint" format="color" />
+        <attr name="FC_foregroundTint" format="color" />
         <!-- Blending mode used to apply the foreground tint. -->
-        <attr name="foregroundTintMode">
+        <attr name="FC_foregroundTintMode">
             <!-- The tint is drawn on top of the drawable.
                  [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc] -->
             <enum name="src_over" value="3" />

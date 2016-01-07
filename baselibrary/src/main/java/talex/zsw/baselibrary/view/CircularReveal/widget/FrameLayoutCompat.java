@@ -82,32 +82,32 @@ public class FrameLayoutCompat extends ViewGroup{
     void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes){
 
         final TypedArray a = context.obtainStyledAttributes(
-                attrs, R.styleable.FrameLayoutCompat, defStyleAttr, defStyleRes);
+                attrs, R.styleable.FrameLayoutCompat2, defStyleAttr, defStyleRes);
 
         mForegroundGravity = a.getInt(
-                R.styleable.FrameLayoutCompat_foregroundGravity, mForegroundGravity);
+                R.styleable.FrameLayoutCompat2_FC_foregroundGravity, mForegroundGravity);
 
-        final Drawable d = a.getDrawable(R.styleable.FrameLayoutCompat_foreground);
+        final Drawable d = a.getDrawable(R.styleable.FrameLayoutCompat2_FC_foreground);
         if (d != null) {
             setForeground(d);
         }
 
-        if (a.getBoolean(R.styleable.FrameLayoutCompat_measureAllChildren, false)) {
+        if (a.getBoolean(R.styleable.FrameLayoutCompat2_FC_measureAllChildren, false)) {
             setMeasureAllChildren(true);
         }
 
-        if (a.hasValue(R.styleable.FrameLayoutCompat_foregroundTintMode)) {
+        if (a.hasValue(R.styleable.FrameLayoutCompat2_FC_foregroundTintMode)) {
             mForegroundTintMode = DrawableHelper.parseTintMode(a.getInt(
-                    R.styleable.FrameLayoutCompat_foregroundTintMode, -1), mForegroundTintMode);
+                    R.styleable.FrameLayoutCompat2_FC_foregroundTintMode, -1), mForegroundTintMode);
             mHasForegroundTintMode = true;
         }
 
-        if (a.hasValue(R.styleable.FrameLayoutCompat_foregroundTint)) {
-            mForegroundTintList = a.getColorStateList(R.styleable.FrameLayoutCompat_foregroundTint);
+        if (a.hasValue(R.styleable.FrameLayoutCompat2_FC_foregroundTint)) {
+            mForegroundTintList = a.getColorStateList(R.styleable.FrameLayoutCompat2_FC_foregroundTint);
             mHasForegroundTint = true;
         }
 
-        mForegroundInPadding = a.getBoolean(R.styleable.FrameLayoutCompat_foregroundInsidePadding, true);
+        mForegroundInPadding = a.getBoolean(R.styleable.FrameLayoutCompat2_FC_foregroundInsidePadding, true);
 
         a.recycle();
 

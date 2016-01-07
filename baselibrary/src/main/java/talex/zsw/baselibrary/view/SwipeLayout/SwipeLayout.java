@@ -2156,7 +2156,7 @@ public class SwipeLayout extends FrameLayout
 	}
 
 	@SuppressLint("Override")
-	protected void onViewRemoved(View child)
+	public void onViewRemoved(View child)
 	{
 		for (Map.Entry<DragEdge, View> entry : new HashMap<DragEdge, View>(mDragEdges).entrySet())
 		{
