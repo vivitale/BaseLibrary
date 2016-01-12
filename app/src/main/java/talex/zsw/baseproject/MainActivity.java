@@ -50,6 +50,8 @@ import talex.zsw.baseproject.activity.SlideDateTimePickerActivity;
 import talex.zsw.baseproject.activity.SliderLayoutActivity;
 import talex.zsw.baseproject.activity.SmallBangActivity;
 import talex.zsw.baseproject.activity.SoftKeyboardActivity;
+import talex.zsw.baseproject.activity.SpotsDialogActivity;
+import talex.zsw.baseproject.activity.SquareLayoutActivity;
 import talex.zsw.baseproject.activity.SweetAlertDialogActivity;
 import talex.zsw.baseproject.activity.SweetSheetActivity;
 import talex.zsw.baseproject.activity.SwipeLayoutActivity;
@@ -133,6 +135,8 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add( new Vo( "SmallBang", "点击效果", SmallBangActivity.class ) );
 		datas.add( new Vo( "SoftKeyboardListenerLayout", "根布局为FrameLayout,监听键盘弹出事件",
 			SoftKeyboardActivity.class ) );
+		datas.add( new Vo( "SquareLayout", "正方形布局", SquareLayoutActivity.class ) );
+		datas.add( new Vo( "SpotsDialog", "仿Win8的loading", SpotsDialogActivity.class ) );
 		datas.add( new Vo( "SweetAlertDialog", "简易dialog的使用", SweetAlertDialogActivity.class ) );
 		datas.add( new Vo( "SweetSheet", "底部弹出一个布局，可以拖拽改变高度", SweetSheetActivity.class ) );
 		datas.add( new Vo( "SwipeLayout", "上下左右滑动展开效果", SwipeLayoutActivity.class ) );

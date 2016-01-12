@@ -1,4 +1,10 @@
 <resources>
+
+    <!--SpotsDialog-->
+    <dimen name="spot_size">6dp</dimen>
+    <dimen name="spot_margin">24dp</dimen>
+    <dimen name="spot_width">250dp</dimen>
+
     <!--AccelerationProgress-->
     <dimen name="acc_default_size">100dp</dimen>
 

@@ -13,45 +13,47 @@
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:src="@mipmap/icon"
+        app:RIV_border_color="@color/red"
+        app:RIV_border_width="1dp"
         app:RIV_oval="true"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/white"
-        android:text="RIV_oval = true"/>
+        android:text="RIV_oval = true"
+        android:textColor="@color/white"/>
 
     <talex.zsw.baselibrary.view.RoundedImageView.RoundedImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:RIV_corner_radius="10dp"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:src="@mipmap/icon"/>
+        android:src="@mipmap/icon"
+        app:RIV_corner_radius="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/white"
-        android:text="RIV_corner_radius = 10dp"/>
+        android:text="RIV_corner_radius = 10dp"
+        android:textColor="@color/white"/>
 
     <talex.zsw.baselibrary.view.RoundedImageView.RoundedImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:RIV_corner_radius="10dp"
-        app:RIV_border_width="1dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:src="@mipmap/icon"
         app:RIV_border_color="@color/red"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:src="@mipmap/icon"/>
+        app:RIV_border_width="1dp"
+        app:RIV_corner_radius="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/white"
-        android:text="RIV_border_width = 1dp\nRIV_border_color = red"/>
+        android:text="RIV_border_width = 1dp\nRIV_border_color = red"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

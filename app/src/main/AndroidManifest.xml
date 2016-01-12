@@ -63,6 +63,8 @@
         <activity
             android:name=".activity.SoftKeyboardActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity android:name=".activity.SpotsDialogActivity"/>
+        <activity android:name=".activity.SquareLayoutActivity"/>
         <activity android:name=".activity.SweetAlertDialogActivity"/>
         <activity android:name=".activity.SweetSheetActivity"/>
         <activity android:name=".activity.SwipeLayoutActivity"/>

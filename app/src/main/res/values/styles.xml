@@ -1,5 +1,12 @@
 <resources>
 
+    <style name="CustomSpotsDialog" parent="@style/DialogStyle">
+    <item name="SD_TitleAppearance">@android:style/TextAppearance.Medium</item>
+    <item name="SD_TitleText">自定义</item>
+    <item name="SD_SpotCount">4</item>
+    <item name="SD_Drawable">@drawable/custom_spots_spot</item>
+</style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->

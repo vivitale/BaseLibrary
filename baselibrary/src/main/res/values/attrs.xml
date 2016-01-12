@@ -2,6 +2,14 @@
 <!--suppress ALL -->
 <resources>
 
+    <!--SpotsDialog-->
+    <declare-styleable name="SpotsDialog">
+        <attr name="SD_TitleAppearance" format="reference" />
+        <attr name="SD_TitleText" format="reference|string" />
+        <attr name="SD_SpotCount" format="integer"/>
+        <attr name="SD_Drawable" format="reference"/>
+    </declare-styleable>
+
     <declare-styleable name="CoolSwitch">
         <attr name="CS_enabledView" format="reference" />
         <attr name="CS_disabledView" format="reference" />

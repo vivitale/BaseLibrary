@@ -1,5 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <!--SpotsDialog-->
+    <style name="SpotsDialogDefault" parent="@style/DialogStyle">
+        <item name="SD_TitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="SD_TitleText">Loading…</item>
+        <item name="SD_SpotCount">5</item>
+    </style>
+
     <!-- Dialog样式 -->
     <style name="DialogStyle" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
