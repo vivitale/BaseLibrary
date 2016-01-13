@@ -2,17 +2,39 @@
 <!--suppress ALL -->
 <resources>
 
+    <!-- DropDownMenu -->
+    <declare-styleable name="DropDownMenu">
+        <!-- 下划线颜色 -->
+        <attr name="DD_underlineColor" format="color"/>
+        <!-- 分割线颜色 -->
+        <attr name="DD_dividerColor" format="color"/>
+        <!-- tab选中颜色 -->
+        <attr name="DD_textSelectedColor" format="color"/>
+        <!-- tab未选中颜色 -->
+        <attr name="DD_textUnselectedColor" format="color"/>
+        <!-- tab 背景颜色 -->
+        <attr name="DD_menuBackgroundColor" format="color"/>
+        <!-- 遮罩颜色，一般是半透明 -->
+        <attr name="DD_maskColor" format="color"/>
+        <!-- tab字体大小 -->
+        <attr name="DD_menuTextSize" format="dimension"/>
+        <!-- tab选中状态图标 -->
+        <attr name="DD_menuSelectedIcon" format="reference"/>
+        <!-- tab未选中状态图标 -->
+        <attr name="DD_menuUnselectedIcon" format="reference"/>
+    </declare-styleable>
+
     <!--SpotsDialog-->
     <declare-styleable name="SpotsDialog">
-        <attr name="SD_TitleAppearance" format="reference" />
-        <attr name="SD_TitleText" format="reference|string" />
+        <attr name="SD_TitleAppearance" format="reference"/>
+        <attr name="SD_TitleText" format="reference|string"/>
         <attr name="SD_SpotCount" format="integer"/>
         <attr name="SD_Drawable" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="CoolSwitch">
-        <attr name="CS_enabledView" format="reference" />
-        <attr name="CS_disabledView" format="reference" />
+        <attr name="CS_enabledView" format="reference"/>
+        <attr name="CS_disabledView" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="LikeButton">
@@ -384,68 +406,68 @@
         <!-- Defines the drawable to draw over the content. This can be used as an overlay.
              The foreground drawable participates in the padding of the content if the gravity
              is set to fill. -->
-        <attr name="FC_foreground" format="reference|color" />
+        <attr name="FC_foreground" format="reference|color"/>
         <!-- Defines the gravity to apply to the foreground drawable. The gravity defaults
              to fill. -->
         <attr name="FC_foregroundGravity">
             <!-- Push object to the top of its container, not changing its size. -->
-            <flag name="top" value="0x30" />
+            <flag name="top" value="0x30"/>
             <!-- Push object to the bottom of its container, not changing its size. -->
-            <flag name="bottom" value="0x50" />
+            <flag name="bottom" value="0x50"/>
             <!-- Push object to the left of its container, not changing its size. -->
-            <flag name="left" value="0x03" />
+            <flag name="left" value="0x03"/>
             <!-- Push object to the right of its container, not changing its size. -->
-            <flag name="right" value="0x05" />
+            <flag name="right" value="0x05"/>
             <!-- Place object in the vertical center of its container, not changing its size. -->
-            <flag name="center_vertical" value="0x10" />
+            <flag name="center_vertical" value="0x10"/>
             <!-- Grow the vertical size of the object if needed so it completely fills its container. -->
-            <flag name="fill_vertical" value="0x70" />
+            <flag name="fill_vertical" value="0x70"/>
             <!-- Place object in the horizontal center of its container, not changing its size. -->
-            <flag name="center_horizontal" value="0x01" />
+            <flag name="center_horizontal" value="0x01"/>
             <!-- Grow the horizontal size of the object if needed so it completely fills its container. -->
-            <flag name="fill_horizontal" value="0x07" />
+            <flag name="fill_horizontal" value="0x07"/>
             <!-- Place the object in the center of its container in both the vertical and horizontal axis, not changing its size. -->
-            <flag name="center" value="0x11" />
+            <flag name="center" value="0x11"/>
             <!-- Grow the horizontal and vertical size of the object if needed so it completely fills its container. -->
-            <flag name="fill" value="0x77" />
+            <flag name="fill" value="0x77"/>
             <!-- Additional option that can be set to have the top and/or bottom edges of
                  the child clipped to its container's bounds.
                  The clip will be based on the vertical gravity: a top gravity will clip the bottom
                  edge, a bottom gravity will clip the top edge, and neither will clip both edges. -->
-            <flag name="clip_vertical" value="0x80" />
+            <flag name="clip_vertical" value="0x80"/>
             <!-- Additional option that can be set to have the left and/or right edges of
                  the child clipped to its container's bounds.
                  The clip will be based on the horizontal gravity: a left gravity will clip the right
                  edge, a right gravity will clip the left edge, and neither will clip both edges. -->
-            <flag name="clip_horizontal" value="0x08" />
+            <flag name="clip_horizontal" value="0x08"/>
         </attr>
         <!-- Defines whether the foreground drawable should be drawn inside the padding.
              This property is turned on by default. -->
-        <attr name="FC_foregroundInsidePadding" format="boolean" />
+        <attr name="FC_foregroundInsidePadding" format="boolean"/>
         <!-- Determines whether to measure all children or just those in
              the VISIBLE or INVISIBLE state when measuring. Defaults to false. -->
-        <attr name="FC_measureAllChildren" format="boolean" />
+        <attr name="FC_measureAllChildren" format="boolean"/>
         <!-- Tint to apply to the foreground. -->
-        <attr name="FC_foregroundTint" format="color" />
+        <attr name="FC_foregroundTint" format="color"/>
         <!-- Blending mode used to apply the foreground tint. -->
         <attr name="FC_foregroundTintMode">
             <!-- The tint is drawn on top of the drawable.
                  [Sa + (1 - Sa)*Da, Rc = Sc + (1 - Sa)*Dc] -->
-            <enum name="src_over" value="3" />
+            <enum name="src_over" value="3"/>
             <!-- The tint is masked by the alpha channel of the drawable. The drawable’s
                  color channels are thrown out. [Sa * Da, Sc * Da] -->
-            <enum name="src_in" value="5" />
+            <enum name="src_in" value="5"/>
             <!-- The tint is drawn above the drawable, but with the drawable’s alpha
                  channel masking the result. [Da, Sc * Da + (1 - Sa) * Dc] -->
-            <enum name="src_atop" value="9" />
+            <enum name="src_atop" value="9"/>
             <!-- Multiplies the color and alpha channels of the drawable with those of
                  the tint. [Sa * Da, Sc * Dc] -->
-            <enum name="multiply" value="14" />
+            <enum name="multiply" value="14"/>
             <!-- [Sa + Da - Sa * Da, Sc + Dc - Sc * Dc] -->
-            <enum name="screen" value="15" />
+            <enum name="screen" value="15"/>
             <!-- Combines the tint and drawable color and alpha channels, clamping the
                  result to valid color values. Saturate(S + D) -->
-            <enum name="add" value="16" />
+            <enum name="add" value="16"/>
         </attr>
     </declare-styleable>
 

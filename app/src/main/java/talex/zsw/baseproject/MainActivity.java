@@ -23,6 +23,7 @@ import talex.zsw.baseproject.activity.ComplexActivity;
 import talex.zsw.baseproject.activity.ContentMenuActivity;
 import talex.zsw.baseproject.activity.CustomNumberPickActivity;
 import talex.zsw.baseproject.activity.CustomScrollViewActivity;
+import talex.zsw.baseproject.activity.DropDownMenuActivity;
 import talex.zsw.baseproject.activity.DynamicHeightImageViewActivity;
 import talex.zsw.baseproject.activity.ExpandableActivity;
 import talex.zsw.baseproject.activity.ExpandablePanelActivity;
@@ -95,12 +96,13 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add( new Vo( "CircleImageView", "将图片自动修正为圆形", CircleImageViewActivity.class ) );
 		datas.add( new Vo( "CircularProgress", "一直转圈的CircularProgress和CircularProgressDrawable",
 			CircularProgressActivity.class ) );
-//		datas.add( new Vo( "CircularReveal", "圆形展示，替换底部View", CircularRevealActivity.class ) );
+		//		datas.add( new Vo( "CircularReveal", "圆形展示，替换底部View", CircularRevealActivity.class ) );
 		datas.add( new Vo( "CollSwitch", "酷炫的开关按钮，选中与否可以改变布局", CollSwitchActivity.class ) );
 		datas.add( new Vo( "ContentMenu", "右上角向下展示的Menu", ContentMenuActivity.class ) );
 		datas.add( new Vo( "CustomNumberPick", "数字加减选择器", CustomNumberPickActivity.class ) );
 		datas.add( new Vo( "CustomScrollView", "可以上下左右滑动的View，且项目支持手势放大缩小",
 			CustomScrollViewActivity.class ) );
+		datas.add( new Vo( "DropDownMenu", "顶部下拉框", DropDownMenuActivity.class ) );
 		datas.add(
 			new Vo( "DynamicHeightImageView", "指定图片的宽高比", DynamicHeightImageViewActivity.class ) );
 		datas.add( new Vo( "ExpandableLayout", "可以扩展开的布局,包含ListView", ExpandableActivity.class ) );

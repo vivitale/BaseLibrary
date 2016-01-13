@@ -33,6 +33,7 @@
         <activity android:name=".activity.ContentMenuActivity"/>
         <activity android:name=".activity.CustomNumberPickActivity"/>
         <activity android:name=".activity.CustomScrollViewActivity"/>
+        <activity android:name=".activity.DropDownMenuActivity"/>
         <activity android:name=".activity.DynamicHeightImageViewActivity"/>
         <activity android:name=".activity.ExpandableActivity"/>
         <activity android:name=".activity.ExpandablePanelActivity"/>
