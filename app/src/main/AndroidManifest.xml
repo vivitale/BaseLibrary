@@ -47,6 +47,7 @@
         <activity android:name=".activity.NumberPBActivity"/>
         <activity android:name=".activity.OverScrollViewActivity"/>
         <activity android:name=".activity.OverScrollActivity"/>
+        <activity android:name=".activity.PercentLayoutActivity"/>
         <activity android:name=".activity.PullToNextLayoutActivity"/>
         <activity android:name=".activity.PTNScrollViewActivity"/>
         <activity android:name=".activity.PTNWebViewActivity"/>

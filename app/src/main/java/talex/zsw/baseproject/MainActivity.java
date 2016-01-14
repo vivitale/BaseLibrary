@@ -37,6 +37,7 @@ import talex.zsw.baseproject.activity.NiceSpinnerActivity;
 import talex.zsw.baseproject.activity.NumberPBActivity;
 import talex.zsw.baseproject.activity.OverScrollActivity;
 import talex.zsw.baseproject.activity.OverScrollViewActivity;
+import talex.zsw.baseproject.activity.PercentLayoutActivity;
 import talex.zsw.baseproject.activity.ProgressActivity;
 import talex.zsw.baseproject.activity.PullToNextLayoutActivity;
 import talex.zsw.baseproject.activity.PullZoomViewActivity;
@@ -121,6 +122,7 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add(
 			new Vo( "OverScroll-Decor", "Android>=14 可以给任意View加上阻尼效果", OverScrollActivity.class ) );
 		datas.add( new Vo( "Progress", "几个自定义的Progress的使用", ProgressActivity.class ) );
+		datas.add( new Vo( "PercentLayout", "百分比布局", PercentLayoutActivity.class ) );
 		datas.add( new Vo( "PullToNextLayout", "下拉到下一个界面的View", PullToNextLayoutActivity.class ) );
 		datas.add( new Vo( "PullZoomView", "下拉放大，适用于个人中心", PullZoomViewActivity.class ) );
 		datas.add( new Vo( "RecyclerView", "RecyclerView配合layoutAnimation实现动画效果",
