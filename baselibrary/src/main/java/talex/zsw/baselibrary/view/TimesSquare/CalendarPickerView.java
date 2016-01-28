@@ -627,7 +627,7 @@ public class CalendarPickerView extends ListView {
     return date != null;
   }
 
-  private void clearOldSelections() {
+  public void clearOldSelections() {
     for (MonthCellDescriptor selectedCell : selectedCells) {
       // De-select the currently-selected cell.
       selectedCell.setSelected(false);

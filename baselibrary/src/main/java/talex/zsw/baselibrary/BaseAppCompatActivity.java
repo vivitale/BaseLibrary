@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
@@ -31,9 +32,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import talex.zsw.baselibrary.util.StringUtils;
+import talex.zsw.baselibrary.view.SweetAlertDialog.SweetAlertDialog;
 import talex.zsw.baselibrary.view.appmsg.AppMsg;
-import talex.zsw.baselibrary.widget.LoadingDialog;
 import talex.zsw.baselibrary.widget.RichText;
+import talex.zsw.baselibrary.xbus.Bus;
 
 @SuppressWarnings("ALL") public abstract class BaseAppCompatActivity extends AppCompatActivity
 {
@@ -44,7 +46,8 @@ import talex.zsw.baselibrary.widget.RichText;
 
 	protected BaseApplication mApplication;
 	private boolean mViewInited = false;
-	protected LoadingDialog loadingDialog;
+	//	protected LoadingDialog loadingDialog;
+	private SweetAlertDialog mSweetAlertDialog;
 	private InputMethodManager mInputMethodManager;
 
 	protected abstract void initArgs(Intent intent);
@@ -69,32 +72,106 @@ import talex.zsw.baselibrary.widget.RichText;
 		{
 			e.printStackTrace();
 		}
+		Bus.getDefault().register( this );
 	}
 
 	@Override protected void onDestroy()
 	{
 		super.onDestroy();
 		setContentView( R.layout.activity_empty );
+		Bus.getDefault().unregister( this );
 	}
 
 	public void showDialog()
 	{
-		if(null == loadingDialog)
+		//		if(null == loadingDialog)
+		//		{
+		//			loadingDialog = new LoadingDialog( this );
+		//		}
+		//		if(!loadingDialog.isShowing())
+		//		{
+		//			loadingDialog.show();
+		//		}
+		if(mSweetAlertDialog != null && mSweetAlertDialog.isShowing())
 		{
-			loadingDialog = new LoadingDialog( this );
+			mSweetAlertDialog.setTitleText( "正在加载数据" );
+			mSweetAlertDialog.changeAlertType( SweetAlertDialog.PROGRESS_TYPE );
 		}
-		if(!loadingDialog.isShowing())
+		else
 		{
-			loadingDialog.show();
+			mSweetAlertDialog = new SweetAlertDialog( this, SweetAlertDialog.PROGRESS_TYPE )
+				.setTitleText( "正在加载数据" );
+			mSweetAlertDialog.show();
 		}
 	}
 
+	public void showDialog(int type, String title, String content, String confirmText,
+		String cancelText, SweetAlertDialog.OnSweetClickListener confirmListener,
+		SweetAlertDialog.OnSweetClickListener cancelListener)
+	{
+		if(mSweetAlertDialog != null && mSweetAlertDialog.isShowing())
+		{
+			mSweetAlertDialog.changeAlertType( type );
+		}
+		else
+		{
+			mSweetAlertDialog = new SweetAlertDialog( this, type );
+		}
+		if(!StringUtils.isBlank( title ))
+		{
+			mSweetAlertDialog.setTitleText( title );
+		}
+		if(!StringUtils.isBlank( content ))
+		{
+			mSweetAlertDialog.setContentText( content );
+		}
+		if(!StringUtils.isBlank( confirmText ))
+		{
+			mSweetAlertDialog.setConfirmText( confirmText );
+		}
+		if(!StringUtils.isBlank( cancelText ))
+		{
+			mSweetAlertDialog.setCancelText( cancelText );
+		}
+		if(confirmListener != null)
+		{
+			mSweetAlertDialog.setConfirmClickListener( confirmListener );
+		}
+		if(confirmListener != null)
+		{
+			mSweetAlertDialog.setCancelClickListener( cancelListener );
+		}
+		mSweetAlertDialog.show();
+	}
+
+	public SweetAlertDialog.OnSweetClickListener finishListener =
+		new SweetAlertDialog.OnSweetClickListener()
+		{
+			@Override public void onClick(SweetAlertDialog sweetAlertDialog)
+			{
+				sweetAlertDialog.dismissWithAnimation();
+				finish();
+			}
+		};
+
 	public void disDialog()
 	{
-		if(loadingDialog != null && loadingDialog.isShowing())
+		//		if(loadingDialog != null && loadingDialog.isShowing())
+		//		{
+		//			loadingDialog.dismiss();
+		//		}
+		mSweetAlertDialog.dismissWithAnimation();
+	}
+
+	public void disDialog(int time)
+	{
+		new Handler().postDelayed( new Runnable()
 		{
-			loadingDialog.dismiss();
-		}
+			@Override public void run()
+			{
+				disDialog();
+			}
+		}, time );
 	}
 
 	protected BaseApplication getAppApplication()

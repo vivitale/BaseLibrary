@@ -1,7 +1,5 @@
 package talex.zsw.baselibrary.view.Volley;
 
-import android.util.Log;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
@@ -17,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import talex.zsw.baselibrary.util.XmlUtil;
+import talex.zsw.baselibrary.util.klog.KLog;
 
 
 public class XMLRequest<T> extends Request<T>
@@ -29,7 +28,7 @@ public class XMLRequest<T> extends Request<T>
 					  Listener<T> listener, ErrorListener errorListener)
 	{
 		super(method, url, errorListener);
-		Log.i("TALEX", "请求地址:" + url);
+		KLog.i( "请求地址:" + url);
 		mClass = clazz;
 		mListener = listener;
 		map = new HashMap<>();
@@ -48,7 +47,7 @@ public class XMLRequest<T> extends Request<T>
 	{
 		for (Map.Entry<String, String> entry : map.entrySet())
 		{
-			Log.v("TALEX", "请求参数:" + entry.getKey() + "--->" + entry.getValue());
+			KLog.v( "请求参数:" + entry.getKey() + "--->" + entry.getValue());
 		}
 		return map;
 	}
@@ -60,7 +59,7 @@ public class XMLRequest<T> extends Request<T>
 		{
 			String responseString = new String(response.data,
 				HttpHeaderParser.parseCharset(response.headers));
-			Log.v("TALEX", "返回数据:" + responseString);
+			KLog.v( "返回数据:" + responseString);
 			try
 			{
 				responseString = new String(response.data, "utf-8");

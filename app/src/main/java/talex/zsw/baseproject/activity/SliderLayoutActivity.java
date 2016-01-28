@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 import talex.zsw.baselibrary.BaseAppCompatActivity;
 import talex.zsw.baselibrary.view.AndroidAnimations.library.Techniques;
 import talex.zsw.baselibrary.view.SliderLayout.Animations.BaseAnimationWithYoYo;
+import talex.zsw.baselibrary.view.SliderLayout.Animations.DescriptionAnimation;
 import talex.zsw.baselibrary.view.SliderLayout.Indicators.PagerIndicator;
 import talex.zsw.baselibrary.view.SliderLayout.SliderLayout;
 import talex.zsw.baselibrary.view.SliderLayout.SliderTypes.BaseSliderView;
@@ -47,7 +48,7 @@ public class SliderLayoutActivity extends BaseAppCompatActivity
 		mSlider.setCustomIndicator(mPagerIndicator);
 		mSlider.setPresetTransformer(SliderLayout.Transformer.Default);
 //		mSlider.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
-//		mSlider.setCustomAnimation(new DescriptionAnimation());
+		mSlider.setCustomAnimation(new DescriptionAnimation());
 		mSlider.setCustomAnimation(new BaseAnimationWithYoYo(Techniques.FadeInLeft,Techniques.FadeOutRight));//
 	}
 

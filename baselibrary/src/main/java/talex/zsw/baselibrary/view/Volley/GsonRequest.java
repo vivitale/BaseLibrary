@@ -51,6 +51,7 @@ public class GsonRequest<T> extends Request<T>
 			try
 			{
 				jsonString = new String(response.data, "utf-8");
+				KLog.json(jsonString);
 			} catch (UnsupportedEncodingException e)
 			{
 				e.printStackTrace();

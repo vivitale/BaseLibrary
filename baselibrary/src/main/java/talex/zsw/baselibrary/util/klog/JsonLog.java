@@ -29,12 +29,15 @@ public class JsonLog extends BaseLog {
             message = msg;
         }
 
+        String str="";
         printLine(tag, true);
         message = headString + LINE_SEPARATOR + message;
         String[] lines = message.split(LINE_SEPARATOR);
         for (String line : lines) {
-            Log.d(tag, " " + line);
+//            Log.d(tag, "║ " + line);
+            str += line+"\n";
         }
+        Log.d( tag,str );
         printLine(tag, false);
     }
 }
