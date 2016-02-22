@@ -26,6 +26,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import talex.zsw.baselibrary.R;
+import talex.zsw.baselibrary.util.StringUtils;
 
 /**
  * Created by zzhoujay on 2015/7/21 0021.
@@ -42,41 +43,41 @@ public class RichText extends TextView
 
 	public RichText(Context context)
 	{
-		this(context, null);
+		this( context, null );
 	}
 
 	public RichText(Context context, AttributeSet attrs)
 	{
-		this(context, attrs, 0);
+		this( context, attrs, 0 );
 	}
 
 	public RichText(Context context, AttributeSet attrs, int defStyleAttr)
 	{
-		super(context, attrs, defStyleAttr);
+		super( context, attrs, defStyleAttr );
 
-		init(context, attrs);
+		init( context, attrs );
 	}
 
 	private void init(Context context, AttributeSet attrs)
 	{
 		targets = new HashSet<>();
-		TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RichText);
-		placeHolder = typedArray.getDrawable(R.styleable.RichText_RT_placeHolder);
-		errorImage = typedArray.getDrawable(R.styleable.RichText_RT_errorImage);
+		TypedArray typedArray = context.obtainStyledAttributes( attrs, R.styleable.RichText );
+		placeHolder = typedArray.getDrawable( R.styleable.RichText_RT_placeHolder );
+		errorImage = typedArray.getDrawable( R.styleable.RichText_RT_errorImage );
 
-		d_w = typedArray.getDimensionPixelSize(R.styleable.RichText_RT_default_width, d_w);
-		d_h = typedArray.getDimensionPixelSize(R.styleable.RichText_RT_default_height, d_h);
+		d_w = typedArray.getDimensionPixelSize( R.styleable.RichText_RT_default_width, d_w );
+		d_h = typedArray.getDimensionPixelSize( R.styleable.RichText_RT_default_height, d_h );
 
-		if (placeHolder == null)
+		if(placeHolder == null)
 		{
-			placeHolder = new ColorDrawable(Color.GRAY);
+			placeHolder = new ColorDrawable( Color.GRAY );
 		}
-		placeHolder.setBounds(0, 0, d_w, d_h);
-		if (errorImage == null)
+		placeHolder.setBounds( 0, 0, d_w, d_h );
+		if(errorImage == null)
 		{
-			errorImage = new ColorDrawable(Color.GRAY);
+			errorImage = new ColorDrawable( Color.GRAY );
 		}
-		errorImage.setBounds(0, 0, d_w, d_h);
+		errorImage.setBounds( 0, 0, d_w, d_h );
 		typedArray.recycle();
 	}
 
@@ -88,61 +89,64 @@ public class RichText extends TextView
 	 */
 	public void setRichText(String text)
 	{
+		if(StringUtils.isBlank( text ))
+		{
+			return;
+		}
 		targets.clear();
-		Spanned spanned = Html.fromHtml(text, asyncImageGetter, null);
+		Spanned spanned = Html.fromHtml( text, asyncImageGetter, null );
 		SpannableStringBuilder spannableStringBuilder;
-		if (spanned instanceof SpannableStringBuilder)
+		if(spanned instanceof SpannableStringBuilder)
 		{
 			spannableStringBuilder = (SpannableStringBuilder) spanned;
 		}
 		else
 		{
-			spannableStringBuilder = new SpannableStringBuilder(spanned);
+			spannableStringBuilder = new SpannableStringBuilder( spanned );
 		}
 
-		ImageSpan[] imageSpans = spannableStringBuilder.getSpans(0, spannableStringBuilder.length(),
-			ImageSpan.class);
+		ImageSpan[] imageSpans =
+			spannableStringBuilder.getSpans( 0, spannableStringBuilder.length(), ImageSpan.class );
 		final List<String> imageUrls = new ArrayList<>();
 
-		for (int i = 0, size = imageSpans.length; i < size; i++)
+		for(int i = 0, size = imageSpans.length; i < size; i++)
 		{
 			ImageSpan imageSpan = imageSpans[i];
 			String imageUrl = imageSpan.getSource();
-			int start = spannableStringBuilder.getSpanStart(imageSpan);
-			int end = spannableStringBuilder.getSpanEnd(imageSpan);
-			imageUrls.add(imageUrl);
+			int start = spannableStringBuilder.getSpanStart( imageSpan );
+			int end = spannableStringBuilder.getSpanEnd( imageSpan );
+			imageUrls.add( imageUrl );
 
 			final int finalI = i;
 			ClickableSpan clickableSpan = new ClickableSpan()
 			{
-				@Override
-				public void onClick(View widget)
+				@Override public void onClick(View widget)
 				{
-					if (onImageClickListener != null)
+					if(onImageClickListener != null)
 					{
-						onImageClickListener.imageClicked(imageUrls, finalI);
+						onImageClickListener.imageClicked( imageUrls, finalI );
 					}
 				}
 			};
 			ClickableSpan[] clickableSpans =
-				spannableStringBuilder.getSpans(start, end, ClickableSpan.class);
-			if (clickableSpans != null && clickableSpans.length != 0)
+				spannableStringBuilder.getSpans( start, end, ClickableSpan.class );
+			if(clickableSpans != null && clickableSpans.length != 0)
 			{
-				for (ClickableSpan cs : clickableSpans)
+				for(ClickableSpan cs : clickableSpans)
 				{
-					spannableStringBuilder.removeSpan(cs);
+					spannableStringBuilder.removeSpan( cs );
 				}
 			}
 			spannableStringBuilder
-				.setSpan(clickableSpan, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+				.setSpan( clickableSpan, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
 		}
-		super.setText(spanned);
-		setMovementMethod(LinkMovementMethod.getInstance());
+		super.setText( spanned );
+		setMovementMethod( LinkMovementMethod.getInstance() );
 	}
 
 	private void addTarget(Target target)
 	{
-		targets.add(target);
+		targets.add( target );
 	}
 
 	/**
@@ -150,39 +154,35 @@ public class RichText extends TextView
 	 */
 	private Html.ImageGetter asyncImageGetter = new Html.ImageGetter()
 	{
-		@Override
-		public Drawable getDrawable(String source)
+		@Override public Drawable getDrawable(String source)
 		{
 			final URLDrawable urlDrawable = new URLDrawable();
 			Target target = new Target()
 			{
-				@Override
-				public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from)
+				@Override public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from)
 				{
-					Drawable drawable = new BitmapDrawable(getContext().getResources(), bitmap);
-					drawable.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
-					urlDrawable.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
-					urlDrawable.setDrawable(drawable);
-					RichText.this.setText(getText());
+					Drawable drawable = new BitmapDrawable( getContext().getResources(), bitmap );
+					drawable.setBounds( 0, 0, bitmap.getWidth(), bitmap.getHeight() );
+					urlDrawable.setBounds( 0, 0, bitmap.getWidth(), bitmap.getHeight() );
+					urlDrawable.setDrawable( drawable );
+					RichText.this.setText( getText() );
 				}
 
-				@Override
-				public void onBitmapFailed(Drawable errorDrawable)
+				@Override public void onBitmapFailed(Drawable errorDrawable)
 				{
-					urlDrawable.setBounds(errorDrawable.getBounds());
-					urlDrawable.setDrawable(errorDrawable);
+					urlDrawable.setBounds( errorDrawable.getBounds() );
+					urlDrawable.setDrawable( errorDrawable );
 				}
 
-				@Override
-				public void onPrepareLoad(Drawable placeHolderDrawable)
+				@Override public void onPrepareLoad(Drawable placeHolderDrawable)
 				{
-					urlDrawable.setBounds(placeHolderDrawable.getBounds());
-					urlDrawable.setDrawable(placeHolderDrawable);
+					urlDrawable.setBounds( placeHolderDrawable.getBounds() );
+					urlDrawable.setDrawable( placeHolderDrawable );
 				}
 			};
-			addTarget(target);
-			Picasso.with(getContext()).load(source).placeholder(placeHolder).error(errorImage)
-				.into(target);
+			addTarget( target );
+			Picasso.with( getContext() ).load( source ).placeholder( placeHolder )
+				.error( errorImage ).into( target );
 			return urlDrawable;
 		}
 	};
@@ -191,17 +191,15 @@ public class RichText extends TextView
 	{
 		private Drawable drawable;
 
-		@SuppressWarnings("deprecation")
-		public URLDrawable()
+		@SuppressWarnings("deprecation") public URLDrawable()
 		{
 		}
 
-		@Override
-		public void draw(Canvas canvas)
+		@Override public void draw(Canvas canvas)
 		{
-			if (drawable != null)
+			if(drawable != null)
 			{
-				drawable.draw(canvas);
+				drawable.draw( canvas );
 			}
 		}
 
@@ -214,13 +212,13 @@ public class RichText extends TextView
 	public void setPlaceHolder(Drawable placeHolder)
 	{
 		this.placeHolder = placeHolder;
-		this.placeHolder.setBounds(0, 0, d_w, d_h);
+		this.placeHolder.setBounds( 0, 0, d_w, d_h );
 	}
 
 	public void setErrorImage(Drawable errorImage)
 	{
 		this.errorImage = errorImage;
-		this.errorImage.setBounds(0, 0, d_w, d_h);
+		this.errorImage.setBounds( 0, 0, d_w, d_h );
 	}
 
 	public void setOnImageClickListener(OnImageClickListener onImageClickListener)

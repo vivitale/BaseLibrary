@@ -62,7 +62,10 @@ public class IndicatorView extends LinearLayout implements ViewPager.OnPageChang
     }
     private void init() {
         setOrientation(LinearLayout.HORIZONTAL);
-
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+        {
+            setLayerType( View.LAYER_TYPE_SOFTWARE, null );
+        }
         mCircleRevealHelper=new CircleRevealHelper(this);
     }
 

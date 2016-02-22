@@ -173,8 +173,9 @@ public abstract class BaseFragment extends Fragment
 		}
 		else
 		{
-			mSweetAlertDialog = new SweetAlertDialog( getActivity(), SweetAlertDialog.PROGRESS_TYPE )
-				.setTitleText( "正在加载数据" );
+			mSweetAlertDialog =
+				new SweetAlertDialog( getActivity(), SweetAlertDialog.PROGRESS_TYPE )
+					.setTitleText( "正在加载数据" );
 			mSweetAlertDialog.show();
 		}
 	}
@@ -217,6 +218,16 @@ public abstract class BaseFragment extends Fragment
 		}
 		mSweetAlertDialog.show();
 	}
+
+	public SweetAlertDialog.OnSweetClickListener finishListener =
+		new SweetAlertDialog.OnSweetClickListener()
+		{
+			@Override public void onClick(SweetAlertDialog sweetAlertDialog)
+			{
+				sweetAlertDialog.dismissWithAnimation();
+				getActivity().finish();
+			}
+		};
 
 	public void disDialog()
 	{

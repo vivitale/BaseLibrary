@@ -60,7 +60,7 @@ import talex.zsw.baselibrary.xbus.Bus;
 	{
 		super.onCreate( savedInstanceState );
 		mApplication = getAppApplication();
-		mApplication.addActivity( this );
+		mApplication.addActivity( BaseAppCompatActivity.this );
 		mInputMethodManager =
 			(InputMethodManager) this.getSystemService( Context.INPUT_METHOD_SERVICE );
 		try
@@ -72,14 +72,20 @@ import talex.zsw.baselibrary.xbus.Bus;
 		{
 			e.printStackTrace();
 		}
-		Bus.getDefault().register( this );
+		Bus.getDefault().register( BaseAppCompatActivity.this );
 	}
 
 	@Override protected void onDestroy()
 	{
-		super.onDestroy();
 		setContentView( R.layout.activity_empty );
 		Bus.getDefault().unregister( this );
+		mInputMethodManager = null;
+		if(mSweetAlertDialog != null && mSweetAlertDialog.isShowing())
+		{
+			mSweetAlertDialog = null;
+		}
+		super.onDestroy();
+		mApplication.removeActivity( BaseAppCompatActivity.this );
 	}
 
 	public void showDialog()
@@ -99,8 +105,9 @@ import talex.zsw.baselibrary.xbus.Bus;
 		}
 		else
 		{
-			mSweetAlertDialog = new SweetAlertDialog( this, SweetAlertDialog.PROGRESS_TYPE )
-				.setTitleText( "正在加载数据" );
+			mSweetAlertDialog =
+				new SweetAlertDialog( BaseAppCompatActivity.this, SweetAlertDialog.PROGRESS_TYPE )
+					.setTitleText( "正在加载数据" );
 			mSweetAlertDialog.show();
 		}
 	}
@@ -115,7 +122,7 @@ import talex.zsw.baselibrary.xbus.Bus;
 		}
 		else
 		{
-			mSweetAlertDialog = new SweetAlertDialog( this, type );
+			mSweetAlertDialog = new SweetAlertDialog( BaseAppCompatActivity.this, type );
 		}
 		if(!StringUtils.isBlank( title ))
 		{

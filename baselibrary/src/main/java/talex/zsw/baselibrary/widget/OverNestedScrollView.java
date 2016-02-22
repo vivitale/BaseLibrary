@@ -167,6 +167,8 @@ import android.view.View;
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev)
 	{
+		try
+		{
 		// 如果禁用，不做任何处理
 		if (!mIsUseOverScroll)
 		{
@@ -197,11 +199,18 @@ import android.view.View;
 				}
 		}
 		return super.onInterceptTouchEvent(ev);
+		} catch(IllegalArgumentException ex)
+		{
+			ex.printStackTrace();
+		}
+		return false;
 	}
 
 	@Override
 	public boolean onTouchEvent(MotionEvent ev)
 	{
+		try
+		{
 		isOnTouch = true;
 		if (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_CANCEL)
 		{
@@ -344,6 +353,11 @@ import android.view.View;
 				break;
 		}
 		return super.onTouchEvent(ev);
+		} catch(IllegalArgumentException ex)
+		{
+			ex.printStackTrace();
+		}
+		return false;
 	}
 
 	/**

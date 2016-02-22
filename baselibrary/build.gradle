@@ -30,4 +30,13 @@ dependencies {
 	compile 'com.android.support:recyclerview-v7:23.1.1'
 	compile 'com.android.support:cardview-v7:23.1.1'
 	compile 'com.android.support:percent:23.1.1'
+	compile 'com.google.code.gson:gson:2.4'
 }
+
+//allprojects {
+//	gradle.projectsEvaluated {
+//		tasks.withType(JavaCompile) {
+//			options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation" << "-Xdiags:verbose"
+//		}
+//	}
+//}

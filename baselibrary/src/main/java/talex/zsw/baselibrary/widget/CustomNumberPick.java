@@ -16,7 +16,6 @@ import talex.zsw.baselibrary.R;
 
 public class CustomNumberPick extends RelativeLayout
 {
-
 	private Context mContext;
 	private LayoutInflater mLayoutInflater;
 	private TextView mTvreduce, mTvadd, mEt_num;
@@ -24,7 +23,7 @@ public class CustomNumberPick extends RelativeLayout
 	public int mCount = 1, maxNum = 99, minNum = 1, stepNum = 1;
 
 	private float mWidth, mHeight, mEditWidth;
-	private Drawable addDrawable, reduceDrawable;
+	private Drawable addDrawable, reduceDrawable,editDrawable;
 
 	public int getMaxNum()
 	{
@@ -113,6 +112,7 @@ public class CustomNumberPick extends RelativeLayout
 			typedArray.getDimension( R.styleable.CustomNumberPick_CNP_EditWidth, density * 50 );
 		mWidth = typedArray.getDimension( R.styleable.CustomNumberPick_CNP_Width, density * 35 );
 		mHeight = typedArray.getDimension( R.styleable.CustomNumberPick_CNP_Height, density * 35 );
+		editDrawable = typedArray.getDrawable( R.styleable.CustomNumberPick_CNP_EditDrawable );
 		addDrawable = typedArray.getDrawable( R.styleable.CustomNumberPick_CNP_AddDrawable );
 		reduceDrawable = typedArray.getDrawable( R.styleable.CustomNumberPick_CNP_ReduceDrawable );
 
@@ -158,6 +158,17 @@ public class CustomNumberPick extends RelativeLayout
 		params.height = (int) mHeight;
 		params.width = (int) mEditWidth;
 		mEt_num.setLayoutParams( params );
+		if(reduceDrawable != null)
+		{
+			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+			{
+				mEt_num.setBackground( editDrawable );
+			}
+			else
+			{
+				mEt_num.setBackgroundDrawable( editDrawable );
+			}
+		}
 
 		setButtonAble();
 	}
@@ -205,20 +216,21 @@ public class CustomNumberPick extends RelativeLayout
 	 */
 	private void setButtonAble()
 	{
-		if(mCount <= minNum)
+		if(mCount > minNum)
 		{
-			mTvreduce.setEnabled( false );
-			mTvadd.setEnabled( true );
-		}
-		else if(mCount >= maxNum)
-		{
-			mTvadd.setEnabled( false );
 			mTvreduce.setEnabled( true );
 		}
 		else
 		{
-			mTvreduce.setEnabled( true );
+			mTvreduce.setEnabled( false );
+		}
+		if(mCount < maxNum)
+		{
 			mTvadd.setEnabled( true );
+		}
+		else
+		{
+			mTvadd.setEnabled( false );
 		}
 	}
 

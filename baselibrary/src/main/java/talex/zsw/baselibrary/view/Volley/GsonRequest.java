@@ -43,40 +43,32 @@ public class GsonRequest<T> extends Request<T>
 	@Override
 	protected Response<T> parseNetworkResponse(NetworkResponse response)
 	{
+		String jsonString;
 		try
 		{
-			String jsonString = new String(response.data,
-				HttpHeaderParser.parseCharset(response.headers));
+			jsonString = new String(response.data, "utf-8");
 			KLog.json(jsonString);
-			try
-			{
-				jsonString = new String(response.data, "utf-8");
-				KLog.json(jsonString);
-			} catch (UnsupportedEncodingException e)
-			{
-				e.printStackTrace();
-				return Response.error(new ParseError(e));
-			}
-//			mHeader = response.headers.toString();
-//			Log.w("LOG", "get headers in parseNetworkResponse " + response.headers.toString());
-//			//使用正则表达式从reponse的头中提取cookie内容的子串
-//			Pattern pattern = Pattern.compile("Set-Cookie.*?;");
-//			Matcher m = pattern.matcher(mHeader);
-//			if (m.find())
-//			{
-//				cookieFromResponse = m.group();
-//				Log.w("LOG", "cookie from server " + cookieFromResponse);
-//			}
-//			//去掉cookie末尾的分号
-//			cookieFromResponse = cookieFromResponse.substring(11, cookieFromResponse.length() - 1);
-//			Log.w("LOG", "cookie substring " + cookieFromResponse);
-
-			return Response.success(mGson.fromJson(jsonString, mClass),
-				HttpHeaderParser.parseCacheHeaders(response));
 		} catch (UnsupportedEncodingException e)
 		{
+			e.printStackTrace();
 			return Response.error(new ParseError(e));
 		}
+		//			mHeader = response.headers.toString();
+		//			Log.w("LOG", "get headers in parseNetworkResponse " + response.headers.toString());
+		//			//使用正则表达式从reponse的头中提取cookie内容的子串
+		//			Pattern pattern = Pattern.compile("Set-Cookie.*?;");
+		//			Matcher m = pattern.matcher(mHeader);
+		//			if (m.find())
+		//			{
+		//				cookieFromResponse = m.group();
+		//				Log.w("LOG", "cookie from server " + cookieFromResponse);
+		//			}
+		//			//去掉cookie末尾的分号
+		//			cookieFromResponse = cookieFromResponse.substring(11, cookieFromResponse.length() - 1);
+		//			Log.w("LOG", "cookie substring " + cookieFromResponse);
+
+		return Response.success(mGson.fromJson(jsonString, mClass),
+			HttpHeaderParser.parseCacheHeaders(response));
 	}
 
 	@Override

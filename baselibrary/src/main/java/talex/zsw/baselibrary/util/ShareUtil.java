@@ -79,6 +79,7 @@ public class ShareUtil
 			e.printStackTrace();
 		}
 		Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.setType("image/jpg");
 		intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(tmpFile));
 		intent.putExtra(Intent.EXTRA_SUBJECT, msgTitle);
 		intent.putExtra(Intent.EXTRA_TEXT, msgText);

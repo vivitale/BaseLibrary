@@ -479,4 +479,32 @@ public class StringUtils
 	{
 		return null == charSequence || charSequence.length() <= 0;
 	}
+
+	public static ArrayList<String> string2List(String strList)
+	{
+		ArrayList<String> list = new ArrayList<String>();
+		if (!isBlank(strList))
+		{
+			String[] strings = strList.split(",");
+			for (int j = 0; j < strings.length; j++)
+			{
+				list.add(strings[j]);
+			}
+		}
+		return list;
+	}
+
+	public static String list2String(ArrayList<String> list)
+	{
+		String string = "";
+		if (list.size() > 0)
+		{
+			for (int i = 0; i < list.size() - 1; i++)
+			{
+				string = string + list.get(i) + ",";
+			}
+			string = string + list.get(list.size() - 1);
+		}
+		return string;
+	}
 }

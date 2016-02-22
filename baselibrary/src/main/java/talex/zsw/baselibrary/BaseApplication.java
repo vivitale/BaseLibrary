@@ -109,4 +109,9 @@ public class BaseApplication extends Application
 	{
 		this.activityList.add(activity);
 	}
+
+	public void removeActivity(Activity activity)
+	{
+		this.activityList.remove(activity);
+	}
 }
