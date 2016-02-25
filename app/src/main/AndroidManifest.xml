@@ -48,6 +48,7 @@
         <activity android:name=".activity.NumberPBActivity"/>
         <activity android:name=".activity.OverScrollViewActivity"/>
         <activity android:name=".activity.OverScrollActivity"/>
+        <activity android:name=".activity.PsdLoadingViewActivity"/>
         <activity android:name=".activity.PercentLayoutActivity"/>
         <activity android:name=".activity.PullToNextLayoutActivity"/>
         <activity android:name=".activity.PTNScrollViewActivity"/>
@@ -73,6 +74,7 @@
         <activity android:name=".activity.SwipeLayoutActivity"/>
         <activity android:name=".activity.SwipyRefreshLayoutActivity"/>
         <activity android:name=".activity.SwitchAnimationActivity"/>
+        <activity android:name=".activity.TimeSinceActivity"/>
         <activity android:name=".activity.TimesSquareActivity"/>
         <activity android:name=".activity.WheelViewActivity"/>
         <activity android:name=".activity.WTextViewActivity"/>

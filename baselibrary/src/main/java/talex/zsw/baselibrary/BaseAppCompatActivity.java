@@ -374,36 +374,14 @@ import talex.zsw.baselibrary.xbus.Bus;
 	public void setWebData(String content, WebView mWebView, RichText mRichText,
 		final ProgressBar mProgressBar)
 	{
-		float scale = getResources().getDisplayMetrics().density;
-		int x = (int) (getScrnWeight() / 20 / scale);
-		content = "<style>\n" +
-			"    img {\n" +
-			"        max-width: 100%;\n" +
-			"        width: 100%;\n" +
-			"        height: auto\n" +
-			"    }\n" +
-			"    \n" +
-			"    video {\n" +
-			"        width: 100%;\n" +
-			"        max-width: 100%;\n" +
-			"        height: auto\n" +
-			"    }\n" +
-			"</style>\n" +
-			content + "<script type=\"text/javascript\">" +
-			"var imgs = document.getElementsByTagName('img');" +
-			"for(var i = 0; i<tables.length; i++){" +  // 逐个改变
-			"imgs[i].style.width = '100%';" +  // 宽度改为100%
-			"imgs[i].style.height = 'auto';" +
-			"}" +
-			"</script>";
 		// 设置WebView的属性，此时可以去执行JavaScript脚本`
 		mWebView.getSettings().setJavaScriptEnabled( true ); // 设置支持javascript脚本
 		mWebView.getSettings().setAllowFileAccess( true ); // 允许访问文件
 		mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically( true );
 		mWebView.getSettings().setLayoutAlgorithm( WebSettings.LayoutAlgorithm.SINGLE_COLUMN );
 		mWebView.getSettings().setDefaultTextEncodingName( "UTF-8" );//设置默认为utf-8
-		mWebView.getSettings().setDefaultFontSize( (int) (46 / scale) );
-		mWebView.getSettings().setMinimumFontSize( (int) (38 / scale) );
+		//		mWebView.getSettings().setDefaultFontSize( (int) (46 / scale) );
+		//		mWebView.getSettings().setMinimumFontSize( (int) (38 / scale) );
 		mWebView.getSettings().setSupportZoom( false );// 支持缩放
 		mWebView.getSettings().setBuiltInZoomControls( false ); // 设置显示缩放按钮
 		//		mWebView.getSettings().setUseWideViewPort(true);
@@ -436,6 +414,8 @@ import talex.zsw.baselibrary.xbus.Bus;
 		}
 		else if(content.startsWith( "http://" ) || content.startsWith( "https://" ))
 		{
+			mWebView.getSettings().setUseWideViewPort(true);
+			mWebView.getSettings().setLoadWithOverviewMode(true);
 			mProgressBar.setVisibility( View.VISIBLE );
 			mProgressBar.setMax( 100 );
 			// 当webview里面能点击是 在当前页面上显示！
@@ -474,6 +454,37 @@ import talex.zsw.baselibrary.xbus.Bus;
 		}
 		else
 		{
+			content = "<style>\n" +
+				"    img {\n" +
+				"        max-width: 100%;\n" +
+				"        width: 100%;\n" +
+				"        height: auto\n" +
+				"    }\n" +
+				"    \n" +
+				"    div {\n" +
+				"        width: 100%;\n" +
+				"        max-width: 100%;\n" +
+				"        height: auto\n" +
+				"    }\n" +
+				"    \n" +
+				"    p {\n" +
+				"        width: 100%;\n" +
+				"        max-width: 100%;\n" +
+				"        height: auto\n" +
+				"    }\n" +
+				"</style>\n" +
+				content + "<script type=\"text/javascript\">" +
+				"var imgs = document.getElementsByTagName('img');" +
+				"for(var i = 0; i<tables.length; i++){" +  // 逐个改变
+				"imgs[i].style.width = '100%';" +  // 宽度改为100%
+				"imgs[i].style.height = 'auto';" +
+				"}" +
+				"var ps = document.getElementsByTagName('p');" +
+				"for(var i = 0; i<tables.length; i++){" +  // 逐个改变
+				"ps[i].style.width = '100%';" +  // 宽度改为100%
+				"ps[i].style.height = 'auto';" +
+				"}" +
+				"</script>";
 			String regEx = "</?[^>]+>";
 			Pattern pat = Pattern.compile( regEx );
 			Matcher mat = pat.matcher( content );

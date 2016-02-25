@@ -60,6 +60,6 @@ public class SwipyRefreshLayoutActivity extends BaseAppCompatActivity
 			{
 				mSwipyRefreshLayout.setRefreshing(false);
 			}
-		}, 2000);
+		}, 10000);
 	}
 }

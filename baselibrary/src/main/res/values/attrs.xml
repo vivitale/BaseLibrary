@@ -189,6 +189,7 @@
         <attr name="CNP_Height" format="dimension"/>
         <attr name="CNP_EditWidth" format="dimension"/>
         <attr name="CNP_AddDrawable" format="reference"/>
+        <attr name="CNP_EditDrawable" format="reference"/>
         <attr name="CNP_ReduceDrawable" format="reference"/>
     </declare-styleable>
 
@@ -399,6 +400,8 @@
         <attr name="SliderStyle" format="reference"/>
         <attr name="PagerIndicatorStyle" format="reference"/>
     </declare-styleable>
+
+    <attr name="abbreviated" format="boolean" />
 
     <!-- ###################无用###################### -->
     <declare-styleable name="FrameLayoutCompat2">
