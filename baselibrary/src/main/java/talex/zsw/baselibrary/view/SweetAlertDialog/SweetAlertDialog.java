@@ -56,7 +56,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener
 	private OnSweetClickListener mConfirmClickListener;
 	private boolean mCloseFromCancel;
 
-	public static final int NORMAL_TYPE = 0;			// 普通模式
+	public static final int NORMAL_TYPE = 0;		// 普通模式
 	public static final int ERROR_TYPE = 1;			// 显示错误框
 	public static final int SUCCESS_TYPE = 2;		// 显示成功框
 	public static final int WARNING_TYPE = 3;		// 显示警告

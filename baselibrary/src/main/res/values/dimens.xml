@@ -52,4 +52,11 @@
     <dimen name="arc_max_height">50dp</dimen>
     <dimen name="sheet_height">290dp</dimen>
 
+    <!-- CoolMenu -->
+    <dimen name="cl_title_trans">40dp</dimen>
+    <dimen name="cl_title_size">20sp</dimen>
+
+    <!-- JCVideoPlayer -->
+    <dimen name="media_controller_view_height">40.0dip</dimen>
+
 </resources>

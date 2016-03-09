@@ -11,7 +11,9 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import talex.zsw.baselibrary.BaseAppCompatActivity;
+import talex.zsw.baselibrary.view.RecyleView.DividerGridItemDecoration;
 import talex.zsw.baselibrary.view.RecyleView.FullyGridLayoutManager;
+import talex.zsw.baselibrary.view.RecyleView.FullyLinearLayoutManager;
 import talex.zsw.baseproject.R;
 import talex.zsw.baseproject.adapter.RecyclerViewAdapter;
 
@@ -38,41 +40,39 @@ public class RecyclerViewActivity extends BaseAppCompatActivity
 
 	@Override protected void initView(Bundle bundle)
 	{
-		setContentView(R.layout.activity_recyclerview);
-		ButterKnife.bind(this);
+		setContentView( R.layout.activity_recyclerview );
+		ButterKnife.bind( this );
 
-		for (int i = 0; i < 20; i++)
+		for(int i = 0; i < 20; i++)
 		{
-			datas.add("数据" + i);
+			datas.add( "数据" + i );
 		}
 
-		adapter = new RecyclerViewAdapter(RecyclerViewActivity.this);
-		adapter.setDatas(datas);
-		mRecyclerView.setAdapter(adapter);
+		adapter = new RecyclerViewAdapter( RecyclerViewActivity.this );
+		adapter.setDatas( datas );
+		mRecyclerView.setAdapter( adapter );
 	}
 
 	@Override protected void initData()
 	{
-//		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-//		mRecyclerView.setLayoutManager(new FullyLinearLayoutManager(RecyclerViewActivity.this));
+		//纵向
+		mRecyclerView.setItemAnimator( new DefaultItemAnimator() );
+		mRecyclerView.setLayoutManager( new FullyLinearLayoutManager( RecyclerViewActivity.this ) );
 		//横向
-//		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-//		mRecyclerView
-//			.addItemDecoration(new DividerItemDecoration(DividerItemDecoration.VERTICAL_LIST,
-//				R.color.gray));
-//		mRecyclerView.setLayoutManager(new FullyLinearLayoutManager(RecyclerViewActivity.this));
+//		mRecyclerView.setItemAnimator( new DefaultItemAnimator() );
+//		mRecyclerView.addItemDecoration(
+//			new DividerItemDecoration( DividerItemDecoration.VERTICAL_LIST, R.color.gray ) );
+//		mRecyclerView.setLayoutManager( new FullyLinearLayoutManager( RecyclerViewActivity.this ) );
 		//两排的Grid
-		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-//		mRecyclerView
-//			.addItemDecoration(new DividerGridItemDecoration(R.color.gray));
+		mRecyclerView.setItemAnimator( new DefaultItemAnimator() );
+		mRecyclerView.addItemDecoration( new DividerGridItemDecoration( R.color.gray ) );
 		mRecyclerView
-			.setLayoutManager(new FullyGridLayoutManager(RecyclerViewActivity.this, 2));
+			.setLayoutManager( new FullyGridLayoutManager( RecyclerViewActivity.this, 2 ) );
 		//瀑布流
-//		mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-//		mRecyclerView
-//			.addItemDecoration(new DividerGridItemDecoration(R.color.gray));
-//		mRecyclerView.setLayoutManager(new FullyStaggeredGridLayoutManager(2,
-//			StaggeredGridLayoutManager.VERTICAL));
-//		adapter.setDatas(datas);
+//		mRecyclerView.setItemAnimator( new DefaultItemAnimator() );
+//		mRecyclerView.addItemDecoration( new DividerGridItemDecoration( R.color.gray ) );
+//		mRecyclerView.setLayoutManager(
+//			new FullyStaggeredGridLayoutManager( 2, StaggeredGridLayoutManager.VERTICAL ) );
+		adapter.setDatas( datas );
 	}
 }

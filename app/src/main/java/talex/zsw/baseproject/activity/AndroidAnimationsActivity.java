@@ -99,6 +99,7 @@ public class AndroidAnimationsActivity extends BaseAppCompatActivity
 				}
 			}
 		});
+
 	}
 
 	@Override protected void initData()

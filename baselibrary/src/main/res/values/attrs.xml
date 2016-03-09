@@ -401,7 +401,43 @@
         <attr name="PagerIndicatorStyle" format="reference"/>
     </declare-styleable>
 
-    <attr name="abbreviated" format="boolean" />
+    <attr name="abbreviated" format="boolean"/>
+
+    <!-- RevealTextView -->
+    <declare-styleable name="RevealTextView">
+        <attr name="rtv_duration" format="integer"/>
+        <attr name="android:text"/>
+    </declare-styleable>
+
+    <!--CoolMenuFrameLayout-->
+    <declare-styleable name="CoolMenuFrameLayout">
+        <attr name="CFL_num" format="enum">
+            <enum name="one" value="1"/>
+            <enum name="two" value="2"/>
+            <enum name="three" value="3"/>
+            <enum name="four" value="4"/>
+            <enum name="five" value="5"/>
+        </attr>
+        <attr name="CFL_titleSize" format="dimension"/>
+        <attr name="CFL_titleColor" format="color"/>
+        <attr name="CFL_titleIcon" format="reference"/>
+    </declare-styleable>
+
+    <!--HTextView-->
+    <declare-styleable name="HTextView">
+        <attr name="HTV_isAnimate" format="boolean"/>
+        <attr name="HTV_animateType" format="enum">
+            <enum name="scale" value="0"/>
+            <enum name="evaporate" value="1"/>
+            <enum name="fall" value="2"/>
+            <enum name="sparkle" value="3"/>
+            <enum name="anvil" value="4"/>
+            <enum name="line" value="5"/>
+            <enum name="pixelate" value="6"/>
+            <enum name="typer" value="7"/>
+            <enum name="rainbow" value="8"/>
+        </attr>
+    </declare-styleable>
 
     <!-- ###################无用###################### -->
     <declare-styleable name="FrameLayoutCompat2">

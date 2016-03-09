@@ -75,6 +75,7 @@ public abstract class BaseFragment extends Fragment
 		}
 		mInputMethodManager =
 			(InputMethodManager) getActivity().getSystemService( Context.INPUT_METHOD_SERVICE );
+		mSweetAlertDialog = new SweetAlertDialog( getActivity() );
 		hideInputMethod();
 		Bus.getDefault().register( this );
 		return mView;

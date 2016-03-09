@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:htext="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextSwitcher
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <talex.zsw.baselibrary.view.HTextView.HTextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="onClick"
+        htext:HTV_animateType="scale"
+        android:text="What is design?"
+        android:background="#000"
+        android:textColor="#fff"
+        android:textSize="30sp"/>
+
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"/>
+
+
+    <RadioGroup
+        android:id="@+id/typeGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <RadioButton
+            android:id="@+id/scale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Scale"/>
+
+        <RadioButton
+            android:id="@+id/evaporate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Evaporate"/>
+
+        <RadioButton
+            android:id="@+id/fall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fall"/>
+
+        <RadioButton
+            android:id="@+id/pixelate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pixelate"/>
+
+        <RadioButton
+            android:id="@+id/sparkle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sparkle"/>
+
+        <RadioButton
+            android:id="@+id/anvil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anvil"/>
+
+        <RadioButton
+            android:id="@+id/line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Line"/>
+        <RadioButton
+            android:id="@+id/typer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Typer"/>
+        <RadioButton
+            android:id="@+id/rainbow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rainbow"/>
+    </RadioGroup>
+
+</LinearLayout>

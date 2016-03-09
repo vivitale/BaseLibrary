@@ -23,6 +23,7 @@
         <activity android:name=".activity.AndroidAnimationsActivity"/>
         <activity android:name=".activity.AnimationActivity"/>
         <activity android:name=".activity.AnimateCheckBoxActivity"/>
+        <activity android:name=".activity.BasePopupWindowActivity"/>
         <activity android:name=".activity.ProgressActivity"/>
         <activity android:name=".activity.CircleImageViewActivity"/>
         <activity android:name=".activity.CircularProgressActivity"/>
@@ -30,6 +31,7 @@
         <activity android:name=".activity.CircularReveal1Activity"/>
         <activity android:name=".activity.CircularReveal2Activity"/>
         <activity android:name=".activity.CollSwitchActivity"/>
+        <activity android:name=".activity.CoolMenuActivity"/>
         <activity android:name=".activity.ContentMenuActivity"/>
         <activity android:name=".activity.CustomNumberPickActivity"/>
         <activity android:name=".activity.CustomScrollViewActivity"/>
@@ -39,6 +41,8 @@
         <activity android:name=".activity.ExpandablePanelActivity"/>
         <activity android:name=".activity.FlowLayoutActivity"/>
         <activity android:name=".activity.GestureImageViewActivity"/>
+        <activity android:name=".activity.HTextActivity"/>
+        <activity android:name=".activity.JCVideoPlayerActivity"/>
         <activity android:name=".activity.LikeButtonActivity"/>
         <activity android:name=".activity.LoadingDialogActivity"/>
         <activity android:name=".activity.LoadToastActivity"/>
@@ -57,6 +61,7 @@
         <activity android:name=".activity.PullZoomViewActivity"/>
         <activity android:name=".activity.RecyclerViewActivity"/>
         <activity android:name=".activity.RefreshLayoutActivity"/>
+        <activity android:name=".activity.RevealTextViewActivity"/>
         <activity android:name=".activity.RichTextActivity"/>
         <activity android:name=".activity.RippleViewActivity"/>
         <activity android:name=".activity.RoundedImageActivity"/>
@@ -81,6 +86,10 @@
         <activity android:name=".activity.XBusActivity"/>
         <activity android:name=".activity.SimpleActivity"/>
         <activity android:name=".activity.ComplexActivity"/>
+        <activity
+            android:name="talex.zsw.baselibrary.view.JCVideoPlayer.FullScreenActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape" />
     </application>
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>

@@ -33,10 +33,12 @@ import java.util.List;
 public class BaseApplication extends Application
 {
 	private List<Activity> activityList = new LinkedList();
+	private static Context mApplicationContext;
 
 	@Override
 	public void onCreate()
 	{
+		mApplicationContext = this;
 		super.onCreate();
 	}
 
@@ -84,6 +86,11 @@ public class BaseApplication extends Application
 			return true;
 		}
 		return false;
+	}
+
+	// 获取ApplicationContext
+	public static Context getContext() {
+		return mApplicationContext;
 	}
 
 

@@ -10,6 +10,7 @@ import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
@@ -24,6 +25,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -59,10 +61,21 @@ import talex.zsw.baselibrary.xbus.Bus;
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate( savedInstanceState );
+		// 严苛模式
+		if(BuildConfig.DEBUG)
+		{
+			StrictMode.setThreadPolicy(
+				new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build() );
+			StrictMode
+				.setVmPolicy( new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build() );
+		}
+
 		mApplication = getAppApplication();
 		mApplication.addActivity( BaseAppCompatActivity.this );
 		mInputMethodManager =
 			(InputMethodManager) this.getSystemService( Context.INPUT_METHOD_SERVICE );
+		mSweetAlertDialog = new SweetAlertDialog( this );
+
 		try
 		{
 			initArgs( getIntent() );
@@ -82,6 +95,7 @@ import talex.zsw.baselibrary.xbus.Bus;
 		mInputMethodManager = null;
 		if(mSweetAlertDialog != null && mSweetAlertDialog.isShowing())
 		{
+			mSweetAlertDialog.dismiss();
 			mSweetAlertDialog = null;
 		}
 		super.onDestroy();
@@ -194,6 +208,14 @@ import talex.zsw.baselibrary.xbus.Bus;
 	{
 		super.onPause();
 		hideInputMethod();
+	}
+
+	/**
+	 * 显示键盘
+	 */
+	public void showInputMethod(EditText editText)
+	{
+		mInputMethodManager.showSoftInput( editText, InputMethodManager.SHOW_IMPLICIT );
 	}
 
 	/**
