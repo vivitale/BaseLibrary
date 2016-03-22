@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<talex.zsw.baselibrary.view.TedPicker.view.CustomSquareFrameLayout
+    android:id="@+id/root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:background="#cccccc">
+
+    <talex.zsw.baselibrary.view.TedPicker.view.CustomSquareImageView
+        android:id="@+id/thumbnail_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"/>
+
+</talex.zsw.baselibrary.view.TedPicker.view.CustomSquareFrameLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_Twitter_style"
+            android:icon="@mipmap/icon"
+            android:title="Twitter Style" />
+
+        <item
+            android:id="@+id/nav_google_style"
+            android:icon="@mipmap/icon"
+            android:title="Google Style" />
+
+        <item
+            android:id="@+id/nav_yalantis_style"
+            android:icon="@mipmap/icon"
+            android:title="Yalantis Style" />
+
+        <item
+            android:id="@+id/nav_jd_style"
+            android:icon="@mipmap/icon"
+            android:title="JD Style" />
+
+        <item
+            android:id="@+id/nav_set_header_footer_via_code"
+            android:icon="@mipmap/icon"
+            android:title="Set Header Footer Via Java Code" />
+    </group>
+
+    <item android:title="SETTINGS">
+        <menu>
+            <item
+                android:id="@+id/nav_about"
+                android:title="About" />
+        </menu>
+    </item>
+</menu>

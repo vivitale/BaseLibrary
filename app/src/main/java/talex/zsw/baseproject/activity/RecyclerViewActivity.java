@@ -11,8 +11,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import talex.zsw.baselibrary.BaseAppCompatActivity;
-import talex.zsw.baselibrary.view.RecyleView.DividerGridItemDecoration;
-import talex.zsw.baselibrary.view.RecyleView.FullyGridLayoutManager;
 import talex.zsw.baselibrary.view.RecyleView.FullyLinearLayoutManager;
 import talex.zsw.baseproject.R;
 import talex.zsw.baseproject.adapter.RecyclerViewAdapter;
@@ -64,10 +62,10 @@ public class RecyclerViewActivity extends BaseAppCompatActivity
 //			new DividerItemDecoration( DividerItemDecoration.VERTICAL_LIST, R.color.gray ) );
 //		mRecyclerView.setLayoutManager( new FullyLinearLayoutManager( RecyclerViewActivity.this ) );
 		//两排的Grid
-		mRecyclerView.setItemAnimator( new DefaultItemAnimator() );
-		mRecyclerView.addItemDecoration( new DividerGridItemDecoration( R.color.gray ) );
-		mRecyclerView
-			.setLayoutManager( new FullyGridLayoutManager( RecyclerViewActivity.this, 2 ) );
+//		mRecyclerView.setItemAnimator( new DefaultItemAnimator() );
+//		mRecyclerView.addItemDecoration( new DividerGridItemDecoration( R.color.gray ) );
+//		mRecyclerView
+//			.setLayoutManager( new FullyGridLayoutManager( RecyclerViewActivity.this, 2 ) );
 		//瀑布流
 //		mRecyclerView.setItemAnimator( new DefaultItemAnimator() );
 //		mRecyclerView.addItemDecoration( new DividerGridItemDecoration( R.color.gray ) );

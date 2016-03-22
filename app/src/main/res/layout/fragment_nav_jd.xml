@@ -1,0 +1,35 @@
+<talex.zsw.baselibrary.view.SwipeToLoadLayout.SwipeToLoadLayout
+    android:id="@+id/swipeToLoadLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@id/swipe_refresh_header"
+        layout="@layout/layout_jd_header"/>
+
+    <LinearLayout
+        android:id="@id/swipe_target"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/style_color_primary"
+            android:gravity="center"
+            android:text="Top Banner"
+            android:textColor="@color/white"
+            android:textSize="32sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="JD style"
+            android:textColor="@color/style_color_primary"
+            android:textSize="32sp"/>
+    </LinearLayout>
+</talex.zsw.baselibrary.view.SwipeToLoadLayout.SwipeToLoadLayout>

@@ -27,7 +27,7 @@ package talex.zsw.baselibrary.view.AndroidAnimations.easing;
 import com.nineoldandroids.animation.PropertyValuesHolder;
 import com.nineoldandroids.animation.ValueAnimator;
 
-public class Glider
+@SuppressWarnings("ALL") public class Glider
 {
 
 	public static ValueAnimator glide(Skill skill, float duration, ValueAnimator animator)

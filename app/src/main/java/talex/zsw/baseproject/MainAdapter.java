@@ -44,6 +44,8 @@ public class MainAdapter extends BaseAdapter
 		colors.add(Color.parseColor("#9998ED"));
 	}
 
+
+
 	public void setContentArray(List<Vo> newsList, boolean refresh)
 	{
 		if (refresh)

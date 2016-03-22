@@ -39,4 +39,6 @@
         <item>TranslationX2</item>
         <item>EatAnimate</item>
     </string-array>
+
+    <string name="picker_title">测试标题</string>
 </resources>

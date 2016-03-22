@@ -88,5 +88,23 @@
     <color name="black_a10_color">#1a000000</color>
     <color name="white_fafaf8">#fafaf8</color>
 
+    <!-- Picker -->
+    <color name="custom_main">#44619c</color>
+    <color name="custom_main_dark">#304070</color>
+    <color name="custom_bg_grey">#F0F0F0</color>
+    <color name="custom_txt_whitegray">#D5D5D5</color>
+    <color name="custom_txt_midiumgray">#909090</color>
+    <color name="custom_txt_darkgray">#606060</color>
+    <color name="black_87">#de000000</color>
+    <color name="black_54">#8a000000</color>
+    <color name="black_20">#14000000</color>
+    <color name="black_30">#1d000000</color>
+
+    <!-- SwipeToLoadLayout -->
+    <color name="google_blue">#4285F4</color>
+    <color name="google_red">#EA4335</color>
+    <color name="google_green">#34A853</color>
+    <color name="google_yellow">#FBBC05</color>
+
 
 </resources>

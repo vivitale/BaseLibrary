@@ -80,6 +80,7 @@ public class MyWebViewActivity extends BaseAppCompatActivity
 		mWebView.getSettings().setDefaultTextEncodingName("UTF-8");//设置默认为utf-8
 		mWebView.getSettings().setUseWideViewPort(true);
 
+
 		int screenDensity = getResources().getDisplayMetrics().densityDpi;
 		WebSettings.ZoomDensity zoomDensity = WebSettings.ZoomDensity.MEDIUM;
 		switch (screenDensity)
