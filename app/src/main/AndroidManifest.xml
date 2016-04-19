@@ -6,6 +6,7 @@
     <uses-feature android:name="android.hardware.camera"/>
     <uses-feature
         android:name="android.hardware.camera.autofocus"/>
+
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="com.android.vending.BILLING"/>
@@ -47,8 +48,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:largeHeap="true"
+        android:supportsRtl="true"
         android:theme="@style/MyDesign">
         <activity
             android:name=".MainActivity"
@@ -81,8 +82,12 @@
         <activity android:name=".activity.ExpandablePanelActivity"/>
         <activity android:name=".activity.FlowLayoutActivity"/>
         <activity android:name=".activity.GestureImageViewActivity"/>
+        <activity android:name=".activity.GlassActivity"/>
         <activity android:name=".activity.HTextActivity"/>
         <activity android:name=".activity.JCVideoPlayerActivity"/>
+        <activity
+            android:name=".activity.KeyboardWatcherActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".activity.LikeButtonActivity"/>
         <activity android:name=".activity.LoadingDialogActivity"/>
         <activity android:name=".activity.LoadToastActivity"/>
@@ -131,6 +136,7 @@
         <activity android:name=".activity.XBusActivity"/>
         <activity android:name=".activity.SimpleActivity"/>
         <activity android:name=".activity.ComplexActivity"/>
+        <activity android:name=".activity.TestActivity"/>
 
         <!-- 视频全屏播放需要添加 -->
         <activity

@@ -1,0 +1,54 @@
+<LinearLayout
+    android:id="@+id/mLinearLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_jellybean"
+    android:orientation="vertical">
+
+    <com.ms.square.android.glassview.GlassView
+        android:id="@+id/top_glass_view"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="top"
+        android:background="#55FFFFFF">
+
+        <TextView
+            android:id="@+id/prompt_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="BlurRadius (0 ~ 25)"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"/>
+
+        <SeekBar
+            android:id="@+id/seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/prompt_txt"
+            android:max="25"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:progress="5"/>
+    </com.ms.square.android.glassview.GlassView>
+
+    <TextView
+        android:id="@+id/mTvText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/wheat"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="颤抖吧少年"/>
+
+    <com.ms.square.android.glassview.GlassView
+        android:id="@+id/bottom_glass_view"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_gravity="bottom"
+        android:background="#55000000">
+    </com.ms.square.android.glassview.GlassView>
+
+</LinearLayout>

@@ -41,11 +41,6 @@ import talex.zsw.baselibrary.xbus.Bus;
 
 @SuppressWarnings("ALL") public abstract class BaseAppCompatActivity extends AppCompatActivity
 {
-	public static final int ZOOM = 0x10001;
-	public static final int LEFT = 0x10002;
-	public static final int RIGHT = 0x10003;
-	public static final int UP_DOWN = 0x10004;
-
 	protected BaseApplication mApplication;
 	private boolean mViewInited = false;
 	//	protected LoadingDialog loadingDialog;
@@ -60,107 +55,102 @@ import talex.zsw.baselibrary.xbus.Bus;
 
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
-		super.onCreate( savedInstanceState );
+		super.onCreate(savedInstanceState);
 		// 严苛模式
-		if(BuildConfig.DEBUG)
+		if (BuildConfig.DEBUG)
 		{
 			StrictMode.setThreadPolicy(
-				new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build() );
+				new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
 			StrictMode
-				.setVmPolicy( new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build() );
+				.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
 		}
 
 		mApplication = getAppApplication();
-		mApplication.addActivity( BaseAppCompatActivity.this );
+		mApplication.addActivity(BaseAppCompatActivity.this);
 		mInputMethodManager =
-			(InputMethodManager) this.getSystemService( Context.INPUT_METHOD_SERVICE );
-		mSweetAlertDialog = new SweetAlertDialog( this );
+			(InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+		mSweetAlertDialog = new SweetAlertDialog(this);
+		mSweetAlertDialog.setCancelable(false);
+		Bus.getDefault().register(BaseAppCompatActivity.this);
 
 		try
 		{
-			initArgs( getIntent() );
-			initView( savedInstanceState );
+			initArgs(getIntent());
+			initView(savedInstanceState);
 			initData();
-		} catch(Exception e)
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-		Bus.getDefault().register( BaseAppCompatActivity.this );
 	}
 
 	@Override protected void onDestroy()
 	{
-		setContentView( R.layout.activity_empty );
-		Bus.getDefault().unregister( this );
+		setContentView(R.layout.activity_empty);
+		Bus.getDefault().unregister(this);
 		mInputMethodManager = null;
-		if(mSweetAlertDialog != null && mSweetAlertDialog.isShowing())
+		if (mSweetAlertDialog != null && mSweetAlertDialog.isShowing())
 		{
 			mSweetAlertDialog.dismiss();
 			mSweetAlertDialog = null;
 		}
 		super.onDestroy();
-		mApplication.removeActivity( BaseAppCompatActivity.this );
+		mApplication.removeActivity(BaseAppCompatActivity.this);
 	}
 
 	public void showDialog()
 	{
-		//		if(null == loadingDialog)
-		//		{
-		//			loadingDialog = new LoadingDialog( this );
-		//		}
-		//		if(!loadingDialog.isShowing())
-		//		{
-		//			loadingDialog.show();
-		//		}
-		if(mSweetAlertDialog != null && mSweetAlertDialog.isShowing())
+		if (mSweetAlertDialog != null && mSweetAlertDialog.isShowing())
 		{
-			mSweetAlertDialog.setTitleText( "正在加载数据" );
-			mSweetAlertDialog.changeAlertType( SweetAlertDialog.PROGRESS_TYPE );
+			mSweetAlertDialog.setTitleText("正在加载数据");
+			mSweetAlertDialog.changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
 		}
 		else
 		{
 			mSweetAlertDialog =
-				new SweetAlertDialog( BaseAppCompatActivity.this, SweetAlertDialog.PROGRESS_TYPE )
-					.setTitleText( "正在加载数据" );
+				new SweetAlertDialog(BaseAppCompatActivity.this, SweetAlertDialog.PROGRESS_TYPE)
+					.setTitleText("正在加载数据");
+			mSweetAlertDialog.setCancelable(false);
 			mSweetAlertDialog.show();
 		}
 	}
 
 	public void showDialog(int type, String title, String content, String confirmText,
-		String cancelText, SweetAlertDialog.OnSweetClickListener confirmListener,
-		SweetAlertDialog.OnSweetClickListener cancelListener)
+						   String cancelText, SweetAlertDialog.OnSweetClickListener confirmListener,
+						   SweetAlertDialog.OnSweetClickListener cancelListener)
 	{
-		if(mSweetAlertDialog != null && mSweetAlertDialog.isShowing())
+		if (mSweetAlertDialog != null && mSweetAlertDialog.isShowing())
 		{
-			mSweetAlertDialog.changeAlertType( type );
+			mSweetAlertDialog.changeAlertType(type);
 		}
 		else
 		{
-			mSweetAlertDialog = new SweetAlertDialog( BaseAppCompatActivity.this, type );
+			mSweetAlertDialog = new SweetAlertDialog(BaseAppCompatActivity.this, type);
+			mSweetAlertDialog.setCancelable(false);
 		}
-		if(!StringUtils.isBlank( title ))
+		if (!StringUtils.isBlank(title))
 		{
-			mSweetAlertDialog.setTitleText( title );
+			mSweetAlertDialog.setTitleText(title);
 		}
-		if(!StringUtils.isBlank( content ))
+		if (!StringUtils.isBlank(content))
 		{
-			mSweetAlertDialog.setContentText( content );
+			mSweetAlertDialog.setContentText(content);
 		}
-		if(!StringUtils.isBlank( confirmText ))
+		if (!StringUtils.isBlank(confirmText))
 		{
-			mSweetAlertDialog.setConfirmText( confirmText );
+			mSweetAlertDialog.setConfirmText(confirmText);
 		}
-		if(!StringUtils.isBlank( cancelText ))
+		if (!StringUtils.isBlank(cancelText))
 		{
-			mSweetAlertDialog.setCancelText( cancelText );
+			mSweetAlertDialog.setCancelText(cancelText);
 		}
-		if(confirmListener != null)
+		if (confirmListener != null)
 		{
-			mSweetAlertDialog.setConfirmClickListener( confirmListener );
+			mSweetAlertDialog.setConfirmClickListener(confirmListener);
 		}
-		if(confirmListener != null)
+		if (confirmListener != null)
 		{
-			mSweetAlertDialog.setCancelClickListener( cancelListener );
+			mSweetAlertDialog.setCancelClickListener(cancelListener);
 		}
 		mSweetAlertDialog.show();
 	}
@@ -177,27 +167,26 @@ import talex.zsw.baselibrary.xbus.Bus;
 
 	public void disDialog()
 	{
-		//		if(loadingDialog != null && loadingDialog.isShowing())
-		//		{
-		//			loadingDialog.dismiss();
-		//		}
-		mSweetAlertDialog.dismissWithAnimation();
+		if (mSweetAlertDialog != null && mSweetAlertDialog.isShowing())
+		{
+			mSweetAlertDialog.dismiss();
+		}
 	}
 
 	public void disDialog(int time)
 	{
-		new Handler().postDelayed( new Runnable()
+		new Handler().postDelayed(new Runnable()
 		{
 			@Override public void run()
 			{
 				disDialog();
 			}
-		}, time );
+		}, time);
 	}
 
 	protected BaseApplication getAppApplication()
 	{
-		if(null == mApplication)
+		if (null == mApplication)
 		{
 			mApplication = (BaseApplication) getApplication();
 		}
@@ -215,7 +204,7 @@ import talex.zsw.baselibrary.xbus.Bus;
 	 */
 	public void showInputMethod(EditText editText)
 	{
-		mInputMethodManager.showSoftInput( editText, InputMethodManager.SHOW_IMPLICIT );
+		mInputMethodManager.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
 	}
 
 	/**
@@ -225,9 +214,9 @@ import talex.zsw.baselibrary.xbus.Bus;
 	{
 		try
 		{
-			mInputMethodManager.hideSoftInputFromWindow( this.getCurrentFocus().getWindowToken(),
-				InputMethodManager.HIDE_NOT_ALWAYS );
-		} catch(Exception ignored)
+			mInputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(),
+				InputMethodManager.HIDE_NOT_ALWAYS);
+		} catch (Exception ignored)
 		{
 
 		}
@@ -239,7 +228,7 @@ import talex.zsw.baselibrary.xbus.Bus;
 	public int getScrnHeight()
 	{
 		DisplayMetrics mDisplayMetrics = new DisplayMetrics();
-		getWindowManager().getDefaultDisplay().getMetrics( mDisplayMetrics );
+		getWindowManager().getDefaultDisplay().getMetrics(mDisplayMetrics);
 		return mDisplayMetrics.heightPixels;
 	}
 
@@ -249,19 +238,19 @@ import talex.zsw.baselibrary.xbus.Bus;
 	public int getScrnWeight()
 	{
 		DisplayMetrics mDisplayMetrics = new DisplayMetrics();
-		getWindowManager().getDefaultDisplay().getMetrics( mDisplayMetrics );
+		getWindowManager().getDefaultDisplay().getMetrics(mDisplayMetrics);
 		return mDisplayMetrics.widthPixels;
 	}
 
 	public void showToast(String string)
 	{
-		Toast.makeText( this, string, Toast.LENGTH_LONG ).show();
+		Toast.makeText(this, string, Toast.LENGTH_LONG).show();
 	}
 
 	public void showAppMsg(String string)
 	{
-		AppMsg.Style style = new AppMsg.Style( AppMsg.LENGTH_SHORT, R.color.appmsg_custom );
-		showAppMsg( string, style );
+		AppMsg.Style style = new AppMsg.Style(AppMsg.LENGTH_SHORT, R.color.appmsg_custom);
+		showAppMsg(string, style);
 	}
 
 	/**
@@ -271,8 +260,8 @@ import talex.zsw.baselibrary.xbus.Bus;
 	 */
 	public void showAppMsg(String string, AppMsg.Style style)
 	{
-		AppMsg appMsg = AppMsg.makeText( this, string, style );
-		appMsg.setLayoutGravity( Gravity.BOTTOM );
+		AppMsg appMsg = AppMsg.makeText(this, string, style);
+		appMsg.setLayoutGravity(Gravity.BOTTOM);
 		appMsg.show();
 	}
 
@@ -280,13 +269,13 @@ import talex.zsw.baselibrary.xbus.Bus;
 	{
 		Snackbar snackbar;
 		// 修改字的颜色
-		SpannableString spanText = new SpannableString( string );
-		spanText.setSpan( new ForegroundColorSpan( Color.WHITE ), 0, spanText.length(),
-			Spannable.SPAN_INCLUSIVE_EXCLUSIVE );
+		SpannableString spanText = new SpannableString(string);
+		spanText.setSpan(new ForegroundColorSpan(Color.WHITE), 0, spanText.length(),
+			Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 
-		snackbar = Snackbar.make( getWindow().getDecorView(), spanText, Snackbar.LENGTH_LONG );
+		snackbar = Snackbar.make(getWindow().getDecorView(), spanText, Snackbar.LENGTH_LONG);
 		//修改背景为红色
-		snackbar.getView().setBackgroundColor( 0xEC000000 );
+		snackbar.getView().setBackgroundColor(0xEC000000);
 		snackbar.show();
 	}
 
@@ -294,14 +283,14 @@ import talex.zsw.baselibrary.xbus.Bus;
 	{
 		Snackbar snackbar;
 		// 修改字的颜色
-		SpannableString spanText = new SpannableString( string );
-		spanText.setSpan( new ForegroundColorSpan( Color.WHITE ), 0, spanText.length(),
-			Spannable.SPAN_INCLUSIVE_EXCLUSIVE );
+		SpannableString spanText = new SpannableString(string);
+		spanText.setSpan(new ForegroundColorSpan(Color.WHITE), 0, spanText.length(),
+			Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
 
-		snackbar = Snackbar.make( getWindow().getDecorView(), spanText, Snackbar.LENGTH_LONG )
-			.setAction( action, listener );
+		snackbar = Snackbar.make(getWindow().getDecorView(), spanText, Snackbar.LENGTH_LONG)
+			.setAction(action, listener);
 		//修改背景为红色
-		snackbar.getView().setBackgroundColor( 0xEC000000 );
+		snackbar.getView().setBackgroundColor(0xEC000000);
 		snackbar.show();
 	}
 
@@ -313,19 +302,19 @@ import talex.zsw.baselibrary.xbus.Bus;
 		// Returns a list of application processes that are running on the
 		// device
 		ActivityManager activityManager =
-			(ActivityManager) getApplicationContext().getSystemService( Context.ACTIVITY_SERVICE );
+			(ActivityManager) getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
 		String packageName = getApplicationContext().getPackageName();
 
 		List<RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
-		if(appProcesses == null)
+		if (appProcesses == null)
 		{
 			return false;
 		}
 
-		for(RunningAppProcessInfo appProcess : appProcesses)
+		for (RunningAppProcessInfo appProcess : appProcesses)
 		{
 			// The name of the process that this object is associated with.
-			if(appProcess.processName.equals( packageName ) &&
+			if (appProcess.processName.equals(packageName) &&
 				appProcess.importance == RunningAppProcessInfo.IMPORTANCE_FOREGROUND)
 			{
 				return true;
@@ -336,83 +325,35 @@ import talex.zsw.baselibrary.xbus.Bus;
 
 	public void start(Class<?> cls)
 	{
-		start( new Intent( this, cls ), RIGHT );
-	}
-
-	public void start(Class<?> cls, int style)
-	{
-		start( new Intent( this, cls ), style );
+		startActivity(new Intent(this, cls));
 	}
 
 	public void start(Intent intent)
 	{
-		start( intent, RIGHT );
-	}
-
-	public void start(Intent intent, int style)
-	{
-		startActivity( intent );
-		if(style == ZOOM)
-		{
-			overridePendingTransition( R.anim.activity_fade_in, R.anim.activity_unzoom_out );
-		}
-		else if(style == LEFT)
-		{
-			overridePendingTransition( R.anim.activity_slide_in_left, R.anim.activity_staty );
-		}
-		else if(style == RIGHT)
-		{
-			overridePendingTransition( R.anim.activity_slide_in_right, R.anim.activity_staty );
-		}
-		else if(style == UP_DOWN)
-		{
-			overridePendingTransition( R.anim.activity_slide_in_bottom, R.anim.activity_staty );
-		}
-	}
-
-
-	public void end(int style)
-	{
-		finish();
-		if(style == ZOOM)
-		{
-			overridePendingTransition( R.anim.activity_staty, R.anim.activity_unzoom_out );
-		}
-		else if(style == LEFT)
-		{
-			overridePendingTransition( R.anim.activity_staty, R.anim.activity_slide_out_left );
-		}
-		else if(style == RIGHT)
-		{
-			overridePendingTransition( R.anim.activity_staty, R.anim.activity_slide_out_right );
-		}
-		else if(style == UP_DOWN)
-		{
-			overridePendingTransition( R.anim.activity_staty, R.anim.activity_slide_out_top );
-		}
+		startActivity(intent);
 	}
 
 	//=====================================WebView===================================
 	public void setWebData(String content, WebView mWebView, RichText mRichText,
-		final ProgressBar mProgressBar)
+						   final ProgressBar mProgressBar)
 	{
 		// 设置WebView的属性，此时可以去执行JavaScript脚本`
-		mWebView.getSettings().setJavaScriptEnabled( true ); // 设置支持javascript脚本
-		mWebView.getSettings().setAllowFileAccess( true ); // 允许访问文件
-		mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically( true );
-		mWebView.getSettings().setLayoutAlgorithm( WebSettings.LayoutAlgorithm.SINGLE_COLUMN );
-		mWebView.getSettings().setDefaultTextEncodingName( "UTF-8" );//设置默认为utf-8
+		mWebView.getSettings().setJavaScriptEnabled(true); // 设置支持javascript脚本
+		mWebView.getSettings().setAllowFileAccess(true); // 允许访问文件
+		mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+		mWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+		mWebView.getSettings().setDefaultTextEncodingName("UTF-8");//设置默认为utf-8
 		//		mWebView.getSettings().setDefaultFontSize( (int) (46 / scale) );
 		//		mWebView.getSettings().setMinimumFontSize( (int) (38 / scale) );
-		mWebView.getSettings().setSupportZoom( false );// 支持缩放
-		mWebView.getSettings().setBuiltInZoomControls( false ); // 设置显示缩放按钮
+		mWebView.getSettings().setSupportZoom(false);// 支持缩放
+		mWebView.getSettings().setBuiltInZoomControls(false); // 设置显示缩放按钮
 		//		mWebView.getSettings().setUseWideViewPort(true);
 		//		mWebView.getSettings().setLoadWithOverviewMode(true);
 		//		mWebView.setInitialScale(960 * 100 / getScrnHeight());
 
 		int screenDensity = getResources().getDisplayMetrics().densityDpi;
 		WebSettings.ZoomDensity zoomDensity = WebSettings.ZoomDensity.MEDIUM;
-		switch(screenDensity)
+		switch (screenDensity)
 		{
 			case DisplayMetrics.DENSITY_LOW:
 				zoomDensity = WebSettings.ZoomDensity.CLOSE;
@@ -427,52 +368,52 @@ import talex.zsw.baselibrary.xbus.Bus;
 				zoomDensity = WebSettings.ZoomDensity.MEDIUM;
 				break;
 		}
-		mWebView.getSettings().setDefaultZoom( zoomDensity );
-		if(StringUtils.isBlank( content ))
+		mWebView.getSettings().setDefaultZoom(zoomDensity);
+		if (StringUtils.isBlank(content))
 		{
-			mWebView.setVisibility( View.GONE );
-			mRichText.setVisibility( View.VISIBLE );
-			mRichText.setText( "无信息" );
+			mWebView.setVisibility(View.GONE);
+			mRichText.setVisibility(View.VISIBLE);
+			mRichText.setText("无信息");
 		}
-		else if(content.startsWith( "http://" ) || content.startsWith( "https://" ))
+		else if (content.startsWith("http://") || content.startsWith("https://"))
 		{
 			mWebView.getSettings().setUseWideViewPort(true);
 			mWebView.getSettings().setLoadWithOverviewMode(true);
-			mProgressBar.setVisibility( View.VISIBLE );
-			mProgressBar.setMax( 100 );
+			mProgressBar.setVisibility(View.VISIBLE);
+			mProgressBar.setMax(100);
 			// 当webview里面能点击是 在当前页面上显示！
-			mWebView.setWebViewClient( new WebViewClient()
+			mWebView.setWebViewClient(new WebViewClient()
 			{
 				@Override public boolean shouldOverrideUrlLoading(WebView view, String url)
 				{
-					view.loadUrl( url );
+					view.loadUrl(url);
 					return true;
 				}
-			} );
+			});
 
 			// 重写webview的值
-			mWebView.setWebChromeClient( new WebChromeClient()
+			mWebView.setWebChromeClient(new WebChromeClient()
 			{
 				// 加载网页的进度条
 				@Override public void onProgressChanged(WebView view, int newProgress)
 				{
-					mProgressBar.setProgress( newProgress );
-					if(newProgress == 100)
+					mProgressBar.setProgress(newProgress);
+					if (newProgress == 100)
 					{
-						mProgressBar.setVisibility( View.GONE );
+						mProgressBar.setVisibility(View.GONE);
 					}
 					else
 					{
-						if(mProgressBar.getVisibility() == View.GONE)
+						if (mProgressBar.getVisibility() == View.GONE)
 						{
-							mProgressBar.setVisibility( View.VISIBLE );
+							mProgressBar.setVisibility(View.VISIBLE);
 							// pb.setProgress(newProgress);
 						}
 					}
-					super.onProgressChanged( view, newProgress );
+					super.onProgressChanged(view, newProgress);
 				}
-			} );
-			mWebView.loadUrl( content );
+			});
+			mWebView.loadUrl(content);
 		}
 		else
 		{
@@ -508,17 +449,17 @@ import talex.zsw.baselibrary.xbus.Bus;
 				"}" +
 				"</script>";
 			String regEx = "</?[^>]+>";
-			Pattern pat = Pattern.compile( regEx );
-			Matcher mat = pat.matcher( content );
+			Pattern pat = Pattern.compile(regEx);
+			Matcher mat = pat.matcher(content);
 			boolean rs = mat.find();
-			if(rs)
+			if (rs)
 			{
-				if(content.contains( "https" ))//如果含有包括https
+				if (content.contains("https"))//如果含有包括https
 				{
 					WebViewClient mWebviewclient = new WebViewClient()
 					{
 						public void onReceivedSslError(WebView view, SslErrorHandler handler,
-							SslError error)
+													   SslError error)
 						{
 							handler.proceed();
 							//handler.cancel(); 默认的处理方式，WebView变成空白页
@@ -526,37 +467,37 @@ import talex.zsw.baselibrary.xbus.Bus;
 							//handleMessage(Message msg); 其他处理
 						}
 					};
-					mWebView.setWebViewClient( mWebviewclient );
+					mWebView.setWebViewClient(mWebviewclient);
 				}
 				else// 当webview里面能点击是 在当前页面上显示！
 				{
-					mWebView.setWebViewClient( new WebViewClient()
+					mWebView.setWebViewClient(new WebViewClient()
 					{
 						@Override public boolean shouldOverrideUrlLoading(WebView view, String url)
 						{
-							view.loadUrl( url );
+							view.loadUrl(url);
 							return true;
 						}
-					} );
+					});
 				}
-				mWebView.loadData( content, "text/html; charset=UTF-8", null );
+				mWebView.loadData(content, "text/html; charset=UTF-8", null);
 				// mWebView.loadData(fmtString(content), "text/html", "utf-8");
 			}
 			else
 			{
-				mWebView.setVisibility( View.GONE );
-				mRichText.setVisibility( View.VISIBLE );
-				mRichText.setRichText( content );
+				mWebView.setVisibility(View.GONE);
+				mRichText.setVisibility(View.VISIBLE);
+				mRichText.setRichText(content);
 			}
 		}
-		if(Build.VERSION.SDK_INT > 10 && Build.VERSION.SDK_INT < 17)
+		if (Build.VERSION.SDK_INT > 10 && Build.VERSION.SDK_INT < 17)
 		{
-			fixWebView( mWebView );
+			fixWebView(mWebView);
 		}
 	}
 
 	@TargetApi(11) private void fixWebView(WebView mWebView)
 	{
-		mWebView.removeJavascriptInterface( "searchBoxJavaBridge_" );
+		mWebView.removeJavascriptInterface("searchBoxJavaBridge_");
 	}
 }

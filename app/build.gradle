@@ -10,6 +10,7 @@ android {
 		targetSdkVersion 23
 		versionCode 1
 		versionName "1.0"
+		renderscriptSupportModeEnabled true
 	}
 	buildTypes {
 		release {
@@ -26,8 +27,13 @@ android {
 repositories {
 	// 拍照相关
 	maven { url "https://repo.commonsware.com.s3.amazonaws.com" }
-	maven {
-		url "https://s3.amazonaws.com/repo.commonsware.com"
+	maven { url "https://s3.amazonaws.com/repo.commonsware.com" }
+	maven { url 'http://Manabu-GT.github.com/GlassView/mvn-repo' }
+}
+
+repositories {
+	flatDir {
+		dirs 'libs'
 	}
 }
 
@@ -35,4 +41,5 @@ dependencies {
 	compile fileTree(dir: 'libs', include: ['*.jar'])
 	testCompile 'junit:junit:4.12'
 	compile project(':baselibrary')
+	compile 'com.ms.square:glassview:0.1.0'
 }

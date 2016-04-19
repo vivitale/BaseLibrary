@@ -31,8 +31,10 @@ import talex.zsw.baseproject.activity.ExpandableActivity;
 import talex.zsw.baseproject.activity.ExpandablePanelActivity;
 import talex.zsw.baseproject.activity.FlowLayoutActivity;
 import talex.zsw.baseproject.activity.GestureImageViewActivity;
+import talex.zsw.baseproject.activity.GlassActivity;
 import talex.zsw.baseproject.activity.HTextActivity;
 import talex.zsw.baseproject.activity.JCVideoPlayerActivity;
+import talex.zsw.baseproject.activity.KeyboardWatcherActivity;
 import talex.zsw.baseproject.activity.LikeButtonActivity;
 import talex.zsw.baseproject.activity.LoadToastActivity;
 import talex.zsw.baseproject.activity.LoadingDialogActivity;
@@ -69,6 +71,7 @@ import talex.zsw.baseproject.activity.SwipeToLoadActivity;
 import talex.zsw.baseproject.activity.SwipyRefreshLayoutActivity;
 import talex.zsw.baseproject.activity.SwitchAnimationActivity;
 import talex.zsw.baseproject.activity.TedPickerActivity;
+import talex.zsw.baseproject.activity.TestActivity;
 import talex.zsw.baseproject.activity.TimeSinceActivity;
 import talex.zsw.baseproject.activity.TimesSquareActivity;
 import talex.zsw.baseproject.activity.WTextViewActivity;
@@ -109,10 +112,11 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add( new Vo( "CircleImageView", "将图片自动修正为圆形", CircleImageViewActivity.class ) );
 		datas.add( new Vo( "CircularProgress", "一直转圈的CircularProgress和CircularProgressDrawable",
 			CircularProgressActivity.class ) );
-		//				datas.add( new Vo( "CircularReveal", "圆形展示，替换底部View", CircularRevealActivity.class ) );
+		//				datas.add( new Vo( "Ci
+		// rcularReveal", "圆形展示，替换底部View", CircularRevealActivity.class ) );
 		datas.add( new Vo( "CollSwitch", "酷炫的开关按钮，选中与否可以改变布局", CollSwitchActivity.class ) );
 		datas.add( new Vo( "CoolMenu", "酷炫展示Fragment的方法", CoolMenuActivity.class ) );
-		datas.add( new Vo( "ContentMenu", "右上角向下展示的Menu", ContentMenuActivity.class ) );
+		datas.add( new Vo( "ContentMenu", "右上角向下展示的zenu", ContentMenuActivity.class ) );
 		datas.add( new Vo( "CustomNumberPick", "数字加减选择器", CustomNumberPickActivity.class ) );
 		datas.add( new Vo( "CustomScrollView", "可以上下左右滑动的View，且项目支持手势放大缩小",
 			CustomScrollViewActivity.class ) );
@@ -124,8 +128,10 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add( new Vo( "FlowLayout", "单选多选标签", FlowLayoutActivity.class ) );
 		datas.add(
 			new Vo( "GestureImageView", "支持缩放功能的ImageView", GestureImageViewActivity.class ) );
+		datas.add( new Vo( "GlassView", "GlassView 毛玻璃效果", GlassActivity.class ) );
 		datas.add( new Vo( "HTextView", "给TextView加上动画效果", HTextActivity.class ) );
 		datas.add( new Vo( "JCVideoPlayer", "简单实现视频播放功能", JCVideoPlayerActivity.class ) );
+		datas.add( new Vo( "KeyboardWatcher", "一个可以监听软键盘的打开或者关闭", KeyboardWatcherActivity.class ) );
 		datas.add( new Vo( "LikeButton", "显示一个带有动画效果的喜欢按钮", LikeButtonActivity.class ) );
 		datas.add( new Vo( "LoadingDialog", "加载等待转圈圈", LoadingDialogActivity.class ) );
 		datas.add( new Vo( "LoadToast", "简单的View来实现加载，加载成功与失败的效果", LoadToastActivity.class ) );
@@ -174,6 +180,7 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add( new Vo( "WheelView", "时间选择器", WheelViewActivity.class ) );
 		datas.add( new Vo( "WTextView", "无限循环跑马灯", WTextViewActivity.class ) );
 		datas.add( new Vo( "XBus", "事件处理", XBusActivity.class ) );
+		datas.add( new Vo( "测试用页面", "", TestActivity.class ) );
 
 		adapter.setContentArray( datas, false );
 	}
