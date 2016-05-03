@@ -64,6 +64,7 @@
         <activity android:name=".activity.AndroidAnimationsActivity"/>
         <activity android:name=".activity.AnimationActivity"/>
         <activity android:name=".activity.AnimateCheckBoxActivity"/>
+        <activity android:name=".activity.AutoFitActivity"/>
         <activity android:name=".activity.BasePopupWindowActivity"/>
         <activity android:name=".activity.ProgressActivity"/>
         <activity android:name=".activity.CircleImageViewActivity"/>
@@ -91,8 +92,15 @@
         <activity android:name=".activity.LikeButtonActivity"/>
         <activity android:name=".activity.LoadingDialogActivity"/>
         <activity android:name=".activity.LoadToastActivity"/>
+        <activity android:name=".activity.MagicProgressActivity"/>
         <activity android:name=".activity.MaterialFavoriteButtonActivity"/>
         <activity android:name=".activity.MyWebViewActivity"/>
+        <activity android:name=".activity.NavigationTabBarActivity"/>
+        <activity android:name=".activity.HorizontalNtbActivity"/>
+        <activity android:name=".activity.TopHorizontalNtbActivity"/>
+        <activity android:name=".activity.VerticalNtbActivity"/>
+        <activity android:name=".activity.SamplesNtbActivity"/>
+        <!-- NavigationTabBarActivity -->
         <activity android:name=".activity.NiceSpinnerActivity"/>
         <activity android:name=".activity.NineGridActivity"/>
         <activity android:name=".activity.NineFillStyleActivity"/>

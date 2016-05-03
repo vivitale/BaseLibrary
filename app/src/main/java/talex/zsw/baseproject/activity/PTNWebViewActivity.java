@@ -11,8 +11,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import talex.zsw.baselibrary.BaseAppCompatActivity;
 import talex.zsw.baselibrary.view.PullToNextLayout.OnItemSelectListener;
-import talex.zsw.baselibrary.view.PullToNextLayout.PullToNextAdapter;
 import talex.zsw.baselibrary.view.PullToNextLayout.PullToNextLayout;
+import talex.zsw.baselibrary.view.PullToNextLayout.adapter.PullToNextFragmentAdapter;
 import talex.zsw.baseproject.R;
 import talex.zsw.baseproject.fragment.PTNWebViewFragment;
 
@@ -58,7 +58,7 @@ public class PTNWebViewActivity extends BaseAppCompatActivity
 		list.add(new PTNWebViewFragment(7));
 		list.add(new PTNWebViewFragment(8));
 
-		pullToNextLayout.setAdapter(new PullToNextAdapter(
+		pullToNextLayout.setAdapter(new PullToNextFragmentAdapter(
 			getSupportFragmentManager(), list));
 
 		pullToNextLayout.setOnItemSelectListener(new OnItemSelectListener()

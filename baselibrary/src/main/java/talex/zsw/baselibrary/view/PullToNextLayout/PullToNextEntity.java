@@ -1,67 +1,48 @@
 package talex.zsw.baselibrary.view.PullToNextLayout;
 
-import android.support.v4.app.FragmentManager;
-
 /**
- * @ClassName: PullToNextEntity 
- * @Description: 滑动到下一个页面实体
- * @author tale email:vvtale@gmail.com
- * @date 2015年4月15日 下午1:28:51  
+ * Created by zzz40500 on 15/3/28.
  */
-public class PullToNextEntity
-{
-	private PullToNextView pullToNextView;
-	private int frameId;
-	private int position;
+public class PullToNextEntity {
 
-	public PullToNextView getPullToNextView()
-	{
-		return pullToNextView;
-	}
+    private  PullToNextView pullToNextView;
+    private  int contentId;
+    private  int position=-1;
 
-	public void setPullToNextView(PullToNextView pullToNextView)
-	{
-		this.pullToNextView = pullToNextView;
-	}
 
-	public int getFrameId()
-	{
-		return frameId;
-	}
+    public PullToNextView getPullToNextView() {
+        return pullToNextView;
+    }
 
-	public void setFrameId(int frameId)
-	{
-		this.frameId = frameId;
-	}
+    public void setPullToNextView(PullToNextView pullToNextView) {
+        this.pullToNextView = pullToNextView;
+    }
 
-	public int getPosition()
-	{
-		return position;
-	}
+    public int getContentId() {
+        return contentId;
+    }
 
-	public void setPosition(int position)
-	{
-		this.position = position;
-	}
+    public void setContentId(int contentId) {
+        this.contentId = contentId;
+    }
 
-	public boolean isAttach()
-	{
+    public int getPosition() {
+        return position;
+    }
 
-		if (pullToNextView == null)
-		{
-			return false;
-		}
+    public void setPosition(int position) {
+        this.position = position;
+    }
 
-		if (pullToNextView.getParent() == null)
-		{
-			return false;
-		}
-		return true;
+    public boolean isAttach(){
 
-	}
 
-	public void reset(FragmentManager fm)
-	{
-		getPullToNextView().reset(fm, getPosition());
-	}
+        return pullToNextView != null && pullToNextView.getParent() != null;
+
+    }
+
+    public void reset(BaseAdapter adapter){
+        getPullToNextView().reset(adapter,getPosition());
+
+    }
 }

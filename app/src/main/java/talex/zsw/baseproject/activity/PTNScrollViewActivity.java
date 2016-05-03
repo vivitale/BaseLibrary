@@ -11,8 +11,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import talex.zsw.baselibrary.BaseAppCompatActivity;
 import talex.zsw.baselibrary.view.PullToNextLayout.OnItemSelectListener;
-import talex.zsw.baselibrary.view.PullToNextLayout.PullToNextAdapter;
 import talex.zsw.baselibrary.view.PullToNextLayout.PullToNextLayout;
+import talex.zsw.baselibrary.view.PullToNextLayout.adapter.PullToNextFragmentAdapter;
 import talex.zsw.baseproject.R;
 import talex.zsw.baseproject.fragment.PTNScrollViewFragment;
 
@@ -54,7 +54,7 @@ public class PTNScrollViewActivity extends BaseAppCompatActivity
 		list.add(new PTNScrollViewFragment(6));
 		list.add(new PTNScrollViewFragment(7));
 
-		pullToNextLayout.setAdapter(new PullToNextAdapter(
+		pullToNextLayout.setAdapter(new PullToNextFragmentAdapter(
 			getSupportFragmentManager(), list));
 
 		pullToNextLayout.setOnItemSelectListener(new OnItemSelectListener()

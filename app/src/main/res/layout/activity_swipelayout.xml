@@ -24,11 +24,13 @@
             android:layout_height="wrap_content"
             android:text="整个页面都可以随意的去布局"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/teal"
-            android:src="@mipmap/ic_launcher"/>
+        <ListView
+            android:id="@+id/mListView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@color/transparent"
+            android:listSelector="@color/transparent">
+        </ListView>
     </LinearLayout>
 
     <LinearLayout

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="30dp">
+
+        <talex.zsw.baselibrary.view.MagicProgress.MagicProgressCircle
+            android:id="@+id/demo_mpc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:mpc_stroke_width="18dp" />
+
+        <talex.zsw.baselibrary.view.MagicProgress.AnimTextView
+            android:id="@+id/demo_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="36sp" />
+    </RelativeLayout>
+
+
+    <talex.zsw.baselibrary.view.MagicProgress.MagicProgressBar
+        android:id="@+id/demo_1_mpb"
+        style="@style/demo_progress_bar"
+        android:layout_height="32dp"
+        android:layout_marginTop="30dp"
+        app:mpb_background_color="#1AFFFFFF"
+        app:mpb_fill_color="#FF1CECBE"
+        app:mpb_flat="true" />
+
+    <talex.zsw.baselibrary.view.MagicProgress.MagicProgressBar
+        android:id="@+id/demo_2_mpb"
+        style="@style/demo_progress_bar"
+        android:layout_height="32dp"
+        app:mpb_background_color="#1AFFFFFF"
+        app:mpb_fill_color="#FFFF493D" />
+
+    <talex.zsw.baselibrary.view.MagicProgress.MagicProgressBar
+        android:id="@+id/demo_3_mpb"
+        style="@style/demo_progress_bar"
+        app:mpb_background_color="#1AFFFFFF"
+        app:mpb_fill_color="#FFF141B4" />
+
+    <talex.zsw.baselibrary.view.MagicProgress.MagicProgressBar
+        android:id="@+id/demo_4_mpb"
+        style="@style/demo_progress_bar"
+        app:mpb_background_color="#1AFFFFFF"
+        app:mpb_fill_color="#FF86E50E" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onReRandomPercent"
+            android:text="重新开始" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:onClick="onClickIncreaseSmoothly"
+            android:text="随机增长" />
+    </LinearLayout>
+
+</LinearLayout>

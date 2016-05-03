@@ -44,7 +44,8 @@ public class SwipeLayoutActivity extends BaseAppCompatActivity
 	@Bind(R.id.bottom_top) LinearLayout bottomTop;
 
 	@Bind(R.id.mListView) ListView mListView;
-	private SwipeAdapter adapter;
+	@Bind(R.id.mListView2) ListView mListView2;
+	private SwipeAdapter adapter,adapter2;
 
 	@Override protected void initArgs(Intent intent)
 	{
@@ -159,6 +160,11 @@ public class SwipeLayoutActivity extends BaseAppCompatActivity
 		adapter = new SwipeAdapter(SwipeLayoutActivity.this);
 		mListView.setAdapter(adapter);
 		adapter.setMode(Attributes.Mode.Single);//设置只能滑开一个项目
+		adapter2 = new SwipeAdapter(SwipeLayoutActivity.this);
+		mListView2.setAdapter(adapter2);
+		adapter2.setMode(Attributes.Mode.Single);//设置只能滑开一个项目
+
+
 		mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
 		{
 			@Override

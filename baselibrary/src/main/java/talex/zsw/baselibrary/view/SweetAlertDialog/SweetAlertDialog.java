@@ -201,6 +201,7 @@ public class SweetAlertDialog extends Dialog implements View.OnClickListener
 		mSuccessFrame.setVisibility(View.GONE);
 		mWarningFrame.setVisibility(View.GONE);
 		mProgressFrame.setVisibility(View.GONE);
+		mCancelButton.setVisibility(View.GONE);
 		mConfirmButton.setVisibility(View.VISIBLE);
 
 		mConfirmButton.setBackgroundResource(R.drawable.sweetalert_blue_button_background);

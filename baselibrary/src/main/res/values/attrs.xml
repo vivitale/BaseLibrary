@@ -579,4 +579,76 @@
         <!--<attr name="IT_icon_height" format="dimension"/>-->
     </declare-styleable>
 
+    <!-- 有变色的圆弧进度条 -->
+    <declare-styleable name="MagicProgressCircle">
+        <!--填充的百分比[0, 1]-->
+        <attr name="mpc_percent" format="float" />
+        <!--描边宽度-->
+        <attr name="mpc_stroke_width" format="dimension" />
+        <!--渐变颜色起点颜色(percent=0)-->
+        <attr name="mpc_start_color" format="color" />
+        <!--渐变颜色终点颜色(percent=1)-->
+        <attr name="mpc_end_color" format="color" />
+        <!--未填充部分的描边的颜色-->
+        <attr name="mpc_default_color" format="color" />
+    </declare-styleable>
+
+    <!-- 彩色进度条 -->
+    <declare-styleable name="MagicProgressBar">
+        <!--填充的百分比[0, 1]-->
+        <attr name="mpb_percent" format="float" />
+        <!--填充进度的颜色-->
+        <attr name="mpb_fill_color" format="color" />
+        <!--进度背景的颜色-->
+        <attr name="mpb_background_color" format="color" />
+        <!--填充的进度条右侧是否是平面(不是平面就是圆弧)-->
+        <attr name="mpb_flat" format="boolean" />
+    </declare-styleable>
+
+    <!-- 自定适配 -->
+    <declare-styleable name="AutofitTextView">
+        <!-- Minimum size of the text. -->
+        <attr name="minTextSize" format="dimension" />
+        <!-- Amount of precision used to calculate the correct text size to fit within its
+        bounds. Lower precision is more precise and takes more time. -->
+        <attr name="precision" format="float" />
+        <!-- Defines whether to automatically resize text to fit to the view's bounds. -->
+        <attr name="sizeToFit" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="PullToNextLayout">
+        <attr name="underLayoutColor" format="color"/>
+        <attr name="topType" format="integer"/>
+    </declare-styleable>
+
+    <!-- NavigationTabBar -->
+    <declare-styleable name="NavigationTabBar">
+        <attr name="ntb_titled" format="boolean"/>
+        <attr name="ntb_badged" format="boolean"/>
+        <attr name="ntb_badge_use_typeface" format="boolean"/>
+
+        <attr name="ntb_title_mode" format="enum">
+            <enum name="all" value="0"/>
+            <enum name="active" value="1"/>
+        </attr>
+        <attr name="ntb_badge_position" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+        <attr name="ntb_badge_gravity" format="enum">
+            <enum name="top" value="0"/>
+            <enum name="bottom" value="1"/>
+        </attr>
+
+        <attr name="ntb_typeface" format="string"/>
+        <attr name="ntb_corners_radius" format="dimension"/>
+        <attr name="ntb_animation_duration" format="integer"/>
+
+        <attr name="ntb_inactive_color" format="color"/>
+        <attr name="ntb_active_color" format="color"/>
+
+        <attr name="ntb_preview_colors" format="reference"/>
+    </declare-styleable>
+
 </resources>
