@@ -1,9 +1,9 @@
 package talex.zsw.baselibrary.view.SwipeLayout.interfaces;
 
-public interface SwipeAdapterInterface
-{
+public interface SwipeAdapterInterface {
 
-	int getSwipeLayoutResourceId(int position);
+    int getSwipeLayoutResourceId(int position);
 
-	void notifyDatasetChanged();
+    void notifyDatasetChanged();
+
 }

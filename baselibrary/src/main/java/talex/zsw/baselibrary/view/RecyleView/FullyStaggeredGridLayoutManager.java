@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 /**
  * 作用: 使RecyclerView使用GridLayoutManager嵌套在ScrollView中
- * 作者: TALE(赵小白) email:vvtale@gmail.com  
+ * 作者: TALE(赵小白) email:edisonzsw@icloud.com
  * 日期: 2015-08-28 13:58 
  * 修改人：
  * 修改时间：

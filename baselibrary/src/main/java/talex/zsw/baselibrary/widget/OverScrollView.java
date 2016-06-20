@@ -137,30 +137,30 @@ public class OverScrollView extends ScrollView
 
 	public OverScrollView(Context context, AttributeSet attrs, int defStyle)
 	{
-		super( context, attrs, defStyle );
+		super(context, attrs, defStyle);
 		initScrollView();
 	}
 
 	public OverScrollView(Context context, AttributeSet attrs)
 	{
-		this( context, attrs, 0 );
+		this(context, attrs, 0);
 	}
 
 	public OverScrollView(Context context)
 	{
-		this( context, null );
+		this(context, null);
 	}
 
 	private void initScrollView()
 	{
 		//设置滚动无阴影( API Level 9 )
-		if(Build.VERSION.SDK_INT >= 9)
+		if (Build.VERSION.SDK_INT >= 9)
 		{
-			setOverScrollMode( View.OVER_SCROLL_NEVER );
+			setOverScrollMode(View.OVER_SCROLL_NEVER);
 		}
 		else
 		{
-			ViewCompat.setOverScrollMode( this, ViewCompat.OVER_SCROLL_NEVER );
+			ViewCompat.setOverScrollMode(this, ViewCompat.OVER_SCROLL_NEVER);
 		}
 	}
 
@@ -169,36 +169,37 @@ public class OverScrollView extends ScrollView
 		// 如果禁用，不做任何处理
 		try
 		{
-			if(!mIsUseOverScroll)
+			if (!mIsUseOverScroll)
 			{
-				return super.onInterceptTouchEvent( ev );
+				return super.onInterceptTouchEvent(ev);
 			}
-			switch(ev.getAction())
+			switch (ev.getAction())
 			{
 				case MotionEvent.ACTION_DOWN:
-					if(isOverScrolled())
+					mLastMotionY = (int) ev.getY();
+					if (isOverScrolled())
 					{
 						isRecord = true;
-						// Remember where the motion event started
-						mLastMotionY = (int) ev.getY();
-
-						mActivePointerId = ev.getPointerId( 0 );
+						mActivePointerId = ev.getPointerId(0);
 					}
 					break;
 				case MotionEvent.ACTION_MOVE:
-					if(isRecord && Math.abs( ev.getY() - mLastMotionY ) > 20)
+					if (isRecord && Math.abs(ev.getY() - mLastMotionY) > 20)
 					{
 						return true;
 					}
 					break;
+				case MotionEvent.ACTION_UP:
+
+					break;
 				case MotionEvent.ACTION_CANCEL:
-					if(isRecord)
+					if (isRecord)
 					{
 						isRecord = false;
 					}
 			}
-			return super.onInterceptTouchEvent( ev );
-		} catch(IllegalArgumentException ex)
+			return super.onInterceptTouchEvent(ev);
+		} catch (IllegalArgumentException ex)
 		{
 			ex.printStackTrace();
 		}
@@ -210,10 +211,10 @@ public class OverScrollView extends ScrollView
 		try
 		{
 			isOnTouch = true;
-			if(ev.getAction() == MotionEvent.ACTION_UP ||
+			if (ev.getAction() == MotionEvent.ACTION_UP ||
 				ev.getAction() == MotionEvent.ACTION_CANCEL)
 			{
-				if(mOverScrollTinyListener != null)
+				if (mOverScrollTinyListener != null)
 				{
 					mOverScrollTinyListener.scrollLoosen();
 				}
@@ -221,59 +222,59 @@ public class OverScrollView extends ScrollView
 			}
 
 			// 如果禁用，不做任何处理
-			if(!mIsUseOverScroll)
+			if (!mIsUseOverScroll)
 			{
-				return super.onTouchEvent( ev );
+				return super.onTouchEvent(ev);
 			}
 
-			if(!isOverScrolled())
+			if (!isOverScrolled())
 			{
 				mLastMotionY = (int) ev.getY();
-				return super.onTouchEvent( ev );
+				return super.onTouchEvent(ev);
 			}
 
-			switch(ev.getAction() & MotionEvent.ACTION_MASK)
+			switch (ev.getAction() & MotionEvent.ACTION_MASK)
 			{
 				case MotionEvent.ACTION_DOWN:
-					mActivePointerId = ev.getPointerId( 0 );
+					mActivePointerId = ev.getPointerId(0);
 					mLastMotionY = (int) ev.getY();
 					break;
 				case MotionEvent.ACTION_POINTER_DOWN:
 					final int index = ev.getActionIndex();
-					mLastMotionY = (int) ev.getY( index );
-					mActivePointerId = ev.getPointerId( index );
+					mLastMotionY = (int) ev.getY(index);
+					mActivePointerId = ev.getPointerId(index);
 					break;
 				case MotionEvent.ACTION_POINTER_UP:
-					onSecondaryPointerUp( ev );
-					if(mActivePointerId != INVALID_POINTER)
+					onSecondaryPointerUp(ev);
+					if (mActivePointerId != INVALID_POINTER)
 					{
-						mLastMotionY = (int) ev.getY( ev.findPointerIndex( mActivePointerId ) );
+						mLastMotionY = (int) ev.getY(ev.findPointerIndex(mActivePointerId));
 					}
 					break;
 				case MotionEvent.ACTION_MOVE:
-					if(isRecord)
+					if (isRecord)
 					{
-						final int activePointerIndex = ev.findPointerIndex( mActivePointerId );
-						if(activePointerIndex == -1)
+						final int activePointerIndex = ev.findPointerIndex(mActivePointerId);
+						if (activePointerIndex == -1)
 						{
 							break;
 						}
 
 
-						final float y = ev.getY( activePointerIndex );
+						final float y = ev.getY(activePointerIndex);
 						// 滚动距离
 						int deltaY = (int) (mLastMotionY - y);
 						// 记录新的触摸位置
 						mLastMotionY = y;
 
-						if(Math.abs( overScrollDistance ) >= OVERSCROLL_MAX_HEIGHT &&
+						if (Math.abs(overScrollDistance) >= OVERSCROLL_MAX_HEIGHT &&
 							overScrollDistance * deltaY > 0)
 						{
 							deltaY = 0;
 						}
 
 						//如果滚动到ScrollView自身滚动边界，直接调用自身滚动
-						if(overScrollDistance * (overScrollDistance + deltaY) < 0)
+						if (overScrollDistance * (overScrollDistance + deltaY) < 0)
 						{
 							mContentLayout.smoothScrollToNormal();
 							overScrollDistance = 0;
@@ -281,7 +282,7 @@ public class OverScrollView extends ScrollView
 						}
 
 						// 如果处于ScrollView滚动状态，直接调用ScrollView自身滚动
-						if((!isOnBottom() && overScrollDistance > 0) ||
+						if ((!isOnBottom() && overScrollDistance > 0) ||
 							(!isOnTop() && overScrollDistance < 0))
 						{
 							mContentLayout.smoothScrollToNormal();
@@ -289,23 +290,23 @@ public class OverScrollView extends ScrollView
 							break;
 						}
 
-						if(overScrollDistance * deltaY > 0)
+						if (overScrollDistance * deltaY > 0)
 						{
 							deltaY = (int) (deltaY * ELASTICITY_COEFFICIENT);
 						}
 
-						if(overScrollDistance == 0)
+						if (overScrollDistance == 0)
 						{
 							deltaY = (int) (deltaY * ELASTICITY_COEFFICIENT * 0.5f);
 						}
 
-						if(overScrollDistance == 0 && deltaY == 0)
+						if (overScrollDistance == 0 && deltaY == 0)
 						{
 							break;
 						}
 
 						//检测最终滚动距离，最大为20
-						if(Math.abs( deltaY ) > 20)
+						if (Math.abs(deltaY) > 20)
 						{
 							deltaY = deltaY > 0 ? 20 : -20;
 						}
@@ -313,24 +314,24 @@ public class OverScrollView extends ScrollView
 						// 记录滚动总距离
 						overScrollDistance += deltaY;
 
-						if(isOnTop() && overScrollDistance > 0 && !isOnBottom())
+						if (isOnTop() && overScrollDistance > 0 && !isOnBottom())
 						{
 							overScrollDistance = 0;
 							break;
 						}
 
-						if(isOnBottom() && overScrollDistance < 0 && !isOnTop())
+						if (isOnBottom() && overScrollDistance < 0 && !isOnTop())
 						{
 							overScrollDistance = 0;
 							break;
 						}
 
 						// 滚动视图
-						mContentLayout.smoothScrollBy( 0, deltaY );
+						mContentLayout.smoothScrollBy(0, deltaY);
 
-						if(mOverScrollTinyListener != null)
+						if (mOverScrollTinyListener != null)
 						{
-							mOverScrollTinyListener.scrollDistance( deltaY, overScrollDistance );
+							mOverScrollTinyListener.scrollDistance(deltaY, overScrollDistance);
 						}
 						return true;
 					}
@@ -350,8 +351,8 @@ public class OverScrollView extends ScrollView
 				default:
 					break;
 			}
-			return super.onTouchEvent( ev );
-		} catch(IllegalArgumentException ex)
+			return super.onTouchEvent(ev);
+		} catch (IllegalArgumentException ex)
 		{
 			ex.printStackTrace();
 		}
@@ -367,14 +368,14 @@ public class OverScrollView extends ScrollView
 	{
 		final int pointerIndex = (ev.getAction() & MotionEvent.ACTION_POINTER_INDEX_MASK) >>
 			MotionEvent.ACTION_POINTER_INDEX_SHIFT;
-		final int pointerId = ev.getPointerId( pointerIndex );
-		if(pointerId == mActivePointerId)
+		final int pointerId = ev.getPointerId(pointerIndex);
+		if (pointerId == mActivePointerId)
 		{
 			// This was our active pointer going up. Choose a new
 			// active pointer and adjust accordingly.
 			final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
-			mLastMotionY = (int) ev.getY( newPointerIndex );
-			mActivePointerId = ev.getPointerId( newPointerIndex );
+			mLastMotionY = (int) ev.getY(newPointerIndex);
+			mActivePointerId = ev.getPointerId(newPointerIndex);
 		}
 	}
 
@@ -402,20 +403,20 @@ public class OverScrollView extends ScrollView
 	private void initOverScrollLayout()
 	{
 		//必须设置为true,否则添加子视图时高度不会填充到整个ScrollView的高度
-		setFillViewport( true );
-		if(mContentLayout == null)
+		setFillViewport(true);
+		if (mContentLayout == null)
 		{
 			// 获取ScrollView的子视图
-			View child = getChildAt( 0 );
+			View child = getChildAt(0);
 			// 初始化弹性滚动视图
-			mContentLayout = new OverScrollWarpLayout( getContext() );
+			mContentLayout = new OverScrollWarpLayout(getContext());
 			// 移除ScrollView所有视图
 			this.removeAllViews();
 			// 将原先ScrollView子视图加入到弹性滚动视图中
-			mContentLayout.addView( child );
+			mContentLayout.addView(child);
 			// 添加弹性滚动视图，作为ScrollView子视图
-			this.addView( mContentLayout,
-				new LayoutParams( LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT ) );
+			this.addView(mContentLayout,
+				new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 		}
 		//		mIsUseOverScroll = true;
 	}
@@ -463,54 +464,55 @@ public class OverScrollView extends ScrollView
 	private void invalidateState()
 	{
 
-		if(mContentLayout.getScrollerCurrY() == 0)
+		if (mContentLayout.getScrollerCurrY() == 0)
 		{
 			overScrollSate = NO_OVERSCROLL_STATE;
 		}
 
-		if(mContentLayout.getScrollerCurrY() < 0)
+		if (mContentLayout.getScrollerCurrY() < 0)
 		{
 			overScrollSate = TOP_OVERSCROLL_STATE;
 		}
 
-		if(mContentLayout.getScrollerCurrY() > 0)
+		if (mContentLayout.getScrollerCurrY() > 0)
 		{
 			overScrollSate = BOTTOM_OVERSCROLL_STATE;
 		}
 	}
 
 	@Override protected boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY,
-		int scrollRangeX, int scrollRangeY, int maxOverScrollX, int maxOverScrollY,
-		boolean isTouchEvent)
+											 int scrollRangeX, int scrollRangeY, int maxOverScrollX,
+											 int maxOverScrollY,
+											 boolean isTouchEvent)
 	{
 		//		Log.v("test", "deltaY "+deltaY+"   scrollY "+scrollY);
-		return super.overScrollBy( deltaX, deltaY, scrollX, scrollY, scrollRangeX, scrollRangeY,
-			maxOverScrollX, maxOverScrollY, isTouchEvent );
+		return super.overScrollBy(deltaX, deltaY, scrollX, scrollY, scrollRangeX, scrollRangeY,
+			maxOverScrollX, maxOverScrollY, isTouchEvent);
 	}
 
 	@Override protected void onScrollChanged(int l, int t, int oldl, int oldt)
 	{
-		if(mScrollListener != null && overScrollDistance == 0)
+		if (mScrollListener != null && overScrollDistance == 0)
 		{
-			mScrollListener.onScroll( l, t, oldl, oldt );
+			mScrollListener.onScroll(l, t, oldl, oldt);
 		}
-		super.onScrollChanged( l, t, oldl, oldt );
+		super.onScrollChanged(l, t, oldl, oldt);
 	}
 
 	@Override
 	protected void onOverScrolled(int scrollX, int scrollY, boolean clampedX, boolean clampedY)
 	{
-		if(mIsUseInertance && !isInertance && scrollY != 0)
+		if (mIsUseInertance && !isInertance && scrollY != 0)
 		{
 			isInertance = true;
 		}
-		if(clampedY && !isOnTouch && isInertance)
+		if (clampedY && !isOnTouch && isInertance)
 		{
-			mContentLayout.smoothScrollBy( 0, inertanceY );
+			mContentLayout.smoothScrollBy(0, inertanceY);
 			mContentLayout.smoothScrollToNormal();
 			inertanceY = 0;
 		}
-		super.onOverScrolled( scrollX, scrollY, clampedX, clampedY );
+		super.onOverScrolled(scrollX, scrollY, clampedX, clampedY);
 	}
 
 	/**
@@ -550,7 +552,7 @@ public class OverScrollView extends ScrollView
 	 */
 	public void setOverScrollTrigger(int height)
 	{
-		if(height >= 30)
+		if (height >= 30)
 		{
 			mOverScrollTrigger = height;
 		}
@@ -558,17 +560,17 @@ public class OverScrollView extends ScrollView
 
 	private void overScrollTrigger()
 	{
-		if(mOverScrollListener == null)
+		if (mOverScrollListener == null)
 		{
 			return;
 		}
 
-		if(overScrollDistance > mOverScrollTrigger && isOnBottom())
+		if (overScrollDistance > mOverScrollTrigger && isOnBottom())
 		{
 			mOverScrollListener.footerScroll();
 		}
 
-		if(overScrollDistance < -mOverScrollTrigger && isOnTop())
+		if (overScrollDistance < -mOverScrollTrigger && isOnTop())
 		{
 			mOverScrollListener.headerScroll();
 		}
@@ -581,7 +583,7 @@ public class OverScrollView extends ScrollView
 
 	@Override public void computeScroll()
 	{
-		if(!mIsBanQuickScroll)
+		if (!mIsBanQuickScroll)
 		{
 			super.computeScroll();
 		}
@@ -600,7 +602,7 @@ public class OverScrollView extends ScrollView
 	@Override public void fling(int velocityY)
 	{
 		inertanceY = 50 * velocityY / 5000;
-		super.fling( velocityY );
+		super.fling(velocityY);
 	}
 
 

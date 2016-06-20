@@ -18,7 +18,7 @@ import talex.zsw.baselibrary.R;
 public final class RevealTextView extends TextView
 	implements Runnable, ValueAnimator.AnimatorUpdateListener
 {
-	private int animationDuration = 300;
+	private int animationDuration = 1000;
 	private String text;
 	private int red;
 	private int green;

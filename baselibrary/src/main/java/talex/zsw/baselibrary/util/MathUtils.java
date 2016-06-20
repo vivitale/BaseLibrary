@@ -1,6 +1,7 @@
 package talex.zsw.baselibrary.util;
 
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class MathUtils
@@ -11,7 +12,7 @@ public class MathUtils
 	 */
 	public static String doubleToStringWith1(double f)
 	{
-		DecimalFormat df = new DecimalFormat("#.0");
+		DecimalFormat df = new DecimalFormat("#0.0");
 		if (f == 0)
 		{
 			return "0.0";
@@ -28,14 +29,10 @@ public class MathUtils
 	 */
 	public static String doubleToStringWith2(double f)
 	{
-		DecimalFormat df = new DecimalFormat("#.00");
+		DecimalFormat df = new DecimalFormat("#0.00");
 		if (f == 0)
 		{
 			return "0.00";
-		}
-		if (f < 1)
-		{
-			return "0" + df.format(f);
 		}
 		return df.format(f);
 	}
@@ -49,17 +46,8 @@ public class MathUtils
 		{
 			return "0.00";
 		}
-		double f = Double.valueOf(string);
-		DecimalFormat df = new DecimalFormat("#.00");
-		if (f == 0)
-		{
-			return "0.00";
-		}
-		if (f < 1)
-		{
-			return "0" + df.format(f);
-		}
-		return df.format(f);
+		BigDecimal bigDecimal = new BigDecimal(string);
+		return doubleToStringWith2(bigDecimal.doubleValue());
 	}
 
 	/**
@@ -148,5 +136,45 @@ public class MathUtils
 		}
 		double sub = num1 / num2;
 		return doubleToStringWith2(sub);
+	}
+
+	/**
+	 * 加法
+	 */
+	public static String getSumWithOutPoint(String number1, String number2)
+	{
+		double num1 = 0;
+		double num2 = 0;
+		if (!StringUtils.isBlank(number1))
+		{
+			num1 = Double.valueOf(DeleteZero(number1));
+		}
+		if (!StringUtils.isBlank(number2))
+		{
+			num2 = Double.valueOf(DeleteZero(number2));
+		}
+		double sum = num1 + num2;
+		DecimalFormat df = new DecimalFormat("0");
+		return df.format(sum);
+	}
+
+	/**
+	 * 减法
+	 */
+	public static String getSubWithOutPoint(String number1, String number2)
+	{
+		double num1 = 0;
+		double num2 = 0;
+		if (!StringUtils.isBlank(number1))
+		{
+			num1 = Double.valueOf(DeleteZero(number1));
+		}
+		if (!StringUtils.isBlank(number2))
+		{
+			num2 = Double.valueOf(number2);
+		}
+		double sub = num1 - num2;
+		DecimalFormat df = new DecimalFormat("0");
+		return df.format(sub);
 	}
 }

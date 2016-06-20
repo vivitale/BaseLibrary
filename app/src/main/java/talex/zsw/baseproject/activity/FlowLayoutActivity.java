@@ -53,8 +53,9 @@ public class FlowLayoutActivity extends BaseAppCompatActivity
 			}
 		};
 		mFlowLayout.setAdapter(mAdapter);
-		mFlowLayout.setMaxSelectCount(5);//设置最大选中数目
-		mAdapter.setSelectedList(1, 3, 5);//设置默认选中
+		mFlowLayout.setMaxSelectCount(1);//设置最大选中数目
+		mAdapter.setSelectedList(0);//设置默认选中
+
 		mTextView.setOnClickListener(new View.OnClickListener()
 		{
 			@Override public void onClick(View v)

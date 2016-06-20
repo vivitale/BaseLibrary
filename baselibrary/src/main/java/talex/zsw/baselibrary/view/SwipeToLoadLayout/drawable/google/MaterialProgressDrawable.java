@@ -28,8 +28,7 @@ import java.util.ArrayList;
 
 /**
  * 项目名称: BaseProject
- * 作用: TODO (用一句话描述该文件做什么) 
- * 作者: 赵小白 email:vvtale@gmail.com  
+ * 作者: 赵小白 email:edisonzsw@icloud.com
  * 日期: 2016 16/3/21 14:12 
  * 修改人：
  * 修改时间：

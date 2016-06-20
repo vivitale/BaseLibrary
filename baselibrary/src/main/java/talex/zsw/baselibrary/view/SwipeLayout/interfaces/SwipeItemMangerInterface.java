@@ -6,26 +6,25 @@ import java.util.List;
 import talex.zsw.baselibrary.view.SwipeLayout.SwipeLayout;
 import talex.zsw.baselibrary.view.SwipeLayout.util.Attributes;
 
-public interface SwipeItemMangerInterface
-{
+public interface SwipeItemMangerInterface {
 
-	void openItem(int position);
+    void openItem(int position);
 
-	void closeItem(int position);
+    void closeItem(int position);
 
-	void closeAllExcept(SwipeLayout layout);
+    void closeAllExcept(SwipeLayout layout);
+    
+    void closeAllItems();
 
-	void closeAllItems();
+    List<Integer> getOpenItems();
 
-	List<Integer> getOpenItems();
+    List<SwipeLayout> getOpenLayouts();
 
-	List<SwipeLayout> getOpenLayouts();
+    void removeShownLayouts(SwipeLayout layout);
 
-	void removeShownLayouts(SwipeLayout layout);
+    boolean isOpen(int position);
 
-	boolean isOpen(int position);
+    Attributes.Mode getMode();
 
-	Attributes.Mode getMode();
-
-	void setMode(Attributes.Mode mode);
+    void setMode(Attributes.Mode mode);
 }

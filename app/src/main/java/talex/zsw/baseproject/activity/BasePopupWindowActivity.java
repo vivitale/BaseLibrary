@@ -182,6 +182,7 @@ public class BasePopupWindowActivity extends BaseAppCompatActivity implements Vi
 							}
 						}
 					} );
+				mListPopup.showPopupWindow();
 				break;
 			case R.id.Menu:
 				mMenuPopup = new MenuPopup( BasePopupWindowActivity.this );

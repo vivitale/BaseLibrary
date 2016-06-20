@@ -25,15 +25,15 @@ public class SwipeToLoadLayout extends ViewGroup
 
 	private static final int DEFAULT_RELEASE_TO_REFRESHING_SCROLLING_DURATION = 200;
 
-	private static final int DEFAULT_REFRESH_COMPLETE_DELAY_DURATION = 300;
+	private static final int DEFAULT_REFRESH_COMPLETE_DELAY_DURATION = 800;
 
-	private static final int DEFAULT_REFRESH_COMPLETE_TO_DEFAULT_SCROLLING_DURATION = 500;
+	private static final int DEFAULT_REFRESH_COMPLETE_TO_DEFAULT_SCROLLING_DURATION = 450;
 
-	private static final int DEFAULT_DEFAULT_TO_REFRESHING_SCROLLING_DURATION = 500;
+	private static final int DEFAULT_DEFAULT_TO_REFRESHING_SCROLLING_DURATION = 450;
 
 	private static final int DEFAULT_RELEASE_TO_LOADING_MORE_SCROLLING_DURATION = 200;
 
-	private static final int DEFAULT_LOAD_MORE_COMPLETE_DELAY_DURATION = 300;
+	private static final int DEFAULT_LOAD_MORE_COMPLETE_DELAY_DURATION = 500;
 
 	private static final int DEFAULT_LOAD_MORE_COMPLETE_TO_DEFAULT_SCROLLING_DURATION = 300;
 
@@ -758,7 +758,6 @@ public class SwipeToLoadLayout extends ViewGroup
 	}
 
 	/**
-	 * TODO add gravity
 	 * LayoutParams of RefreshLoadMoreLayout
 	 */
 	public static class LayoutParams extends MarginLayoutParams

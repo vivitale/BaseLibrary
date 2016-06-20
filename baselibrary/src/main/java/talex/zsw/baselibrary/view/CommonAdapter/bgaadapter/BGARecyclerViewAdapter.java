@@ -9,12 +9,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import talex.zsw.baselibrary.view.RecyleView.HeaderAndFooter.RecyclerViewUtils;
+
 /**
- * @param <M>
- *            适配的数据类型
+ * @param <M> 适配的数据类型
  */
 public abstract class BGARecyclerViewAdapter<M> extends
-		RecyclerView.Adapter<BGARecyclerViewHolder>
+	RecyclerView.Adapter<BGARecyclerViewHolder>
 {
 	protected final int mItemLayoutId;
 	protected Context mContext;
@@ -23,6 +24,8 @@ public abstract class BGARecyclerViewAdapter<M> extends
 	protected BGAOnItemChildLongClickListener mOnItemChildLongClickListener;
 	private BGAOnRVItemClickListener mOnRVItemClickListener;
 	private BGAOnRVItemLongClickListener mOnRVItemLongClickListener;
+	// 用于加载数据的时候显示顶部和底部View控件
+	private RecyclerViewUtils.ShowHeaderAndFooterListener showHeaderAndFooterListener;
 
 	public BGARecyclerViewAdapter(Context context, int itemLayoutId)
 	{
@@ -39,23 +42,23 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	@Override
 	public BGARecyclerViewHolder onCreateViewHolder(ViewGroup parent,
-			int viewType)
+													int viewType)
 	{
 		BGARecyclerViewHolder viewHolder = new BGARecyclerViewHolder(
-				LayoutInflater.from(mContext).inflate(mItemLayoutId, parent,
-						false), mOnRVItemClickListener,
-				mOnRVItemLongClickListener);
+			LayoutInflater.from(mContext).inflate(mItemLayoutId, parent,
+				false), mOnRVItemClickListener,
+			mOnRVItemLongClickListener);
 		viewHolder.getViewHolderHelper().setOnItemChildClickListener(
-				mOnItemChildClickListener);
+			mOnItemChildClickListener);
 		viewHolder.getViewHolderHelper().setOnItemChildLongClickListener(
-				mOnItemChildLongClickListener);
+			mOnItemChildLongClickListener);
 		setItemChildListener(viewHolder.getViewHolderHelper());
 		return viewHolder;
 	}
 
 	/**
 	 * 为item的孩子节点设置监听器，并不是每一个数据列表都要为item的子控件添加事件监听器，所以这里采用了空实现，需要设置事件监听器时重写该方法即可
-	 * 
+	 *
 	 * @param viewHolderHelper
 	 */
 	protected void setItemChildListener(BGAViewHolderHelper viewHolderHelper)
@@ -70,56 +73,67 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	/**
 	 * 填充item数据
-	 * 
+	 *
 	 * @param viewHolderHelper
 	 * @param position
 	 * @param model
 	 */
 	protected abstract void fillData(BGAViewHolderHelper viewHolderHelper,
-			int position, M model);
+									 int position, M model);
 
 	/**
 	 * 设置item的点击事件监听器
-	 * 
+	 *
 	 * @param onRVItemClickListener
 	 */
 	public void setOnRVItemClickListener(
-			BGAOnRVItemClickListener onRVItemClickListener)
+		BGAOnRVItemClickListener onRVItemClickListener)
 	{
 		mOnRVItemClickListener = onRVItemClickListener;
 	}
 
 	/**
 	 * 设置item的长按事件监听器
-	 * 
+	 *
 	 * @param onRVItemLongClickListener
 	 */
 	public void setOnRVItemLongClickListener(
-			BGAOnRVItemLongClickListener onRVItemLongClickListener)
+		BGAOnRVItemLongClickListener onRVItemLongClickListener)
 	{
 		mOnRVItemLongClickListener = onRVItemLongClickListener;
 	}
 
 	/**
 	 * 设置item中的子控件点击事件监听器
-	 * 
+	 *
 	 * @param onItemChildClickListener
 	 */
 	public void setOnItemChildClickListener(
-			BGAOnItemChildClickListener onItemChildClickListener)
+		BGAOnItemChildClickListener onItemChildClickListener)
 	{
 		mOnItemChildClickListener = onItemChildClickListener;
 	}
 
 	/**
-	 * 设置item中的子控件长按事件监听器
-	 * 
+	 * 设置用于加载数据的时候显示顶部和底部View控件
+	 *
 	 * @param onItemChildLongClickListener
 	 */
 	public void setOnItemChildLongClickListener(
-			BGAOnItemChildLongClickListener onItemChildLongClickListener)
+		BGAOnItemChildLongClickListener onItemChildLongClickListener)
 	{
 		mOnItemChildLongClickListener = onItemChildLongClickListener;
+	}
+
+	/**
+	 * 设置item中的子控件长按事件监听器
+	 *
+	 * @param listener
+	 */
+	public void setShowHeaderAndFooterListener(
+		RecyclerViewUtils.ShowHeaderAndFooterListener listener)
+	{
+		showHeaderAndFooterListener = listener;
 	}
 
 	public M getItem(int position)
@@ -129,7 +143,7 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	/**
 	 * 获取数据集合
-	 * 
+	 *
 	 * @return
 	 */
 	public List<M> getDatas()
@@ -139,11 +153,15 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	/**
 	 * 在集合头部添加新的数据集合（下拉从服务器获取最新的数据集合，例如新浪微博加载最新的几条微博数据）
-	 * 
+	 *
 	 * @param datas
 	 */
 	public void addNewDatas(List<M> datas)
 	{
+		if (showHeaderAndFooterListener != null)
+		{
+			showHeaderAndFooterListener.disLoading();
+		}
 		if (datas != null)
 		{
 			mDatas.addAll(0, datas);
@@ -153,11 +171,39 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	/**
 	 * 在集合尾部添加更多数据集合（上拉从服务器获取更多的数据集合，例如新浪微博列表上拉加载更晚时间发布的微博数据）
-	 * 
+	 *
 	 * @param datas
 	 */
 	public void addMoreDatas(List<M> datas)
 	{
+		if (showHeaderAndFooterListener != null)
+		{
+			showHeaderAndFooterListener.disLoading();
+			if (mDatas.size() == 0)
+			{
+				if (datas == null || datas.size() == 0)
+				{
+					showHeaderAndFooterListener.showHeader();
+				}
+				else
+				{
+					showHeaderAndFooterListener.disHeader();
+					showHeaderAndFooterListener.disFooter();
+				}
+			}
+			else
+			{
+				if (datas == null || datas.size() == 0)
+				{
+					showHeaderAndFooterListener.showFooter();
+				}
+				else
+				{
+					showHeaderAndFooterListener.disHeader();
+					showHeaderAndFooterListener.disFooter();
+				}
+			}
+		}
 		if (datas != null)
 		{
 			mDatas.addAll(mDatas.size(), datas);
@@ -167,11 +213,24 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	/**
 	 * 设置全新的数据集合，如果传入null，则清空数据列表（第一次从服务器加载数据，或者下拉刷新当前界面数据表）
-	 * 
+	 *
 	 * @param datas
 	 */
 	public void setDatas(List<M> datas)
 	{
+		if (showHeaderAndFooterListener != null)
+		{
+			showHeaderAndFooterListener.disLoading();
+			if (datas == null || datas.size() == 0)
+			{
+				showHeaderAndFooterListener.showHeader();
+				showHeaderAndFooterListener.disFooter();
+			}
+			else
+			{
+				showHeaderAndFooterListener.disHeader();
+			}
+		}
 		if (datas != null)
 		{
 			mDatas = datas;
@@ -188,13 +247,17 @@ public abstract class BGARecyclerViewAdapter<M> extends
 	 */
 	public void clear()
 	{
+		if (showHeaderAndFooterListener != null)
+		{
+			showHeaderAndFooterListener.disLoading();
+		}
 		mDatas.clear();
 		notifyDataSetChanged();
 	}
 
 	/**
 	 * 删除指定索引数据条目
-	 * 
+	 *
 	 * @param position
 	 */
 	public void removeItem(int position)
@@ -205,7 +268,7 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	/**
 	 * 删除指定数据条目
-	 * 
+	 *
 	 * @param model
 	 */
 	public void removeItem(M model)
@@ -215,7 +278,7 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	/**
 	 * 在指定位置添加数据条目
-	 * 
+	 *
 	 * @param position
 	 * @param model
 	 */
@@ -227,7 +290,7 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	/**
 	 * 在集合头部添加数据条目
-	 * 
+	 *
 	 * @param model
 	 */
 	public void addFirstItem(M model)
@@ -237,7 +300,7 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	/**
 	 * 在集合末尾添加数据条目
-	 * 
+	 *
 	 * @param model
 	 */
 	public void addLastItem(M model)
@@ -247,7 +310,7 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	/**
 	 * 替换指定索引的数据条目
-	 * 
+	 *
 	 * @param location
 	 * @param newModel
 	 */
@@ -259,7 +322,7 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	/**
 	 * 替换指定数据条目
-	 * 
+	 *
 	 * @param oldModel
 	 * @param newModel
 	 */
@@ -270,7 +333,7 @@ public abstract class BGARecyclerViewAdapter<M> extends
 
 	/**
 	 * 交换两个数据条目的位置
-	 * 
+	 *
 	 * @param fromPosition
 	 * @param toPosition
 	 */

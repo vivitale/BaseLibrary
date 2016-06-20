@@ -177,12 +177,11 @@ import android.view.View;
 		switch (ev.getAction())
 		{
 			case MotionEvent.ACTION_DOWN:
+				// Remember where the motion event started
+				mLastMotionY = (int) ev.getY();
 				if (isOverScrolled())
 				{
 					isRecord = true;
-					// Remember where the motion event started
-					mLastMotionY = (int) ev.getY();
-
 					mActivePointerId = ev.getPointerId(0);
 				}
 				break;

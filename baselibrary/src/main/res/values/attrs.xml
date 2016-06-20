@@ -624,6 +624,7 @@
     <!-- NavigationTabBar -->
     <declare-styleable name="NavigationTabBar">
         <attr name="ntb_titled" format="boolean"/>
+        <attr name="ntb_scaled" format="boolean"/>
         <attr name="ntb_badged" format="boolean"/>
         <attr name="ntb_badge_use_typeface" format="boolean"/>
 
@@ -649,6 +650,91 @@
         <attr name="ntb_active_color" format="color"/>
 
         <attr name="ntb_preview_colors" format="reference"/>
+    </declare-styleable>
+
+    <!-- CounterView -->
+    <declare-styleable name="CounterView">
+        <attr name="prefix" format="string"/>
+        <attr name="suffix" format="string"/>
+        <attr name="timeInterval" format="float"/>
+        <attr name="incrementValue" format="float"/>
+        <attr name="startValue" format="float"/>
+        <attr name="endValue" format="float"/>
+        <attr name="formatText" format="boolean"/>
+        <attr name="autoStart" format="boolean"/>
+        <attr name="type" format="enum">
+            <enum name="integer" value="0"/>
+            <enum name="decimal" value="1"/>
+            <enum name="both" value="2"/>
+        </attr>
+        <attr name="android:text"/>
+    </declare-styleable>
+
+    <!-- PowerImageView 播放GIF -->
+    <declare-styleable name="GifView">
+        <attr name="gif" format="reference" />
+        <attr name="paused" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="CustomTheme">
+        <attr name="gifViewStyle" format="reference" />
+    </declare-styleable>
+
+    <!-- 水波加载 -->
+    <declare-styleable name="WaveLoadingView">
+        <attr name="wlv_borderWidth" format="dimension"/>
+        <attr name="wlv_borderColor" format="color"/>
+        <attr name="wlv_progressValue" format="integer"/>
+        <attr name="wlv_shapeType" format="enum">
+            <enum name="triangle" value="0" />
+            <enum name="circle" value="1" />
+            <enum name="square" value="2" />
+            <enum name="rectangle" value="3" />
+        </attr>
+        <attr name="wlv_triangle_direction" format="enum">
+            <enum name="north" value="0" />
+            <enum name="south" value="1" />
+            <enum name="east" value="2" />
+            <enum name="west" value="3" />
+        </attr>
+        <attr name="wlv_rectangle_width" format="integer"/>
+        <attr name="wlv_rectangle_height" format="integer"/>
+        <attr name="wlv_round_rectangle" format="boolean"/>
+        <attr name="wlv_round_rectangle_x_and_y" format="integer"/>
+        <attr name="wlv_waveColor" format="color"/>
+        <attr name="wlv_waveAmplitude" format="float"/>
+        <attr name="wlv_titleTop" format="string"/>
+        <attr name="wlv_titleCenter" format="string"/>
+        <attr name="wlv_titleBottom" format="string"/>
+        <attr name="wlv_titleTopSize" format="dimension"/>
+        <attr name="wlv_titleCenterSize" format="dimension"/>
+        <attr name="wlv_titleBottomSize" format="dimension"/>
+        <attr name="wlv_titleTopColor" format="color"/>
+        <attr name="wlv_titleCenterColor" format="color"/>
+        <attr name="wlv_titleBottomColor" format="color"/>
+    </declare-styleable>
+
+    <!-- 带有显示数值的SeekBar -->
+    <declare-styleable name="Theme">
+        <attr name="discreteSeekBarStyle" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="DiscreteSeekBar">
+        <attr name="dsb_min" format="integer|dimension"/>
+        <attr name="dsb_max" format="integer|dimension"/>
+        <attr name="dsb_value" format="integer|dimension"/>
+        <attr name="dsb_mirrorForRtl" format="boolean"/>
+        <attr name="dsb_allowTrackClickToDrag" format="boolean"/>
+        <attr name="dsb_progressColor" format="color|reference"/>
+        <attr name="dsb_trackColor" format="color|reference"/>
+        <attr name="dsb_indicatorTextAppearance" format="reference"/>
+        <attr name="dsb_indicatorColor" format="color|reference"/>
+        <attr name="dsb_indicatorElevation" format="dimension"/>
+        <attr name="dsb_indicatorFormatter" format="string|reference"/>
+        <attr name="dsb_rippleColor" format="color|reference"/>
+        <attr name="dsb_indicatorPopupEnabled" format="boolean"/>
+        <attr name="dsb_trackHeight" format="integer|dimension"/>
+        <attr name="dsb_scrubberHeight" format="integer|dimension"/>
+        <attr name="dsb_thumbSize" format="integer|dimension"/>
+        <attr name="dsb_indicatorSeparation" format="integer|dimension"/>
     </declare-styleable>
 
 </resources>

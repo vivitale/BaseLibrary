@@ -16,7 +16,7 @@ import android.view.View;
 
 /**
  * 作用: 简易的计算显示RecyclerView间隔
- * 作者: TALE(赵小白) email:vvtale@gmail.com  
+ * 作者: TALE(赵小白) email:edisonzsw@icloud.com
  * 日期: 2015-09-08 9:59 
  * 修改人：
  * 修改时间：

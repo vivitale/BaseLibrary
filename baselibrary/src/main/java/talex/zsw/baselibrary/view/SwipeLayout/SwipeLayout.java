@@ -1,6 +1,5 @@
 package talex.zsw.baselibrary.view.SwipeLayout;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
@@ -57,13 +56,15 @@ public class SwipeLayout extends FrameLayout
 	private Map<View, ArrayList<OnRevealListener>> mRevealListeners = new HashMap<>();
 	private Map<View, Boolean> mShowEntirely = new HashMap<>();
 	private Map<View, Rect> mViewBoundCache = new HashMap<>();
-	//save all children's bound, restore in onLayout
+//save all children's bound, restore in onLayout
 
 	private DoubleClickListener mDoubleClickListener;
 
 	private boolean mSwipeEnabled = true;
 	private boolean[] mSwipesEnabled = new boolean[]{true, true, true, true};
 	private boolean mClickToClose = false;
+	private float mWillOpenPercentAfterOpen = 0.75f;
+	private float mWillOpenPercentAfterClose = 0.25f;
 
 	public enum DragEdge
 	{
@@ -128,9 +129,6 @@ public class SwipeLayout extends FrameLayout
 		a.recycle();
 	}
 
-	/**
-	 * 滑动监听事件
-	 */
 	public interface SwipeListener
 	{
 		void onStartOpen(SwipeLayout layout);
@@ -146,29 +144,16 @@ public class SwipeLayout extends FrameLayout
 		void onHandRelease(SwipeLayout layout, float xvel, float yvel);
 	}
 
-	/**
-	 * 添加滑动监听事件
-	 *
-	 * @param l 滑动监听事件
-	 */
 	public void addSwipeListener(SwipeListener l)
 	{
 		mSwipeListeners.add(l);
 	}
 
-	/**
-	 * 移除某个滑动监听事件
-	 *
-	 * @param l 滑动监听事件
-	 */
 	public void removeSwipeListener(SwipeListener l)
 	{
 		mSwipeListeners.remove(l);
 	}
 
-	/**
-	 * 移除所有的滑动监听事件
-	 */
 	public void removeAllSwipeListener()
 	{
 		mSwipeListeners.clear();
@@ -253,16 +238,10 @@ public class SwipeLayout extends FrameLayout
 	{
 		View child = findViewById(childId);
 
-		if (child == null)
-		{
-			return;
-		}
+		if (child == null) return;
 
 		mShowEntirely.remove(child);
-		if (mRevealListeners.containsKey(child))
-		{
-			mRevealListeners.get(child).remove(l);
-		}
+		if (mRevealListeners.containsKey(child)) mRevealListeners.get(child).remove(l);
 	}
 
 	public void removeAllRevealListeners(int childId)
@@ -289,20 +268,14 @@ public class SwipeLayout extends FrameLayout
 					case Bottom:
 						return getPaddingLeft();
 					case Left:
-						if (left < getPaddingLeft())
-						{
-							return getPaddingLeft();
-						}
+						if (left < getPaddingLeft()) return getPaddingLeft();
 						if (left > getPaddingLeft() + mDragDistance)
 						{
 							return getPaddingLeft() + mDragDistance;
 						}
 						break;
 					case Right:
-						if (left > getPaddingLeft())
-						{
-							return getPaddingLeft();
-						}
+						if (left > getPaddingLeft()) return getPaddingLeft();
 						if (left < getPaddingLeft() - mDragDistance)
 						{
 							return getPaddingLeft() - mDragDistance;
@@ -321,10 +294,7 @@ public class SwipeLayout extends FrameLayout
 					case Left:
 						if (mShowMode == ShowMode.PullOut)
 						{
-							if (left > getPaddingLeft())
-							{
-								return getPaddingLeft();
-							}
+							if (left > getPaddingLeft()) return getPaddingLeft();
 						}
 						break;
 					case Right:
@@ -352,10 +322,7 @@ public class SwipeLayout extends FrameLayout
 					case Right:
 						return getPaddingTop();
 					case Top:
-						if (top < getPaddingTop())
-						{
-							return getPaddingTop();
-						}
+						if (top < getPaddingTop()) return getPaddingTop();
 						if (top > getPaddingTop() + mDragDistance)
 						{
 							return getPaddingTop() + mDragDistance;
@@ -384,10 +351,7 @@ public class SwipeLayout extends FrameLayout
 					case Top:
 						if (mShowMode == ShowMode.PullOut)
 						{
-							if (top > getPaddingTop())
-							{
-								return getPaddingTop();
-							}
+							if (top > getPaddingTop()) return getPaddingTop();
 						}
 						else
 						{
@@ -467,10 +431,7 @@ public class SwipeLayout extends FrameLayout
 		public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy)
 		{
 			View surfaceView = getSurfaceView();
-			if (surfaceView == null)
-			{
-				return;
-			}
+			if (surfaceView == null) return;
 			View currentBottomView = getCurrentBottomView();
 			int evLeft = surfaceView.getLeft(),
 				evRight = surfaceView.getRight(),
@@ -575,13 +536,10 @@ public class SwipeLayout extends FrameLayout
 	 * show( fraction = 1), so , we need to calculate every time.
 	 */
 	protected boolean isViewTotallyFirstShowed(View child, Rect relativePosition, DragEdge edge,
-		int surfaceLeft,
-		int surfaceTop, int surfaceRight, int surfaceBottom)
+											   int surfaceLeft,
+											   int surfaceTop, int surfaceRight, int surfaceBottom)
 	{
-		if (mShowEntirely.get(child))
-		{
-			return false;
-		}
+		if (mShowEntirely.get(child)) return false;
 		int childLeft = relativePosition.left;
 		int childRight = relativePosition.right;
 		int childTop = relativePosition.top;
@@ -611,8 +569,8 @@ public class SwipeLayout extends FrameLayout
 	}
 
 	protected boolean isViewShowing(View child, Rect relativePosition, DragEdge availableEdge,
-		int surfaceLeft,
-		int surfaceTop, int surfaceRight, int surfaceBottom)
+									int surfaceLeft,
+									int surfaceTop, int surfaceRight, int surfaceBottom)
 	{
 		int childLeft = relativePosition.left;
 		int childRight = relativePosition.right;
@@ -653,28 +611,16 @@ public class SwipeLayout extends FrameLayout
 			switch (availableEdge)
 			{
 				case Right:
-					if (childLeft <= getWidth() && childRight > getWidth())
-					{
-						return true;
-					}
+					if (childLeft <= getWidth() && childRight > getWidth()) return true;
 					break;
 				case Left:
-					if (childRight >= getPaddingLeft() && childLeft < getPaddingLeft())
-					{
-						return true;
-					}
+					if (childRight >= getPaddingLeft() && childLeft < getPaddingLeft()) return true;
 					break;
 				case Top:
-					if (childTop < getPaddingTop() && childBottom >= getPaddingTop())
-					{
-						return true;
-					}
+					if (childTop < getPaddingTop() && childBottom >= getPaddingTop()) return true;
 					break;
 				case Bottom:
-					if (childTop < getHeight() && childTop >= getPaddingTop())
-					{
-						return true;
-					}
+					if (childTop < getHeight() && childTop >= getPaddingTop()) return true;
 					break;
 			}
 		}
@@ -688,10 +634,7 @@ public class SwipeLayout extends FrameLayout
 		while (t.getParent() != null && t != getRootView())
 		{
 			t = (View) t.getParent();
-			if (t == this)
-			{
-				break;
-			}
+			if (t == this) break;
 			r.left += t.getLeft();
 			r.top += t.getTop();
 		}
@@ -708,31 +651,19 @@ public class SwipeLayout extends FrameLayout
 		boolean open = true;
 		if (edge == DragEdge.Left)
 		{
-			if (dx < 0)
-			{
-				open = false;
-			}
+			if (dx < 0) open = false;
 		}
 		else if (edge == DragEdge.Right)
 		{
-			if (dx > 0)
-			{
-				open = false;
-			}
+			if (dx > 0) open = false;
 		}
 		else if (edge == DragEdge.Top)
 		{
-			if (dy < 0)
-			{
-				open = false;
-			}
+			if (dy < 0) open = false;
 		}
 		else if (edge == DragEdge.Bottom)
 		{
-			if (dy > 0)
-			{
-				open = false;
-			}
+			if (dy > 0) open = false;
 		}
 
 		dispatchSwipeEvent(surfaceLeft, surfaceTop, open);
@@ -817,13 +748,10 @@ public class SwipeLayout extends FrameLayout
 	}
 
 	protected void dispatchRevealEvent(final int surfaceLeft, final int surfaceTop,
-		final int surfaceRight,
-		final int surfaceBottom)
+									   final int surfaceRight,
+									   final int surfaceBottom)
 	{
-		if (mRevealListeners.isEmpty())
-		{
-			return;
-		}
+		if (mRevealListeners.isEmpty()) return;
 		for (Map.Entry<View, ArrayList<OnRevealListener>> entry : mRevealListeners.entrySet())
 		{
 			View child = entry.getKey();
@@ -920,7 +848,7 @@ public class SwipeLayout extends FrameLayout
 	}
 
 	/**
-	 * {@link OnLayoutChangeListener} added in API 11. I need
+	 * {@link android.view.View.OnLayoutChangeListener} added in API 11. I need
 	 * to support it from API 8.
 	 */
 	public interface OnLayout
@@ -932,47 +860,26 @@ public class SwipeLayout extends FrameLayout
 
 	public void addOnLayoutListener(OnLayout l)
 	{
-		if (mOnLayoutListeners == null)
-		{
-			mOnLayoutListeners = new ArrayList<OnLayout>();
-		}
+		if (mOnLayoutListeners == null) mOnLayoutListeners = new ArrayList<OnLayout>();
 		mOnLayoutListeners.add(l);
 	}
 
 	public void removeOnLayoutListener(OnLayout l)
 	{
-		if (mOnLayoutListeners != null)
-		{
-			mOnLayoutListeners.remove(l);
-		}
+		if (mOnLayoutListeners != null) mOnLayoutListeners.remove(l);
 	}
 
-	/**
-	 * 移除所有的View
-	 */
 	public void clearDragEdge()
 	{
 		mDragEdges.clear();
 	}
 
-	/**
-	 * 清空之后，在某个方向设置一个View
-	 *
-	 * @param dragEdge 某个方向
-	 * @param childId  View的id
-	 */
 	public void setDrag(DragEdge dragEdge, int childId)
 	{
 		clearDragEdge();
 		addDrag(dragEdge, childId);
 	}
 
-	/**
-	 * 清空之后，在某个方向设置一个View
-	 *
-	 * @param dragEdge 某个方向
-	 * @param child    View
-	 */
 	public void setDrag(DragEdge dragEdge, View child)
 	{
 		clearDragEdge();
@@ -991,10 +898,7 @@ public class SwipeLayout extends FrameLayout
 
 	public void addDrag(DragEdge dragEdge, View child, ViewGroup.LayoutParams params)
 	{
-		if (child == null)
-		{
-			return;
-		}
+		if (child == null) return;
 
 		if (params == null)
 		{
@@ -1020,7 +924,7 @@ public class SwipeLayout extends FrameLayout
 				gravity = Gravity.BOTTOM;
 				break;
 		}
-		if (params instanceof LayoutParams)
+		if (params instanceof FrameLayout.LayoutParams)
 		{
 			((LayoutParams) params).gravity = gravity;
 		}
@@ -1030,10 +934,7 @@ public class SwipeLayout extends FrameLayout
 	@Override
 	public void addView(View child, int index, ViewGroup.LayoutParams params)
 	{
-		if (child == null)
-		{
-			return;
-		}
+		if (child == null) return;
 		int gravity = Gravity.NO_GRAVITY;
 		try
 		{
@@ -1102,10 +1003,7 @@ public class SwipeLayout extends FrameLayout
 	{
 		View surfaceView = getSurfaceView();
 		Rect surfaceRect = mViewBoundCache.get(surfaceView);
-		if (surfaceRect == null)
-		{
-			surfaceRect = computeSurfaceLayoutArea(false);
-		}
+		if (surfaceRect == null) surfaceRect = computeSurfaceLayoutArea(false);
 		if (surfaceView != null)
 		{
 			surfaceView
@@ -1129,10 +1027,7 @@ public class SwipeLayout extends FrameLayout
 	{
 		View surfaceView = getSurfaceView();
 		Rect surfaceRect = mViewBoundCache.get(surfaceView);
-		if (surfaceRect == null)
-		{
-			surfaceRect = computeSurfaceLayoutArea(false);
-		}
+		if (surfaceRect == null) surfaceRect = computeSurfaceLayoutArea(false);
 		if (surfaceView != null)
 		{
 			surfaceView
@@ -1156,10 +1051,7 @@ public class SwipeLayout extends FrameLayout
 
 	private void checkCanDrag(MotionEvent ev)
 	{
-		if (mIsBeingDragged)
-		{
-			return;
-		}
+		if (mIsBeingDragged) return;
 		if (getOpenStatus() == Status.Middle)
 		{
 			mIsBeingDragged = true;
@@ -1324,10 +1216,7 @@ public class SwipeLayout extends FrameLayout
 	@Override
 	public boolean onTouchEvent(MotionEvent event)
 	{
-		if (!isSwipeEnabled())
-		{
-			return super.onTouchEvent(event);
-		}
+		if (!isSwipeEnabled()) return super.onTouchEvent(event);
 
 		int action = event.getActionMasked();
 		gestureDetector.onTouchEvent(event);
@@ -1369,21 +1258,11 @@ public class SwipeLayout extends FrameLayout
 		return mClickToClose;
 	}
 
-	/**
-	 * 是否点击关闭
-	 *
-	 * @param mClickToClose 是否点击关闭
-	 */
 	public void setClickToClose(boolean mClickToClose)
 	{
 		this.mClickToClose = mClickToClose;
 	}
 
-	/**
-	 * 设置是否可以滑动
-	 *
-	 * @param enabled 是否能滑动
-	 */
 	public void setSwipeEnabled(boolean enabled)
 	{
 		mSwipeEnabled = enabled;
@@ -1401,11 +1280,6 @@ public class SwipeLayout extends FrameLayout
 			&& bottomView != getSurfaceView() && mSwipesEnabled[DragEdge.Left.ordinal()];
 	}
 
-	/**
-	 * 设置左边是否能滑动
-	 *
-	 * @param leftSwipeEnabled 左边是否能滑动
-	 */
 	public void setLeftSwipeEnabled(boolean leftSwipeEnabled)
 	{
 		this.mSwipesEnabled[DragEdge.Left.ordinal()] = leftSwipeEnabled;
@@ -1418,11 +1292,6 @@ public class SwipeLayout extends FrameLayout
 			&& bottomView != getSurfaceView() && mSwipesEnabled[DragEdge.Right.ordinal()];
 	}
 
-	/**
-	 * 设置右边是否能滑动
-	 *
-	 * @param rightSwipeEnabled 右边是否能滑动
-	 */
 	public void setRightSwipeEnabled(boolean rightSwipeEnabled)
 	{
 		this.mSwipesEnabled[DragEdge.Right.ordinal()] = rightSwipeEnabled;
@@ -1435,11 +1304,6 @@ public class SwipeLayout extends FrameLayout
 			&& bottomView != getSurfaceView() && mSwipesEnabled[DragEdge.Top.ordinal()];
 	}
 
-	/**
-	 * 设置上边是否能滑动
-	 *
-	 * @param topSwipeEnabled 上边是否能滑动
-	 */
 	public void setTopSwipeEnabled(boolean topSwipeEnabled)
 	{
 		this.mSwipesEnabled[DragEdge.Top.ordinal()] = topSwipeEnabled;
@@ -1452,14 +1316,53 @@ public class SwipeLayout extends FrameLayout
 			&& bottomView != getSurfaceView() && mSwipesEnabled[DragEdge.Bottom.ordinal()];
 	}
 
-	/**
-	 * 设置下边是否能滑动
-	 *
-	 * @param bottomSwipeEnabled 下边是否能滑动
-	 */
 	public void setBottomSwipeEnabled(boolean bottomSwipeEnabled)
 	{
 		this.mSwipesEnabled[DragEdge.Bottom.ordinal()] = bottomSwipeEnabled;
+	}
+
+	/***
+	 * Returns the percentage of revealing at which the view below should the view finish opening
+	 * if it was already open before dragging
+	 *
+	 * @returns The percentage of view revealed to trigger, default value is 0.25
+	 */
+	public float getWillOpenPercentAfterOpen()
+	{
+		return mWillOpenPercentAfterOpen;
+	}
+
+	/***
+	 * Allows to stablish at what percentage of revealing the view below should the view finish opening
+	 * if it was already open before dragging
+	 *
+	 * @param willOpenPercentAfterOpen The percentage of view revealed to trigger, default value is 0.25
+	 */
+	public void setWillOpenPercentAfterOpen(float willOpenPercentAfterOpen)
+	{
+		this.mWillOpenPercentAfterOpen = willOpenPercentAfterOpen;
+	}
+
+	/***
+	 * Returns the percentage of revealing at which the view below should the view finish opening
+	 * if it was already closed before dragging
+	 *
+	 * @returns The percentage of view revealed to trigger, default value is 0.25
+	 */
+	public float getWillOpenPercentAfterClose()
+	{
+		return mWillOpenPercentAfterClose;
+	}
+
+	/***
+	 * Allows to stablish at what percentage of revealing the view below should the view finish opening
+	 * if it was already closed before dragging
+	 *
+	 * @param willOpenPercentAfterClose The percentage of view revealed to trigger, default value is 0.75
+	 */
+	public void setWillOpenPercentAfterClose(float willOpenPercentAfterClose)
+	{
+		this.mWillOpenPercentAfterClose = willOpenPercentAfterClose;
 	}
 
 	private boolean insideAdapterView()
@@ -1479,10 +1382,7 @@ public class SwipeLayout extends FrameLayout
 
 	private void performAdapterViewItemClick()
 	{
-		if (getOpenStatus() != Status.Close)
-		{
-			return;
-		}
+		if (getOpenStatus() != Status.Close) return;
 		ViewParent t = getParent();
 		if (t instanceof AdapterView)
 		{
@@ -1498,19 +1398,13 @@ public class SwipeLayout extends FrameLayout
 
 	private boolean performAdapterViewItemLongClick()
 	{
-		if (getOpenStatus() != Status.Close)
-		{
-			return false;
-		}
+		if (getOpenStatus() != Status.Close) return false;
 		ViewParent t = getParent();
 		if (t instanceof AdapterView)
 		{
 			AdapterView view = (AdapterView) t;
 			int p = view.getPositionForView(SwipeLayout.this);
-			if (p == AdapterView.INVALID_POSITION)
-			{
-				return false;
-			}
+			if (p == AdapterView.INVALID_POSITION) return false;
 			long vId = view.getItemIdAtPosition(p);
 			boolean handled = false;
 			try
@@ -1651,18 +1545,17 @@ public class SwipeLayout extends FrameLayout
 	 */
 	public void setDragDistance(int max)
 	{
-		if (max < 0)
-		{
-			max = 0;
-		}
+		if (max < 0) max = 0;
 		mDragDistance = dp2px(max);
 		requestLayout();
 	}
 
 	/**
-	 * 设置菜单项目划出模式
-	 * {@link ShowMode}.PullOut 看起来是在旁边被拉扯进来
-	 * {@link ShowMode}.LayDown 看起来一直在底部
+	 * There are 2 diffirent show mode.
+	 * {@link ShowMode}.PullOut and
+	 * {@link ShowMode}.LayDown.
+	 *
+	 * @param mode
 	 */
 	public void setShowMode(ShowMode mode)
 	{
@@ -1690,10 +1583,7 @@ public class SwipeLayout extends FrameLayout
 	 */
 	public View getSurfaceView()
 	{
-		if (getChildCount() == 0)
-		{
-			return null;
-		}
+		if (getChildCount() == 0) return null;
 		return getChildAt(getChildCount() - 1);
 	}
 
@@ -1746,10 +1636,7 @@ public class SwipeLayout extends FrameLayout
 		}
 		int surfaceLeft = surfaceView.getLeft();
 		int surfaceTop = surfaceView.getTop();
-		if (surfaceLeft == getPaddingLeft() && surfaceTop == getPaddingTop())
-		{
-			return Status.Close;
-		}
+		if (surfaceLeft == getPaddingLeft() && surfaceTop == getPaddingTop()) return Status.Close;
 
 		if (surfaceLeft == (getPaddingLeft() - mDragDistance) ||
 			surfaceLeft == (getPaddingLeft() + mDragDistance)
@@ -1779,7 +1666,8 @@ public class SwipeLayout extends FrameLayout
 		{
 			return;
 		}
-		float willOpenPercent = (isCloseBeforeDragged ? .25f : .75f);
+		float willOpenPercent =
+			(isCloseBeforeDragged ? mWillOpenPercentAfterClose : mWillOpenPercentAfterOpen);
 		if (currentDragEdge == DragEdge.Left)
 		{
 			if (xvel > minVelocity)
@@ -2005,10 +1893,7 @@ public class SwipeLayout extends FrameLayout
 		{
 			close(smooth);
 		}
-		else if (getOpenStatus() == Status.Close)
-		{
-			open(smooth);
-		}
+		else if (getOpenStatus() == Status.Close) open(smooth);
 	}
 
 
@@ -2155,7 +2040,6 @@ public class SwipeLayout extends FrameLayout
 		setCurrentDragEdge(dragEdge);
 	}
 
-	@SuppressLint("Override")
 	public void onViewRemoved(View child)
 	{
 		for (Map.Entry<DragEdge, View> entry : new HashMap<DragEdge, View>(mDragEdges).entrySet())
@@ -2229,10 +2113,7 @@ public class SwipeLayout extends FrameLayout
 
 	private float getCurrentOffset()
 	{
-		if (mCurrentDragEdge == null)
-		{
-			return 0;
-		}
+		if (mCurrentDragEdge == null) return 0;
 		return mEdgeSwipesOffset[mCurrentDragEdge.ordinal()];
 	}
 

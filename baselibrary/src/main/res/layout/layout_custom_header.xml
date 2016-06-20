@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<talex.zsw.baselibrary.view.SwipeToLoadLayout.header.CustomRefreshHeaderView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/blue">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/refresh_header_height_twitter"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/noData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:gravity="center"
+            android:text="没有数据！！！"
+            android:textColor="@color/white"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/ivArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="48dp"
+            android:layout_toLeftOf="@+id/tvRefresh"
+            android:background="@mipmap/twitter_pull_arrow"/>
+
+        <ImageView
+            android:id="@+id/ivSuccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="48dp"
+            android:layout_toLeftOf="@+id/tvRefresh"
+            android:background="@mipmap/qq_refresh_success"/>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            style="?android:attr/progressBarStyleSmallInverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="48dp"
+            android:layout_toLeftOf="@+id/tvRefresh"/>
+
+        <TextView
+            android:id="@+id/tvRefresh"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="?attr/colorPrimary"/>
+    </RelativeLayout>
+</talex.zsw.baselibrary.view.SwipeToLoadLayout.header.CustomRefreshHeaderView>

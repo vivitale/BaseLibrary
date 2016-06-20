@@ -163,7 +163,7 @@
         <item name="android:layout_margin">0.5dp</item>
     </style>
 
-    <!-- Picker -->
+    <!-- 数值自动增长的TextView -->
     <style name="CustomText" parent="@android:style/Widget.TextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -198,5 +198,24 @@
     <style name="CustomText_Caption" parent="@style/CustomText">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/black_54</item>
+    </style>
+
+    <!-- 展示Gif的View -->
+    <style name="Widget.GifView" parent="@android:style/Widget"/>
+
+    <!-- 带有显示数值的SeekBar -->
+    <style name="Widget.DiscreteSeekBar" parent="android:Widget">
+        <item name="dsb_indicatorTextAppearance">@style/Widget.DiscreteIndicatorTextAppearance</item>
+        <item name="dsb_progressColor">@color/dsb_progress_color_list</item>
+        <item name="dsb_trackColor">@color/dsb_track_color_list</item>
+        <item name="dsb_rippleColor">@color/dsb_ripple_color_list</item>
+        <item name="dsb_indicatorColor">@color/dsb_progress_color</item>
+        <item name="dsb_indicatorElevation">4dp</item>
+        <item name="dsb_mirrorForRtl">true</item>
+    </style>
+
+    <style name="Widget.DiscreteIndicatorTextAppearance" parent="android:TextAppearance.Small">
+        <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
+        <item name="android:padding">6dp</item>
     </style>
 </resources>

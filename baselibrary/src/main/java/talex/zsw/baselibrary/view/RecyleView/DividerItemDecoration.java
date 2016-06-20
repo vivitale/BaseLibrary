@@ -12,7 +12,7 @@ import android.view.View;
 
 /**
  * 作用: 简易的计算显示RecyclerView间隔
- * 作者: 赵小白 email:vvtale@gmail.com  
+ * 作者: 赵小白 email:edisonzsw@icloud.com
  * 日期: 2015-08-26-0026 23:50 
  * 修改人：
  * 修改时间：
@@ -26,7 +26,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration
 
 	private Drawable mDivider;
 
-	private int dividerHeight = 2;
+	private int dividerHeight = 1;
 
 	private int mOrientation;
 

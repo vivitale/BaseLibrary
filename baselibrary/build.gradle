@@ -25,32 +25,25 @@ android {
 }
 
 repositories {
-	//	拍照相关
-	maven { url "https://repo.commonsware.com.s3.amazonaws.com" }
-
-
 }
 
 dependencies {
 	compile fileTree(dir: 'libs', include: ['*.jar'])
 	testCompile 'junit:junit:4.12'
-	compile 'com.android.support:support-v4:23.2.1'
-	compile 'com.android.support:appcompat-v7:23.2.1'
-	compile 'com.android.support:design:23.2.1'
-	compile 'com.android.support:recyclerview-v7:23.2.1'
-	compile 'com.android.support:cardview-v7:23.2.1'
-	compile 'com.android.support:percent:23.2.1'
+	compile 'com.android.support:support-v4:23.4.0'
+	compile 'com.android.support:appcompat-v7:23.4.0'
+	compile 'com.android.support:design:23.4.0'
+	compile 'com.android.support:recyclerview-v7:23.4.0'
+	compile 'com.android.support:cardview-v7:23.4.0'
+	compile 'com.android.support:percent:23.4.0'
 	// json相关
 	compile 'com.google.code.gson:gson:2.5'
-	//	拍照相关
-	compile 'com.github.bumptech.glide:glide:3.6.1'
-	compile 'com.commonsware.cwac:camera:0.6.12'
 }
 
-//allprojects {
-//	gradle.projectsEvaluated {
-//		tasks.withType(JavaCompile) {
-//			options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation" << "-Xdiags:verbose"
-//		}
-//	}
-//}
+allprojects {
+	gradle.projectsEvaluated {
+		tasks.withType(JavaCompile) {
+			options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation" << "-Xdiags:verbose"
+		}
+	}
+}

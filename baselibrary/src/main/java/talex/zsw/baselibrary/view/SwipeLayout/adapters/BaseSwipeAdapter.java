@@ -19,7 +19,7 @@ public abstract class BaseSwipeAdapter extends BaseAdapter implements SwipeItemM
     protected SwipeItemMangerImpl mItemManger = new SwipeItemMangerImpl(this);
 
     /**
-     * return the {@link SwipeLayout} resource id, int the view item.
+     * return the {@link com.daimajia.swipe.SwipeLayout} resource id, int the view item.
      * @param position
      * @return
      */

@@ -222,8 +222,15 @@ public class TagFlowLayout extends FlowLayout implements TagAdapter.OnDataChange
 			}
 			else
 			{
-				child.setChecked(false);
-				mSelectedView.remove(position);
+				if (mSelectedMax == 1 && mSelectedView.size() == 1)
+				{
+
+				}
+				else
+				{
+					child.setChecked(false);
+					mSelectedView.remove(position);
+				}
 			}
 			if (mOnSelectListener != null)
 			{

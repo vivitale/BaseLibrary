@@ -235,7 +235,7 @@ public class CheckUtil
 		{
 			return false;
 		}
-		if (!isAllWords(prefix))
+		if (!isAllWordsAndNo(prefix))
 		{
 			return false;
 		}
@@ -247,11 +247,11 @@ public class CheckUtil
 		{
 			return false;
 		}
-		if (subfix == null || subfix.length() > 3 || subfix.length() < 2)
+		if (subfix == null || subfix.length() > 10 || subfix.length() < 1)
 		{
 			return false;
 		}
-		if (!isAllWords(subfix))
+		if (!isAllWordsAndNo(subfix))
 		{
 			return false;
 		}
@@ -290,7 +290,6 @@ public class CheckUtil
 	}
 
 	// 检查一个字符串是否包含字母和数字
-
 	private static boolean isAllWordsAndNo(String middle)
 	{
 		char[] array = middle.toCharArray();
@@ -318,5 +317,63 @@ public class CheckUtil
 	public static boolean isNum(String str)
 	{
 		return str.matches("^[-+]?(([0-9]+)([.]([0-9]+))?|([.]([0-9]+))?)$");
+	}
+
+	// 判断一个字符串是否含有数字
+	public static boolean hasDigit(String content)
+	{
+		boolean flag = false;
+		Pattern p = Pattern.compile(".*\\d+.*");
+		Matcher m = p.matcher(content);
+		if (m.matches())
+		{
+			flag = true;
+		}
+		return flag;
+	}
+	// 判断一个字符串是否含有数字
+	public static boolean hasDigit2(String content)
+	{
+		boolean flag = false;
+		Pattern p = Pattern.compile("[a-zA-Z0-9\\u4E00-\\u9FA5]+");
+		Matcher m = p.matcher(content);
+		if (m.matches())
+		{
+			flag = true;
+		}
+		return flag;
+	}
+
+	// 只有英文和中文
+	public static boolean onlyWord(String content)
+	{
+		boolean flag = false;
+		Pattern p = Pattern.compile("[a-zA-Z\\u4E00-\\u9FA5]+");
+		Matcher m = p.matcher(content);
+		if (m.matches())
+		{
+			flag = true;
+		}
+		return flag;
+	}
+
+
+	/**
+	 * 判断是否为英文
+	 */
+	public static boolean isEnglish(String charaString)
+	{
+		return charaString.matches("^[a-zA-Z]*");
+	}
+
+	/**
+	 * 判断是否为中文
+	 */
+	public static boolean isChinese(String str)
+	{
+		String regEx = "[\\u4e00-\\u9fa5]+";
+		Pattern p = Pattern.compile(regEx);
+		Matcher m = p.matcher(str);
+		return m.find();
 	}
 }

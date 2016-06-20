@@ -75,15 +75,16 @@
         <activity android:name=".activity.CollSwitchActivity"/>
         <activity android:name=".activity.CoolMenuActivity"/>
         <activity android:name=".activity.ContentMenuActivity"/>
+        <activity android:name=".activity.CounterTextActivity"/>
         <activity android:name=".activity.CustomNumberPickActivity"/>
         <activity android:name=".activity.CustomScrollViewActivity"/>
+        <activity android:name=".activity.DiscreteSeekBarActivity"/>
         <activity android:name=".activity.DropDownMenuActivity"/>
         <activity android:name=".activity.DynamicHeightImageViewActivity"/>
         <activity android:name=".activity.ExpandableActivity"/>
         <activity android:name=".activity.ExpandablePanelActivity"/>
         <activity android:name=".activity.FlowLayoutActivity"/>
         <activity android:name=".activity.GestureImageViewActivity"/>
-        <activity android:name=".activity.GlassActivity"/>
         <activity android:name=".activity.HTextActivity"/>
         <activity android:name=".activity.JCVideoPlayerActivity"/>
         <activity
@@ -93,6 +94,7 @@
         <activity android:name=".activity.LoadingDialogActivity"/>
         <activity android:name=".activity.LoadToastActivity"/>
         <activity android:name=".activity.MagicProgressActivity"/>
+        <activity android:name=".activity.MarqueeRecyclerActivity"/>
         <activity android:name=".activity.MaterialFavoriteButtonActivity"/>
         <activity android:name=".activity.MyWebViewActivity"/>
         <activity android:name=".activity.NavigationTabBarActivity"/>
@@ -136,9 +138,9 @@
         <activity android:name=".activity.SwipeToLoadActivity"/>
         <activity android:name=".activity.SwipyRefreshLayoutActivity"/>
         <activity android:name=".activity.SwitchAnimationActivity"/>
-        <activity android:name=".activity.TedPickerActivity"/>
         <activity android:name=".activity.TimeSinceActivity"/>
         <activity android:name=".activity.TimesSquareActivity"/>
+        <activity android:name=".activity.WaveLoadingActivity"/>
         <activity android:name=".activity.WheelViewActivity"/>
         <activity android:name=".activity.WTextViewActivity"/>
         <activity android:name=".activity.XBusActivity"/>
@@ -151,11 +153,6 @@
             android:name="talex.zsw.baselibrary.view.JCVideoPlayer.FullScreenActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape"/>
-
-        <!--拍照和图库选择需要添加-->
-        <activity
-            android:name="talex.zsw.baselibrary.view.TedPicker.ImagePickerActivity"
-            android:screenOrientation="portrait"/>
 
     </application>
 

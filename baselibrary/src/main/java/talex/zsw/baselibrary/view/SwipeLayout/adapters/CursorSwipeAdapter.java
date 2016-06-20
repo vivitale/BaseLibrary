@@ -14,8 +14,8 @@ import talex.zsw.baselibrary.view.SwipeLayout.interfaces.SwipeAdapterInterface;
 import talex.zsw.baselibrary.view.SwipeLayout.interfaces.SwipeItemMangerInterface;
 import talex.zsw.baselibrary.view.SwipeLayout.util.Attributes;
 
-public abstract class CursorSwipeAdapter extends CursorAdapter
-    implements SwipeItemMangerInterface, SwipeAdapterInterface
+public abstract class CursorSwipeAdapter extends CursorAdapter implements SwipeItemMangerInterface,
+    SwipeAdapterInterface
 {
 
     private SwipeItemMangerImpl mItemManger = new SwipeItemMangerImpl(this);
