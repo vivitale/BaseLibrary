@@ -61,15 +61,15 @@ import talex.zsw.baselibrary.util.klog.KLog;
 		Bitmap bitmap = null;
 		try
 		{
-			URL url2 = new URL( url );
+			URL url2 = new URL(url);
 			HttpURLConnection httpURLConnection = (HttpURLConnection) url2.openConnection();
-			httpURLConnection.setReadTimeout( 3000 );
+			httpURLConnection.setReadTimeout(3000);
 			int code = httpURLConnection.getResponseCode();
-			if(code == 200)
+			if (code == 200)
 			{
-				bitmap = BitmapFactory.decodeStream( httpURLConnection.getInputStream() );
+				bitmap = BitmapFactory.decodeStream(httpURLConnection.getInputStream());
 			}
-		} catch(Exception e)
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
@@ -89,30 +89,30 @@ import talex.zsw.baselibrary.util.klog.KLog;
 		ByteArrayOutputStream baos = null;
 		try
 		{
-			if(bitmap != null)
+			if (bitmap != null)
 			{
 				baos = new ByteArrayOutputStream();
-				bitmap.compress( Bitmap.CompressFormat.JPEG, 100, baos );
+				bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 
 				baos.flush();
 				baos.close();
 
 				byte[] bitmapBytes = baos.toByteArray();
-				result = Base64.encodeToString( bitmapBytes, Base64.DEFAULT );
+				result = Base64.encodeToString(bitmapBytes, Base64.DEFAULT);
 			}
-		} catch(IOException e)
+		} catch (IOException e)
 		{
 			e.printStackTrace();
 		} finally
 		{
 			try
 			{
-				if(baos != null)
+				if (baos != null)
 				{
 					baos.flush();
 					baos.close();
 				}
-			} catch(IOException e)
+			} catch (IOException e)
 			{
 				e.printStackTrace();
 			}
@@ -128,8 +128,8 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	 */
 	public static Bitmap base64ToBitmap(String base64Data)
 	{
-		byte[] bytes = Base64.decode( base64Data, Base64.DEFAULT );
-		return BitmapFactory.decodeByteArray( bytes, 0, bytes.length );
+		byte[] bytes = Base64.decode(base64Data, Base64.DEFAULT);
+		return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 	}
 
 
@@ -138,15 +138,15 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	 */
 	public static Bitmap getPicFromBytes(byte[] bytes, BitmapFactory.Options opts)
 	{
-		if(bytes != null)
+		if (bytes != null)
 		{
-			if(opts != null)
+			if (opts != null)
 			{
-				return BitmapFactory.decodeByteArray( bytes, 0, bytes.length, opts );
+				return BitmapFactory.decodeByteArray(bytes, 0, bytes.length, opts);
 			}
 			else
 			{
-				return BitmapFactory.decodeByteArray( bytes, 0, bytes.length );
+				return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
 			}
 		}
 		return null;
@@ -158,7 +158,7 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	public static byte[] Bitmap2Bytes(Bitmap bm)
 	{
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		bm.compress( Bitmap.CompressFormat.PNG, 100, baos );
+		bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
 		return baos.toByteArray();
 	}
 
@@ -169,11 +169,26 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	{
 		int width = bitmap.getWidth();
 		int height = bitmap.getHeight();
+
+		float scaleWidth = 1.0f, scaleHeight = 1.0f;
+		if (width > w && height > h)
+		{
+			scaleWidth = ((float) w / width);
+			scaleHeight = ((float) h / height);
+			if (scaleHeight > scaleWidth)
+			{
+				scaleWidth = scaleHeight;
+			}
+			else
+			{
+				scaleHeight = scaleWidth;
+			}
+		}
+
 		Matrix matrix = new Matrix();
-		float scaleWidth = ((float) w / width);
-		float scaleHeight = ((float) h / height);
-		matrix.postScale( scaleWidth, scaleHeight );
-		Bitmap newBmp = Bitmap.createBitmap( bitmap, 0, 0, width, height, matrix, true );
+		matrix.postScale(scaleWidth, scaleHeight);
+		Bitmap newBmp = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+
 		return newBmp;
 	}
 
@@ -186,21 +201,21 @@ import talex.zsw.baselibrary.util.klog.KLog;
 		File file = null;
 		try
 		{
-			file = new File( outputFile );
-			FileOutputStream fstream = new FileOutputStream( file );
-			stream = new BufferedOutputStream( fstream );
-			stream.write( b );
-		} catch(Exception e)
+			file = new File(outputFile);
+			FileOutputStream fstream = new FileOutputStream(file);
+			stream = new BufferedOutputStream(fstream);
+			stream.write(b);
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 		} finally
 		{
-			if(stream != null)
+			if (stream != null)
 			{
 				try
 				{
 					stream.close();
-				} catch(IOException e1)
+				} catch (IOException e1)
 				{
 					e1.printStackTrace();
 				}
@@ -219,21 +234,21 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	 * @param outputY 图片的宽高
 	 */
 	public static void startPhotoZoom(Context context, Uri uri, int aspectX, int aspectY,
-		int outputX, int outputY)
+									  int outputX, int outputY)
 	{
-		Intent intent = new Intent( "com.android.camera.action.CROP" );
-		intent.setDataAndType( uri, "image/*" );
+		Intent intent = new Intent("com.android.camera.action.CROP");
+		intent.setDataAndType(uri, "image/*");
 		// crop为true是设置在开启的intent中设置显示的view可以剪裁
-		intent.putExtra( "crop", "true" );
+		intent.putExtra("crop", "true");
 
 		// aspectX aspectY 是宽高的比例
-		intent.putExtra( "aspectX", 1 );
-		intent.putExtra( "aspectY", 1 );
+		intent.putExtra("aspectX", 1);
+		intent.putExtra("aspectY", 1);
 
 		// outputX,outputY 是剪裁图片的宽高
-		intent.putExtra( "outputX", outputX );
-		intent.putExtra( "outputY", outputY );
-		intent.putExtra( "return-data", true );
+		intent.putExtra("outputX", outputX);
+		intent.putExtra("outputY", outputY);
+		intent.putExtra("return-data", true);
 		//		((Activity)context).startActivityForResult(intent, PHOTO_REQUEST_CUT);
 	}
 
@@ -243,22 +258,22 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	public static Bitmap toRoundCorner(Bitmap bitmap, int pixels)
 	{
 		Bitmap output =
-			Bitmap.createBitmap( bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888 );
-		Canvas canvas = new Canvas( output );
+			Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+		Canvas canvas = new Canvas(output);
 
 		final int color = 0xff424242;
 		final Paint paint = new Paint();
-		final Rect rect = new Rect( 0, 0, bitmap.getWidth(), bitmap.getHeight() );
-		final RectF rectF = new RectF( rect );
+		final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+		final RectF rectF = new RectF(rect);
 		final float roundPx = pixels;
 
-		paint.setAntiAlias( true );
-		canvas.drawARGB( 0, 0, 0, 0 );
-		paint.setColor( color );
-		canvas.drawRoundRect( rectF, roundPx, roundPx, paint );
+		paint.setAntiAlias(true);
+		canvas.drawARGB(0, 0, 0, 0);
+		paint.setColor(color);
+		canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
 
-		paint.setXfermode( new PorterDuffXfermode( android.graphics.PorterDuff.Mode.SRC_IN ) );
-		canvas.drawBitmap( bitmap, rect, rect, paint );
+		paint.setXfermode(new PorterDuffXfermode(android.graphics.PorterDuff.Mode.SRC_IN));
+		canvas.drawBitmap(bitmap, rect, rect, paint);
 
 		return output;
 	}
@@ -269,19 +284,19 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	public static Bitmap getRoundedCornerBitmap(Bitmap bitmap)
 	{
 		Bitmap outBitmap =
-			Bitmap.createBitmap( bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888 );
-		Canvas canvas = new Canvas( outBitmap );
+			Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+		Canvas canvas = new Canvas(outBitmap);
 		final int color = 0xff424242;
 		final Paint paint = new Paint();
-		final Rect rect = new Rect( 0, 0, bitmap.getWidth(), bitmap.getHeight() );
-		final RectF rectF = new RectF( rect );
+		final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+		final RectF rectF = new RectF(rect);
 		final float roundPX = bitmap.getWidth() / 2;
-		paint.setAntiAlias( true );
-		canvas.drawARGB( 0, 0, 0, 0 );
-		paint.setColor( color );
-		canvas.drawRoundRect( rectF, roundPX, roundPX, paint );
-		paint.setXfermode( new PorterDuffXfermode( PorterDuff.Mode.SRC_IN ) );
-		canvas.drawBitmap( bitmap, rect, rect, paint );
+		paint.setAntiAlias(true);
+		canvas.drawARGB(0, 0, 0, 0);
+		paint.setColor(color);
+		canvas.drawRoundRect(rectF, roundPX, roundPX, paint);
+		paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+		canvas.drawBitmap(bitmap, rect, rect, paint);
 		return outBitmap;
 	}
 
@@ -293,27 +308,27 @@ import talex.zsw.baselibrary.util.klog.KLog;
 		Bitmap bitmap = null;
 		try
 		{
-			URL url = new URL( urlStr );
+			URL url = new URL(urlStr);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod( "GET" );
-			conn.setConnectTimeout( 5000 );
+			conn.setRequestMethod("GET");
+			conn.setConnectTimeout(5000);
 			conn.connect();
 			InputStream is = conn.getInputStream();
 			byte[] buffer = new byte[1024];
 			int len = 0;
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			while((len = is.read( buffer )) != -1)
+			while ((len = is.read(buffer)) != -1)
 			{
-				bos.write( buffer, 0, len );
+				bos.write(buffer, 0, len);
 			}
 			byte[] data = bos.toByteArray();
-			bitmap = BitmapFactory.decodeByteArray( data, 0, data.length );
+			bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
 			bos.close();
 			is.close();
-		} catch(MalformedURLException e)
+		} catch (MalformedURLException e)
 		{
 			e.printStackTrace();
-		} catch(IOException e)
+		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}
@@ -325,9 +340,9 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	 */
 	public static Bitmap convertViewToBitmap(View view)
 	{
-		view.measure( View.MeasureSpec.makeMeasureSpec( 0, View.MeasureSpec.UNSPECIFIED ),
-			View.MeasureSpec.makeMeasureSpec( 0, View.MeasureSpec.UNSPECIFIED ) );
-		view.layout( 0, 0, view.getMeasuredWidth(), view.getMeasuredHeight() );
+		view.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+			View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+		view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
 		view.buildDrawingCache();
 		Bitmap bitmap = view.getDrawingCache();
 		return bitmap;
@@ -343,18 +358,18 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	 */
 	public static void applyBlur(final ImageView image, final View view, final Context context)
 	{
-		image.getViewTreeObserver().addOnPreDrawListener( new ViewTreeObserver.OnPreDrawListener()
+		image.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
 		{
 			@Override public boolean onPreDraw()
 			{
-				image.getViewTreeObserver().removeOnPreDrawListener( this );
+				image.getViewTreeObserver().removeOnPreDrawListener(this);
 				image.buildDrawingCache();
 
 				Bitmap bmp = image.getDrawingCache();
-				blur( bmp, view, true, context );
+				blur(bmp, view, true, context);
 				return true;
 			}
-		} );
+		});
 	}
 
 	public static void blur(Bitmap bkg, View view, boolean scale, Context context)
@@ -364,24 +379,24 @@ import talex.zsw.baselibrary.util.klog.KLog;
 			long startMs = System.currentTimeMillis();
 			float scaleFactor = 1;
 			float radius = 20;
-			if(scale)
+			if (scale)
 			{
 				scaleFactor = 8;
 				radius = 2;
 			}
 
-			Bitmap overlay = Bitmap.createBitmap( (int) (view.getMeasuredWidth() / scaleFactor),
-				(int) (view.getMeasuredHeight() / scaleFactor), Bitmap.Config.ARGB_8888 );
-			Canvas canvas = new Canvas( overlay );
-			canvas.translate( -view.getLeft() / scaleFactor, -view.getTop() / scaleFactor );
-			canvas.scale( 1 / scaleFactor, 1 / scaleFactor );
+			Bitmap overlay = Bitmap.createBitmap((int) (view.getMeasuredWidth() / scaleFactor),
+				(int) (view.getMeasuredHeight() / scaleFactor), Bitmap.Config.ARGB_8888);
+			Canvas canvas = new Canvas(overlay);
+			canvas.translate(-view.getLeft() / scaleFactor, -view.getTop() / scaleFactor);
+			canvas.scale(1 / scaleFactor, 1 / scaleFactor);
 			Paint paint = new Paint();
-			paint.setFlags( Paint.FILTER_BITMAP_FLAG );
-			canvas.drawBitmap( bkg, 0, 0, paint );
+			paint.setFlags(Paint.FILTER_BITMAP_FLAG);
+			canvas.drawBitmap(bkg, 0, 0, paint);
 
-			overlay = FastBlur.doBlur( overlay, (int) radius, true );
-			view.setBackgroundDrawable( new BitmapDrawable( context.getResources(), overlay ) );
-		} catch(Exception ignored)
+			overlay = FastBlur.doBlur(overlay, (int) radius, true);
+			view.setBackgroundDrawable(new BitmapDrawable(context.getResources(), overlay));
+		} catch (Exception ignored)
 		{
 
 		}
@@ -395,23 +410,23 @@ import talex.zsw.baselibrary.util.klog.KLog;
 		Bitmap bitmap;
 		int w = drawable.getIntrinsicWidth();
 		int h = drawable.getIntrinsicHeight();
-		if(w <= 0)
+		if (w <= 0)
 		{
 			w = 10;
 		}
-		if(h <= 0)
+		if (h <= 0)
 		{
 			h = 10;
 		}
-		System.out.println( "Drawable转Bitmap" );
+		System.out.println("Drawable转Bitmap");
 		Bitmap.Config config =
 			drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888 :
 				Bitmap.Config.RGB_565;
-		bitmap = Bitmap.createBitmap( w, h, config );
+		bitmap = Bitmap.createBitmap(w, h, config);
 		//注意，下面三行代码要用到，否在在View或者surfaceview里的canvas.drawBitmap会看不到图
-		Canvas canvas = new Canvas( bitmap );
-		drawable.setBounds( 0, 0, w, h );
-		drawable.draw( canvas );
+		Canvas canvas = new Canvas(bitmap);
+		drawable.setBounds(0, 0, w, h);
+		drawable.draw(canvas);
 		return bitmap;
 	}
 
@@ -424,29 +439,29 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	 * @return 毛玻璃图片
 	 */
 	@SuppressLint("NewApi") public static Bitmap fastblur(Context context, Bitmap sentBitmap,
-		int radius)
+														  int radius)
 	{
-		if(Build.VERSION.SDK_INT > 16)
+		if (Build.VERSION.SDK_INT > 16)
 		{
-			Bitmap bitmap = sentBitmap.copy( sentBitmap.getConfig(), true );
+			Bitmap bitmap = sentBitmap.copy(sentBitmap.getConfig(), true);
 
-			final RenderScript rs = RenderScript.create( context );
+			final RenderScript rs = RenderScript.create(context);
 			final Allocation input = Allocation
-				.createFromBitmap( rs, sentBitmap, Allocation.MipmapControl.MIPMAP_NONE,
-					Allocation.USAGE_SCRIPT );
-			final Allocation output = Allocation.createTyped( rs, input.getType() );
-			final ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create( rs, Element.U8_4( rs ) );
-			script.setRadius( radius /* e.g. 3.f */ );
-			script.setInput( input );
-			script.forEach( output );
-			output.copyTo( bitmap );
+				.createFromBitmap(rs, sentBitmap, Allocation.MipmapControl.MIPMAP_NONE,
+					Allocation.USAGE_SCRIPT);
+			final Allocation output = Allocation.createTyped(rs, input.getType());
+			final ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
+			script.setRadius(radius /* e.g. 3.f */);
+			script.setInput(input);
+			script.forEach(output);
+			output.copyTo(bitmap);
 			return bitmap;
 		}
 		else
 		{
-			Bitmap bitmap = sentBitmap.copy( sentBitmap.getConfig(), true );
+			Bitmap bitmap = sentBitmap.copy(sentBitmap.getConfig(), true);
 
-			if(radius < 1)
+			if (radius < 1)
 			{
 				return (null);
 			}
@@ -456,7 +471,7 @@ import talex.zsw.baselibrary.util.klog.KLog;
 
 			int[] pix = new int[w * h];
 			//        Log.e("pix", w + " " + h + " " + pix.length);
-			bitmap.getPixels( pix, 0, w, 0, 0, w, h );
+			bitmap.getPixels(pix, 0, w, 0, 0, w, h);
 
 			int wm = w - 1;
 			int hm = h - 1;
@@ -467,13 +482,13 @@ import talex.zsw.baselibrary.util.klog.KLog;
 			int g[] = new int[wh];
 			int b[] = new int[wh];
 			int rsum, gsum, bsum, x, y, i, p, yp, yi, yw;
-			int vmin[] = new int[Math.max( w, h )];
+			int vmin[] = new int[Math.max(w, h)];
 
 			int divsum = (div + 1) >> 1;
 			divsum *= divsum;
 			int temp = 256 * divsum;
 			int dv[] = new int[temp];
-			for(i = 0; i < temp; i++)
+			for (i = 0; i < temp; i++)
 			{
 				dv[i] = (i / divsum);
 			}
@@ -489,21 +504,21 @@ import talex.zsw.baselibrary.util.klog.KLog;
 			int routsum, goutsum, boutsum;
 			int rinsum, ginsum, binsum;
 
-			for(y = 0; y < h; y++)
+			for (y = 0; y < h; y++)
 			{
 				rinsum = ginsum = binsum = routsum = goutsum = boutsum = rsum = gsum = bsum = 0;
-				for(i = -radius; i <= radius; i++)
+				for (i = -radius; i <= radius; i++)
 				{
-					p = pix[yi + Math.min( wm, Math.max( i, 0 ) )];
+					p = pix[yi + Math.min(wm, Math.max(i, 0))];
 					sir = stack[i + radius];
 					sir[0] = (p & 0xff0000) >> 16;
 					sir[1] = (p & 0x00ff00) >> 8;
 					sir[2] = (p & 0x0000ff);
-					rbs = r1 - Math.abs( i );
+					rbs = r1 - Math.abs(i);
 					rsum += sir[0] * rbs;
 					gsum += sir[1] * rbs;
 					bsum += sir[2] * rbs;
-					if(i > 0)
+					if (i > 0)
 					{
 						rinsum += sir[0];
 						ginsum += sir[1];
@@ -518,7 +533,7 @@ import talex.zsw.baselibrary.util.klog.KLog;
 				}
 				stackpointer = radius;
 
-				for(x = 0; x < w; x++)
+				for (x = 0; x < w; x++)
 				{
 
 					r[yi] = dv[rsum];
@@ -536,9 +551,9 @@ import talex.zsw.baselibrary.util.klog.KLog;
 					goutsum -= sir[1];
 					boutsum -= sir[2];
 
-					if(y == 0)
+					if (y == 0)
 					{
-						vmin[x] = Math.min( x + radius + 1, wm );
+						vmin[x] = Math.min(x + radius + 1, wm);
 					}
 					p = pix[yw + vmin[x]];
 
@@ -569,13 +584,13 @@ import talex.zsw.baselibrary.util.klog.KLog;
 				}
 				yw += w;
 			}
-			for(x = 0; x < w; x++)
+			for (x = 0; x < w; x++)
 			{
 				rinsum = ginsum = binsum = routsum = goutsum = boutsum = rsum = gsum = bsum = 0;
 				yp = -radius * w;
-				for(i = -radius; i <= radius; i++)
+				for (i = -radius; i <= radius; i++)
 				{
-					yi = Math.max( 0, yp ) + x;
+					yi = Math.max(0, yp) + x;
 
 					sir = stack[i + radius];
 
@@ -583,13 +598,13 @@ import talex.zsw.baselibrary.util.klog.KLog;
 					sir[1] = g[yi];
 					sir[2] = b[yi];
 
-					rbs = r1 - Math.abs( i );
+					rbs = r1 - Math.abs(i);
 
 					rsum += r[yi] * rbs;
 					gsum += g[yi] * rbs;
 					bsum += b[yi] * rbs;
 
-					if(i > 0)
+					if (i > 0)
 					{
 						rinsum += sir[0];
 						ginsum += sir[1];
@@ -602,14 +617,14 @@ import talex.zsw.baselibrary.util.klog.KLog;
 						boutsum += sir[2];
 					}
 
-					if(i < hm)
+					if (i < hm)
 					{
 						yp += w;
 					}
 				}
 				yi = x;
 				stackpointer = radius;
-				for(y = 0; y < h; y++)
+				for (y = 0; y < h; y++)
 				{
 					// Preserve alpha channel: ( 0xff000000 & pix[yi] )
 					pix[yi] =
@@ -626,9 +641,9 @@ import talex.zsw.baselibrary.util.klog.KLog;
 					goutsum -= sir[1];
 					boutsum -= sir[2];
 
-					if(x == 0)
+					if (x == 0)
 					{
-						vmin[y] = Math.min( y + r1, hm ) * w;
+						vmin[y] = Math.min(y + r1, hm) * w;
 					}
 					p = x + vmin[y];
 
@@ -659,7 +674,7 @@ import talex.zsw.baselibrary.util.klog.KLog;
 				}
 			}
 			//        Log.e("pix", w + " " + h + " " + pix.length);
-			bitmap.setPixels( pix, 0, w, 0, 0, w, h );
+			bitmap.setPixels(pix, 0, w, 0, 0, w, h);
 			return (bitmap);
 		}
 	}
@@ -672,12 +687,12 @@ import talex.zsw.baselibrary.util.klog.KLog;
 		try
 		{
 			// 读取uri所在的图片
-			Bitmap bitmap = MediaStore.Images.Media.getBitmap( context.getContentResolver(), uri );
+			Bitmap bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
 			return bitmap;
-		} catch(Exception e)
+		} catch (Exception e)
 		{
-			KLog.e( e.getMessage() );
-			KLog.e( "图片目录为：" + uri );
+			KLog.e(e.getMessage());
+			KLog.e("图片目录为：" + uri);
 			e.printStackTrace();
 			return null;
 		}
@@ -690,50 +705,9 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	 * @param maxHeight 目标图片的最大高
 	 * @param maxWidth  目标图片的最大宽
 	 */
-	public static Bitmap getBitmapFromUri(Uri uri, int maxHeight, int maxWidth)
+	public static Bitmap getBitmapFromUri(Uri uri, Context context, int maxHeight, int maxWidth)
 	{
-		//先解析图片边框的大小
-		BitmapFactory.Options ops = new BitmapFactory.Options();
-		ops.inJustDecodeBounds = true;
-		Bitmap bm = BitmapFactory.decodeFile( uri.getPath(), ops );
-		ops.inSampleSize = 1;
-		int oHeight = ops.outHeight;
-		int oWidth = ops.outWidth;
-
-
-		//控制压缩比
-		float contentHeight = 1.0f;
-		float contentWidth = 1.0f;
-		if(maxHeight != 0 && oHeight > maxHeight)
-		{
-			contentHeight = (float) oHeight / (float) maxHeight;
-		}
-		if(maxWidth != 0 && oWidth > maxWidth)
-		{
-			contentWidth = (float) oWidth / (float) maxWidth;
-		}
-
-		if(contentHeight > contentWidth)
-		{
-			ops.inSampleSize = (int) Math.ceil( contentWidth );
-		}
-		else
-		{
-			ops.inSampleSize = (int) Math.ceil( contentHeight );
-		}
-
-		//		if(((float) oHeight / contentHeight) < ((float) oWidth / contentWidth))
-		//		{
-		//			ops.inSampleSize = (int) Math.ceil( (float) oWidth / contentWidth );
-		//		}
-		//		else
-		//		{
-		//			ops.inSampleSize = (int) Math.ceil( (float) oHeight / contentHeight );
-		//		}
-
-		ops.inJustDecodeBounds = false;
-		bm = BitmapFactory.decodeFile( uri.getPath(), ops );
-		return bm;
+		return zoomBitmap(getBitmapFromUri(uri, context), maxWidth, maxHeight);
 	}
 
 
@@ -746,7 +720,7 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	 */
 	public static Bitmap resizeBitmap(Bitmap src, int max)
 	{
-		if(src == null)
+		if (src == null)
 		{
 			return null;
 		}
@@ -755,7 +729,7 @@ import talex.zsw.baselibrary.util.klog.KLog;
 		int height = src.getHeight();
 		float rate = 0.0f;
 
-		if(width > height)
+		if (width > height)
 		{
 			rate = max / (float) width;
 			height = (int) (height * rate);
@@ -768,7 +742,7 @@ import talex.zsw.baselibrary.util.klog.KLog;
 			height = max;
 		}
 
-		return Bitmap.createScaledBitmap( src, width, height, true );
+		return Bitmap.createScaledBitmap(src, width, height, true);
 	}
 
 	/**
@@ -780,21 +754,21 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	 */
 	public static Bitmap rotate(Bitmap bitmap, int degrees)
 	{
-		if(degrees != 0 && bitmap != null)
+		if (degrees != 0 && bitmap != null)
 		{
 			Matrix m = new Matrix();
-			m.setRotate( degrees, (float) bitmap.getWidth() / 2, (float) bitmap.getHeight() / 2 );
+			m.setRotate(degrees, (float) bitmap.getWidth() / 2, (float) bitmap.getHeight() / 2);
 
 			try
 			{
 				Bitmap converted = Bitmap
-					.createBitmap( bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), m, true );
-				if(bitmap != converted)
+					.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), m, true);
+				if (bitmap != converted)
 				{
 					bitmap.recycle();
 					bitmap = converted;
 				}
-			} catch(OutOfMemoryError ex)
+			} catch (OutOfMemoryError ex)
 			{
 				// 메모리가 부족하여 회전을 시키지 못할 경우 그냥 원본을 반환합니다.
 			}
@@ -811,36 +785,36 @@ import talex.zsw.baselibrary.util.klog.KLog;
 	 */
 	public static Bitmap cropCenterBitmap(Bitmap src, int w, int h)
 	{
-		if(src == null)
+		if (src == null)
 		{
 			return null;
 		}
 		int width = src.getWidth();
 		int height = src.getHeight();
-		if(width < w && height < h)
+		if (width < w && height < h)
 		{
 			return src;
 		}
 		int x = 0;
 		int y = 0;
-		if(width > w)
+		if (width > w)
 		{
 			x = (width - w) / 2;
 		}
-		if(height > h)
+		if (height > h)
 		{
 			y = (height - h) / 2;
 		}
 		int cw = w; // crop width
 		int ch = h; // crop height
-		if(w > width)
+		if (w > width)
 		{
 			cw = width;
 		}
-		if(h > height)
+		if (h > height)
 		{
 			ch = height;
 		}
-		return Bitmap.createBitmap( src, x, y, cw, ch );
+		return Bitmap.createBitmap(src, x, y, cw, ch);
 	}
 }

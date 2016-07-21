@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <talex.zsw.baselibrary.view.MarqueeLayout.MarqueeLayout
+            android:id="@+id/marquee_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="#118866"
+            app:enableAlphaAnim="true"
+            app:enableScaleAnim="false"
+            app:orientation="up">
+
+        </talex.zsw.baselibrary.view.MarqueeLayout.MarqueeLayout>
+
+        <talex.zsw.baselibrary.view.MarqueeLayout.MarqueeLayout
+            android:id="@+id/marquee_layout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/marquee_layout"
+            android:background="#dcdcdc"
+            app:enableAlphaAnim="true"
+            app:enableScaleAnim="true"
+            app:orientation="left">
+
+        </talex.zsw.baselibrary.view.MarqueeLayout.MarqueeLayout>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

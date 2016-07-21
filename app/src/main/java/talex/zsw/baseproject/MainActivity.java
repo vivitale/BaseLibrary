@@ -41,6 +41,7 @@ import talex.zsw.baseproject.activity.LikeButtonActivity;
 import talex.zsw.baseproject.activity.LoadToastActivity;
 import talex.zsw.baseproject.activity.LoadingDialogActivity;
 import talex.zsw.baseproject.activity.MagicProgressActivity;
+import talex.zsw.baseproject.activity.MarqueeLayoutActivity;
 import talex.zsw.baseproject.activity.MarqueeRecyclerActivity;
 import talex.zsw.baseproject.activity.MaterialFavoriteButtonActivity;
 import talex.zsw.baseproject.activity.MyWebViewActivity;
@@ -143,6 +144,7 @@ import talex.zsw.baseproject.activity.XBusActivity;
 		datas.add(new Vo("LoadingDialog", "加载等待转圈圈", LoadingDialogActivity.class));
 		datas.add(new Vo("LoadToast", "简单的View来实现加载，加载成功与失败的效果", LoadToastActivity.class));
 		datas.add(new Vo("MagicProgress", "渐变色圆环进度条和彩色进度条", MagicProgressActivity.class));
+		datas.add(new Vo("MarqueeLayout", "自定义item上下左右轮播轮播", MarqueeLayoutActivity.class));
 		datas.add(new Vo("MarqueeRecyclerView", "跑马灯列表", MarqueeRecyclerActivity.class));
 		datas.add(new Vo("MaterialFavoriteButton", "动画效果的星星和爱心，适合用在收藏赞等操作上",
 			MaterialFavoriteButtonActivity.class));

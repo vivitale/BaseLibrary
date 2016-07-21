@@ -1,33 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<talex.zsw.baselibrary.widget.OverScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/violet"
+    android:background="@color/white"
     android:orientation="horizontal"
     android:padding="10dp">
 
-    <talex.zsw.baselibrary.view.SwipeToLoadLayout.SwipeToLoadLayout
-        android:id="@+id/mSwipeToLoadLayout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/white"
         android:layout_height="match_parent"
-        app:swipe_style="scale">
+        android:orientation="vertical">
 
-        <include
-            android:id="@id/swipe_refresh_header"
-            layout="@layout/layout_custom_header"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="大标题文字TITLE"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_title_big"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@id/swipe_target"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标题文字TITLE"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_title"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="副标题文字SUBTITLE"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_exp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="列表标题TEXTLIST"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_list_title"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="列表正文TEXT"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_list_text"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:lineSpacingMultiplier="1.2"
+            android:text="副文本VICETEXT\n随便写点啥东西，本来我是拒绝的。但是看在花花跪舔了，那就不得不接受这个神圣的使命了！我相信终有一天，会跟花花进行PY交易，所以，是明天么？"
+            android:textColor="@color/text_black2"
+            android:textSize="@dimen/text_vice"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="说明文字EXP"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_exp"/>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-        <include
-            android:id="@id/swipe_load_more_footer"
-            layout="@layout/layout_google_footer"/>
-    </talex.zsw.baselibrary.view.SwipeToLoadLayout.SwipeToLoadLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:paddingBottom="3dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="3dp"
+                android:text="按钮S"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_small"/>
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@color/colorPrimary"
+                android:paddingBottom="3dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="3dp"
+                android:text="按钮S"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_small"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="按钮MIDDLE"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_middle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@color/colorPrimary"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="按钮MIDDLE"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_middle"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+            android:text="按钮BIG"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_big"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_white_cs"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+            android:text="反转按钮"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/button_big"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
+                android:text="价格文字"
+                android:textColor="@color/text_red"
+                android:textSize="@dimen/text_price"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$￥"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/text_tassist"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:text="12.00"
+                android:textColor="@color/text_red"
+                android:textSize="@dimen/text_price"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="起"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/text_tassist"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="辅助文字TASSIST"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/text_gray"
+            android:textSize="@dimen/text_tassist"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginRight="40dp"
+                android:layout_height="wrap_content"
+                android:text="标签LABELTEXT"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_label"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_white_cs"
+                android:text="自然风光"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_label"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/mTvOld"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="40dp"
+                android:layout_height="wrap_content"
+                android:text="原价ORIGINAL"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/text_original"/>
+
+            <TextView
+                android:id="@+id/mTvOld2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$￥18.00"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/text_original"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</talex.zsw.baselibrary.widget.OverScrollView>

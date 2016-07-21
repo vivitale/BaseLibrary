@@ -38,7 +38,7 @@ import android.os.Bundle;
 
 
 	// 获取Location Provider
-	private String getProvider()
+	public String getProvider()
 	{
 		// 构建位置查询条件
 		Criteria criteria = new Criteria();

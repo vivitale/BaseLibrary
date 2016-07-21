@@ -94,6 +94,7 @@
         <activity android:name=".activity.LoadingDialogActivity"/>
         <activity android:name=".activity.LoadToastActivity"/>
         <activity android:name=".activity.MagicProgressActivity"/>
+        <activity android:name=".activity.MarqueeLayoutActivity"/>
         <activity android:name=".activity.MarqueeRecyclerActivity"/>
         <activity android:name=".activity.MaterialFavoriteButtonActivity"/>
         <activity android:name=".activity.MyWebViewActivity"/>

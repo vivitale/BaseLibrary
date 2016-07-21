@@ -1,9 +1,6 @@
 package talex.zsw.baselibrary.util;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
 
 /**
  * 项目名称: BaseProject
@@ -22,12 +19,9 @@ public class JsonUtil
 	 * @param string json数据
 	 * @param <T>    指定泛型
 	 */
-	public static <T> T getObject(String string)
+	public static <T> T getObject(String string, Class<T> t)
 	{
-		Type responseType = new TypeToken<T>()
-		{
-		}.getType();
-		return GsonParser.create().fromJson(string, responseType);
+		return new Gson().fromJson(string, t);
 	}
 
 	/**
@@ -44,5 +38,22 @@ public class JsonUtil
 			data = "";
 		}
 		return data;
+	}
+
+	/**
+	 * 将object解析成指定泛型并返回
+	 *
+	 * @param object json数据的object
+	 * @param <T>    指定泛型
+	 */
+	public static <T> T getObjectFromObject(Object object, Class<T> t)
+	{
+		Gson gson = new Gson();
+		String data = gson.toJson(object);
+		if (StringUtils.isBlank(data))
+		{
+			data = "";
+		}
+		return new Gson().fromJson(data, t);
 	}
 }
